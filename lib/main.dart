@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:namazapp/core/constants/pages-header.dart';
 import 'package:namazapp/core/constants/routes.dart';
-import 'package:namazapp/ui/router.dart';
+import 'package:namazapp/router.dart';
 
 void main() {
   runApp(MyApp());
