@@ -4,6 +4,7 @@ import 'package:namazapp/core/constants/routes.dart';
 import 'package:namazapp/features/home/presentation/pages/home/home.page.dart';
 import 'package:namazapp/features/taharat/bloc/taharat-bloc.dart';
 import 'package:namazapp/features/taharat/bloc/taharat-events.dart';
+import 'package:namazapp/features/taharat/data/datasources/taharat-local-data.dart';
 import 'package:namazapp/features/taharat/presentation/pages/taharat-general/taharat-general.page.dart';
 
 class Router {
@@ -19,7 +20,8 @@ class Router {
             providers: [
               BlocProvider(
                   create: (ctx) =>
-                      TaharatBloc()..add(TaharatEvents.loadTahartDetails)),
+                      TaharatBloc(repos: new TaharatLocalDataRepository())
+                        ..add(TaharatEvents.loadTahartDetails)),
             ],
             child: TaharatGeneralPage(),
           ),

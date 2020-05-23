@@ -1,17 +1,15 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:namazapp/features/taharat/bloc/taharat-events.dart';
 import 'package:namazapp/features/taharat/bloc/taharat-state.dart';
-import 'package:namazapp/features/taharat/data/datasources/taharat-local-data.dart';
 import 'package:namazapp/features/taharat/data/models/taharat-model.dart';
 import 'package:namazapp/features/taharat/data/repositories/taharat-repository.dart';
 
 class TaharatBloc extends Bloc<TaharatEvents, TaharatState> {
-  TaharatRepository _repos;
+  TaharatRepository repos;
 
-  TaharatBloc() {
-    this._repos =
-        new TaharatRepository(dataProvider: TaharatLocalDataProvider());
-  }
+  // Dependecy
+  TaharatBloc({@required this.repos});
 
   @override
   TaharatState get initialState => TaharatLoading();
@@ -20,17 +18,19 @@ class TaharatBloc extends Bloc<TaharatEvents, TaharatState> {
   Stream<TaharatState> mapEventToState(TaharatEvents event) async* {
     switch (event) {
       case TaharatEvents.loadTahartDetails:
+        // Notify: loading
         yield TaharatLoading();
 
-        // Load Data
+        // Get Data. No matter where get data) From network, local data or storage, depends on busunuess
         List<TaharatModel> data = await this.getData();
-        yield TaharatLoaded(data);
 
+        // Notify: Data come
+        yield TaharatLoaded(data);
         break;
     }
   }
 
   Future<List<TaharatModel>> getData() {
-    return this._repos.getData();
+    return this.repos.getData();
   }
 }
