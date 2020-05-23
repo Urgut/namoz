@@ -1,29 +1,39 @@
+import 'package:flutter/material.dart';
+import 'package:namazapp/core/helpers/future-helper.dart';
+import 'package:namazapp/core/helpers/json-helper.dart';
 import 'package:namazapp/features/taharat/data/models/taharat-model.dart';
 import 'package:namazapp/features/taharat/data/repositories/taharat-repository.dart';
 
 /*
-  Get data from code
+  Get dart code from json file
 */
 class TaharatLocalDataRepository implements TaharatRepository {
-  Future<List<TaharatModel>> getData() async {
-    await Future.delayed(Duration(seconds: 1));
+  static const String path = 'assets/data/json/taharat';
 
-    List<TaharatModel> items = [];
+  Future<List<TaharatModel>> getData({@required String languageTag}) async {
+    try {
+      List<TaharatModel> items = [];
 
-    TaharatModel general = TaharatModel(
-      title: 'Дәрет алу',
-      description:
-          'Дәрет – Ислам дінінде кей ғибадаттарды орындау үшін арнайыжасалатын тазалық түрі. Дәрет үшін ғұсыл болуы керек. Ғұсылсыз дәрет жарамсыз.',
-    );
+      // Delay
+      await FutureHelper.doDelay(seconds: 1);
 
-    TaharatModel tx2 = TaharatModel(
-      title: 'Дәреттің парыздары:',
-      description: 'Бетті жуу. Екі қолды шынтаққа шейін жуу',
-    );
+      // Read file
+      String fileName = 'taharat_$languageTag.json';
+      String jsonFile = '$path/$fileName';
 
-    items.add(general);
-    items.add(tx2);
+      String response = await JsonHelper.readJsonFileAndReturnString(jsonFile);
 
-    return items;
+      // Convert string to json
+      Map<String, dynamic> jsonData = JsonHelper.convertStringToJson(response);
+
+      // Convert json to dart code
+      for (dynamic i in jsonData['result']) {
+        items.add(TaharatModel.fromJson(i));
+      }
+
+      return items;
+    } catch (e) {
+      throw Exception(e);
+    }
   }
 }

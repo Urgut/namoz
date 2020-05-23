@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:namazapp/core/constants/languages.dart';
 import 'package:namazapp/features/taharat/bloc/taharat-events.dart';
 import 'package:namazapp/features/taharat/bloc/taharat-state.dart';
 import 'package:namazapp/features/taharat/data/models/taharat-model.dart';
@@ -31,6 +32,6 @@ class TaharatBloc extends Bloc<TaharatEvents, TaharatState> {
   }
 
   Future<List<TaharatModel>> getData() {
-    return this.repos.getData();
+    return this.repos.getData(languageTag: AppLanguages.defaultLanguage);
   }
 }
