@@ -1,4 +1,4 @@
-# namazapp
+# Namaz Application written in Flutter
 
 Application is about prayer. General information about how to pray(solat).
 
