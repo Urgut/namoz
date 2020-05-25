@@ -12,9 +12,23 @@ class TaharatModel {
   });
 
   factory TaharatModel.fromJson(Map<String, dynamic> jsonData) {
+    // Images
+    List<String> images = [];
+    try {
+      if (jsonData['images'] != null && jsonData['images'].length > 0) {
+        for (dynamic i in jsonData['images']) {
+          images.add(i['path']);
+          print(i);
+        }
+      }
+    } catch (e) {
+      print(e);
+    }
+
     return TaharatModel(
       title: jsonData['title'],
       description: jsonData['description'],
+      images: images,
     );
   }
 
