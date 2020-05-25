@@ -1,0 +1,22 @@
+{
+  "result": {
+    "title": "Таң намазы",
+    "mode": "2 рәкәт сүннет",
+    "rakaats": [
+    {
+      "title": "1 рәкәт",      
+      "parts": [
+        {
+          "title": "Ниет ету",
+          "description": "Ниет ету",
+          "image": "assets/images/namaz/man/niet.png",
+          "audio": "",
+          "transcript": "Transcript",
+          "translation": "Translation",
+          "arabic": "سبحانك"
+        }
+      ]
+    }
+  ]
+  }
+}

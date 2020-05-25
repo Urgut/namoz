@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: PagesHeader.home,
       debugShowCheckedModeBanner: false,
-      initialRoute: Routes.taharatPage,
+      initialRoute: Routes.namazPage,
       onGenerateRoute: Router.generateRoute,
     );
   }
