@@ -4,3 +4,7 @@ Application is about prayer. General information about how to pray(solat).
 
 ## Getting Started
 Now app available only in kazakh language, we will add other languages as well.
+
+## Features
++ Listen part of solat in arabic
++ Solat(Namaz) instruction(fajr, dhuhr, asr, magrib and isha) with images
