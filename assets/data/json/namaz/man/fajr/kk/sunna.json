@@ -8,7 +8,7 @@
       "parts": [
         {
           "title": "Ниет ету",
-          "description": "Ниет ету",
+          "description": "Desc",
           "image": "assets/images/namaz/man/niet.png",
           "audio": "",
           "transcript": "Transcript",
@@ -16,7 +16,21 @@
           "arabic": "سبحانك"
         }
       ]
-    }
+    },
+    {
+      "title": "2 рәкәт",      
+      "parts": [
+        {
+          "title": "Ниет ету",
+          "description": "Desc",
+          "image": "assets/images/namaz/man/niet.png",
+          "audio": "",
+          "transcript": "Transcript",
+          "translation": "Translation",
+          "arabic": "سبحانك"
+        }
+      ]
+    }    
   ]
   }
 }
