@@ -5,9 +5,7 @@ final sl = GetIt.instance;
 
 Future<void> init() async {
   // Bloc
-
-  // Use cases
-
+  
   // Repository
 
   // Data sources
