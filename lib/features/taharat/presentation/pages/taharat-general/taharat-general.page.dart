@@ -61,10 +61,16 @@ class TaharatGeneralPage extends StatelessWidget {
     );
   }
 
-  Widget buildTitleUI(String t) => Container(child: Text(t, style: TextStyle(fontSize: 18),));
+  Widget buildTitleUI(String t) => Container(
+          child: Text(
+        t,
+        style: TextStyle(fontSize: 18),
+      ));
 
   Widget buildDescriptionUI(String d) => Container(
-        child: HtmlService.convertToHtml(d),
+        child: HtmlService.convertToHtml(
+          d,
+        ),
       );
 
   Widget buildImages(List<String> images) {
@@ -81,9 +87,9 @@ class TaharatGeneralPage extends StatelessWidget {
   }
 
   Widget imageBuilder(String i) {
-    return Container(    
+    return Container(
       margin: EdgeInsets.only(bottom: 10, top: 10),
-      child: Image.asset(        
+      child: Image.asset(
         i,
         width: 150,
         height: 150,

@@ -9,6 +9,8 @@ class HtmlService {
     '' => Html(Widget)
   */
   static Widget convertToHtml(String text) {
-    return Html(data: text);
+    return Html(
+      data: text,
+    );
   }
 }
