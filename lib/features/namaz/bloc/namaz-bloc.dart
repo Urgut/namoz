@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:namazapp/core/constants/languages.dart';
 import 'package:namazapp/features/namaz/bloc/namaz-events.dart';
 import 'package:namazapp/features/namaz/bloc/namaz-state.dart';
-import 'package:namazapp/features/namaz/data/models/namaz-model.dart';
+import 'package:namazapp/features/namaz/data/namaz/base-namaz.dart';
 import 'package:namazapp/features/namaz/data/repositories/namaz.repository.dart';
 
 class NamazBloc extends Bloc<NamazEvents, NamazState> {
@@ -22,7 +22,7 @@ class NamazBloc extends Bloc<NamazEvents, NamazState> {
       yield NamazLoading();
 
       // Get Data. No matter where get data) From network, local data or storage, depends on busunuess
-      NamazModel data = await this.getData(
+      BaseNamaz data = await this.getData(
         gender: event.gender,
         namazTitle: event.namazTitle,
         namazType: event.namazType,
@@ -33,7 +33,7 @@ class NamazBloc extends Bloc<NamazEvents, NamazState> {
     }
   }
 
-  Future<NamazModel> getData({
+  Future<BaseNamaz> getData({
     @required gender,
     @required namazTitle,
     @required namazType,

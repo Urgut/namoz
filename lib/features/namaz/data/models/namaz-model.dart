@@ -15,11 +15,11 @@ class NamazModel {
     // Rakaats
     List<NamazRakaatModel> rakaats = [];
 
-    if (isRakaatExists(jsonData['result']['rakaats'])) {
-      for (dynamic i in jsonData['result']['rakaats']) {
-        rakaats.add(NamazRakaatModel.fromJson(i));
-      }
-    }
+    // if (isRakaatExists(jsonData['result']['rakaats'])) {
+    //   for (dynamic i in jsonData['result']['rakaats']) {
+    //     rakaats.add(NamazRakaatModel.fromJson(i));
+    //   }
+    // }
 
     return NamazModel(
       title: jsonData['result']['title'],

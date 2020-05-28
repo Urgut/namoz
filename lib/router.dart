@@ -7,6 +7,7 @@ import 'package:namazapp/features/home/presentation/pages/home/home.page.dart';
 import 'package:namazapp/features/namaz/bloc/namaz-bloc.dart';
 import 'package:namazapp/features/namaz/bloc/namaz-events.dart';
 import 'package:namazapp/features/namaz/data/datasources/namaz-local-data.dart';
+import 'package:namazapp/features/namaz/data/datasources/namaz-oop-data.dart';
 import 'package:namazapp/features/namaz/presentations/pages/namaz.page.dart';
 import 'package:namazapp/features/taharat/bloc/taharat-bloc.dart';
 import 'package:namazapp/features/taharat/bloc/taharat-events.dart';
@@ -49,7 +50,7 @@ class Router {
             providers: [
               BlocProvider(
                   create: (ctx) =>
-                      NamazBloc(repos: new NamazLocalDataRepository())
+                      NamazBloc(repos: new NamazOOPDataRepository())
                         ..add(LoadNamazEvent(
                           gender: 'man',
                           namazTitle: 'fajr',

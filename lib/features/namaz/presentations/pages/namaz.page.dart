@@ -1,12 +1,13 @@
-import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:namazapp/core/services/html.service.dart';
 import 'package:namazapp/features/namaz/bloc/namaz-bloc.dart';
 import 'package:namazapp/features/namaz/bloc/namaz-state.dart';
+import 'package:namazapp/features/namaz/data/interfaces/part-iterface.dart';
 import 'package:namazapp/features/namaz/data/models/namaz-model.dart';
 import 'package:namazapp/features/namaz/data/models/namaz-part.model.dart';
 import 'package:namazapp/features/namaz/data/models/namaz-rakaat.model.dart';
+import 'package:namazapp/features/namaz/data/namaz/base-namaz.dart';
 import 'package:namazapp/features/namaz/presentations/widgets/app-tab-navigation.dart';
 import 'package:namazapp/shared/widgets/audioplayer/app-player.dart';
 import 'package:namazapp/shared/widgets/empty.dart';
@@ -46,13 +47,13 @@ class NamazPage extends StatelessWidget {
     );
   }
 
-  Widget buildContent(NamazModel n) {
+  Widget buildContent(BaseNamaz n) {
     return AppWrapperWidget.wrapPageWithPadding(
       page: doTab(n),
     );
   }
 
-  Widget doTab(NamazModel n) {
+  Widget doTab(BaseNamaz n) {
     return DefaultTabController(
       length: n.rakaats.length,
       child: Column(
@@ -121,7 +122,7 @@ class NamazPage extends StatelessWidget {
   Widget buildEachRakaat(NamazRakaatModel r) {
     List<Widget> parts = [];
 
-    for (NamazPartModel p in r.parts) {
+    for (IPart p in r.parts) {
       // Title
       if (p.title != null) {
         Widget title = this.buildPartHeader(p.title);

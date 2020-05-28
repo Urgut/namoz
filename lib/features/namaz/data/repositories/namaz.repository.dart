@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:namazapp/features/namaz/data/models/namaz-model.dart';
+import 'package:namazapp/features/namaz/data/namaz/base-namaz.dart';
 
 abstract class NamazRepository {
-  Future<NamazModel> getData({
+  Future<BaseNamaz> getData({
     @required String gender,
     @required String namazTitle,
     @required String languageTag,
