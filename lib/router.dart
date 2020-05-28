@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:namazapp/core/constants/routes.dart';
+import 'package:namazapp/features/home/bloc/sections-bloc.dart';
+import 'package:namazapp/features/home/bloc/sections-events.dart';
 import 'package:namazapp/features/home/presentation/pages/home/home.page.dart';
 import 'package:namazapp/features/namaz/bloc/namaz-bloc.dart';
 import 'package:namazapp/features/namaz/bloc/namaz-events.dart';
@@ -16,8 +18,17 @@ class Router {
     // final arguments = settings.arguments;
 
     switch (settings.name) {
+      // Home page
       case Routes.homePage:
-        return MaterialPageRoute(builder: (_) => HomePage());
+        return MaterialPageRoute(
+          builder: (_) => MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                  create: (ctx) => SectionsBloc()..add(LoadSectionsEvent())),
+            ],
+            child: HomePage(),
+          ),
+        );
       // Taharat
       case Routes.taharatPage:
         return MaterialPageRoute(
