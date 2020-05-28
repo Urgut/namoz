@@ -1,5 +1,4 @@
 import 'package:namazapp/features/namaz/data/interfaces/part-iterface.dart';
-import 'package:namazapp/features/namaz/data/models/namaz-part.model.dart';
 
 class NamazRakaatModel {
   final String title;

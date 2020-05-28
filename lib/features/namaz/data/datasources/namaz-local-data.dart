@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:namazapp/core/helpers/future-helper.dart';
-import 'package:namazapp/core/helpers/json-helper.dart';
 import 'package:namazapp/features/namaz/data/namaz/base-namaz.dart';
 import 'package:namazapp/features/namaz/data/repositories/namaz.repository.dart';
 
@@ -26,14 +25,14 @@ class NamazLocalDataRepository extends NamazRepository {
       await FutureHelper.doDelay(seconds: 1);
 
       // Read file
-      String subDir = '$gender/$namazTitle/$languageTag';
-      String fileName = '$namazType.json';
-      String fullPath = '$basePath/$subDir/$fileName';
+      // String subDir = '$gender/$namazTitle/$languageTag';
+      // String fileName = '$namazType.json';
+      // String fullPath = '$basePath/$subDir/$fileName';
 
-      String response = await JsonHelper.readJsonFileAndReturnString(fullPath);
+      // String response = await JsonHelper.readJsonFileAndReturnString(fullPath);
 
       // Convert string to json
-      Map<String, dynamic> jsonData = JsonHelper.convertStringToJson(response);
+      // Map<String, dynamic> jsonData = JsonHelper.convertStringToJson(response);
 
       // Convert json to dart code
 

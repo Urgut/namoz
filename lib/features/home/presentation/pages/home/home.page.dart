@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:namazapp/core/constants/routes.dart';
 import 'package:namazapp/core/services/navigation.service.dart';
 import 'package:namazapp/features/home/bloc/sections-bloc.dart';
 import 'package:namazapp/features/home/bloc/sections-state.dart';
@@ -12,7 +11,7 @@ import 'package:namazapp/shared/widgets/spinner/spinner.dart';
 
 class HomePage extends StatelessWidget {
   // DI
-  NavigationService _navService = locator<NavigationService>();
+  final NavigationService _navService = locator<NavigationService>();
 
   @override
   Widget build(BuildContext context) {

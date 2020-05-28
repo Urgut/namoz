@@ -4,8 +4,6 @@ import 'package:namazapp/core/services/html.service.dart';
 import 'package:namazapp/features/namaz/bloc/namaz-bloc.dart';
 import 'package:namazapp/features/namaz/bloc/namaz-state.dart';
 import 'package:namazapp/features/namaz/data/interfaces/part-iterface.dart';
-import 'package:namazapp/features/namaz/data/models/namaz-model.dart';
-import 'package:namazapp/features/namaz/data/models/namaz-part.model.dart';
 import 'package:namazapp/features/namaz/data/models/namaz-rakaat.model.dart';
 import 'package:namazapp/features/namaz/data/namaz/base-namaz.dart';
 import 'package:namazapp/features/namaz/presentations/widgets/app-tab-navigation.dart';
