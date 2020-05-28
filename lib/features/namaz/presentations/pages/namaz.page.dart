@@ -1,3 +1,4 @@
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:namazapp/core/services/html.service.dart';
@@ -7,6 +8,7 @@ import 'package:namazapp/features/namaz/data/models/namaz-model.dart';
 import 'package:namazapp/features/namaz/data/models/namaz-part.model.dart';
 import 'package:namazapp/features/namaz/data/models/namaz-rakaat.model.dart';
 import 'package:namazapp/features/namaz/presentations/widgets/app-tab-navigation.dart';
+import 'package:namazapp/shared/widgets/audioplayer/app-player.dart';
 import 'package:namazapp/shared/widgets/empty.dart';
 import 'package:namazapp/shared/widgets/error.dart';
 import 'package:namazapp/shared/widgets/spinner/spinner.dart';
@@ -159,6 +161,17 @@ class NamazPage extends StatelessWidget {
             ],
           ),
         );
+      }
+
+      // Build Audio widget
+      if (p.audio != null && p.audio.length > 0) {
+        for (String a in p.audio) {
+          Widget audio = AppPlayer(
+            audioFilePath: a,
+            basePath: 'assets/audio/namaz',
+          );
+          parts.add(audio);
+        }
       }
     }
 
