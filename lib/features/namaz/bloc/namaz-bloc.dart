@@ -26,6 +26,7 @@ class NamazBloc extends Bloc<NamazEvents, NamazState> {
         gender: event.gender,
         namazTitle: event.namazTitle,
         namazType: event.namazType,
+        isSecondSunna: event.isSecondSunna,
       );
 
       // Notify: Data come
@@ -37,12 +38,14 @@ class NamazBloc extends Bloc<NamazEvents, NamazState> {
     @required gender,
     @required namazTitle,
     @required namazType,
+    @required isSecondSunna,
   }) {
     return this.repos.getData(
           languageTag: AppLanguages.defaultLanguage,
           gender: gender,
           namazTitle: namazTitle,
           namazType: namazType,
+          isSecondSunna: isSecondSunna,
         );
   }
 }

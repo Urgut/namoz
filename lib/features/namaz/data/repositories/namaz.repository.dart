@@ -7,5 +7,6 @@ abstract class NamazRepository {
     @required String namazTitle,
     @required String languageTag,
     @required String namazType,
+    @required bool isSecondSunna,
   });
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:namazapp/core/helpers/future-helper.dart';
+import 'package:namazapp/features/namaz/data/factory/namaz-factory.dart';
 import 'package:namazapp/features/namaz/data/namaz/base-namaz.dart';
-import 'package:namazapp/features/namaz/data/namaz/fajr/farj-sunna.dart';
 import 'package:namazapp/features/namaz/data/repositories/namaz.repository.dart';
 
 /*
@@ -17,13 +17,19 @@ class NamazOOPDataRepository extends NamazRepository {
     @required String namazTitle,
     @required String languageTag,
     @required String namazType,
+    @required bool isSecondSunna,
   }) async {
     try {
       // Delay
       await FutureHelper.doDelay(seconds: 1);
 
       // Factory: Create objects based on params
-      dynamic instance = FajrSunnaNamaz();
+      dynamic instance = NamazFactory().getNamaz(
+        gender: gender,
+        namazName: namazTitle,
+        namazType: namazType,
+        isSecondSunnet: isSecondSunna,
+      );
       return instance;
     } catch (e) {
       throw Exception(e);

@@ -19,6 +19,7 @@ class NamazLocalDataRepository extends NamazRepository {
     @required String namazTitle,
     @required String languageTag,
     @required String namazType,
+    @required bool isSecondSunna,
   }) async {
     try {
       // Delay
