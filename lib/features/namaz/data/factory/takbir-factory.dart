@@ -8,7 +8,7 @@ class PartTakbirFactory {
       return TakbirManPart();
     }
 
-    if (gender == 'цщman') {
+    if (gender == 'woman') {
       return TakbirWomanPart();
     }
 

@@ -8,7 +8,7 @@ class PartKiyamFactory {
       return KiyamManPart();
     }
 
-    if (gender == 'цщman') {
+    if (gender == 'woman') {
       return KiyamWomanPart();
     }
 

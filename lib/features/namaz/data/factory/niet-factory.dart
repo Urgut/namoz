@@ -8,7 +8,7 @@ class PartNietFactory {
       return NietManPart();
     }
 
-    if (gender == 'цщman') {
+    if (gender == 'woman') {
       return NietWomanPart();
     }
 
