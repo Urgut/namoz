@@ -1,4 +1,6 @@
+import 'package:namazapp/features/namaz/data/factory/attahiyat-factory.dart';
 import 'package:namazapp/features/namaz/data/factory/attahiyat-salauat-factory.dart';
+import 'package:namazapp/features/namaz/data/factory/fatiha-factory.dart';
 import 'package:namazapp/features/namaz/data/factory/fatiha-kausar-factory.dart';
 import 'package:namazapp/features/namaz/data/factory/kiyam-factory.dart';
 import 'package:namazapp/features/namaz/data/factory/kiyam-fatiha-asr-factory.dart';
@@ -12,11 +14,11 @@ import 'package:namazapp/features/namaz/data/factory/sitting-factory.dart';
 import 'package:namazapp/features/namaz/data/factory/takbir-factory.dart';
 import 'package:namazapp/features/namaz/data/models/namaz-rakaat.model.dart';
 
-class FajrRakaats {
+class ThreeRakaats {
   final String gender;
   List<NamazRakaatModel> rakaats = [];
 
-  FajrRakaats({this.gender}) {
+  ThreeRakaats({this.gender}) {
     this.createRakaats();
   }
 
@@ -46,11 +48,26 @@ class FajrRakaats {
         PartSittinFactory().create(this.gender),
         PartSajdeSecondFactory().create(this.gender),
         PartAttahiyatSalauatFactory().create(this.gender),
+        PartAttahiyatFactory().create(this.gender),
+      ],
+    );
+
+    NamazRakaatModel r3 = NamazRakaatModel(
+      title: '3_rakaat',
+      parts: [
+        PartFatihaFactory().create(this.gender),
+        PartRukuhGoFactory().create(this.gender),
+        PartRukuhBackFactory().create(this.gender),
+        PartSajdeFirstFactory().create(this.gender),
+        PartSittinFactory().create(this.gender),
+        PartSajdeSecondFactory().create(this.gender),
+        PartAttahiyatSalauatFactory().create(this.gender),
         PartSalemFactory().create(this.gender),
       ],
     );
 
     this.rakaats.add(r1);
     this.rakaats.add(r2);
+    this.rakaats.add(r3);
   }
 }
