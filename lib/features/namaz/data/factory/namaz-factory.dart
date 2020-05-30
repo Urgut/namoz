@@ -23,7 +23,7 @@ class NamazFactory {
 
       return Namaz(
         title: 'fajr',
-        type: 'sunna',
+        type: namazType,
         gender: gender,
         rakaats: rakaats,
       );

@@ -7,6 +7,8 @@ import 'package:namazapp/features/home/presentation/pages/home/home.page.dart';
 import 'package:namazapp/features/namaz/bloc/namaz-bloc.dart';
 import 'package:namazapp/features/namaz/bloc/namaz-events.dart';
 import 'package:namazapp/features/namaz/data/datasources/namaz-oop-data.dart';
+import 'package:namazapp/features/namaz/presentations/pages/namaz-gender.page.dart';
+import 'package:namazapp/features/namaz/presentations/pages/namaz-list.page.dart';
 import 'package:namazapp/features/namaz/presentations/pages/namaz.page.dart';
 import 'package:namazapp/features/taharat/bloc/taharat-bloc.dart';
 import 'package:namazapp/features/taharat/bloc/taharat-events.dart';
@@ -15,7 +17,7 @@ import 'package:namazapp/features/taharat/presentation/pages/taharat-general/tah
 
 class Router {
   static Route<dynamic> generateRoute(RouteSettings settings) {
-    // final arguments = settings.arguments;
+    final arguments = settings.arguments;
 
     switch (settings.name) {
       // Home page
@@ -42,6 +44,14 @@ class Router {
             child: TaharatGeneralPage(),
           ),
         );
+      // Gender
+      case Routes.genderPage:
+        return MaterialPageRoute(
+          builder: (_) => GenderPage(),
+        );
+      // Namaz
+      case Routes.namazListPage:
+        return MaterialPageRoute(builder: (_) => NamazListPage(arguments));
       // Namaz
       case Routes.namazPage:
         return MaterialPageRoute(
