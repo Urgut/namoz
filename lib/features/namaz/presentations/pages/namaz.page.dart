@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:namazapp/core/services/html.service.dart';
 import 'package:namazapp/features/namaz/bloc/namaz-bloc.dart';
+import 'package:namazapp/features/namaz/bloc/namaz-events.dart';
 import 'package:namazapp/features/namaz/bloc/namaz-state.dart';
+import 'package:namazapp/features/namaz/data/datasources/namaz-oop-data.dart';
 import 'package:namazapp/features/namaz/data/interfaces/part-iterface.dart';
 import 'package:namazapp/features/namaz/data/models/namaz-rakaat.model.dart';
 import 'package:namazapp/features/namaz/data/namaz/base-namaz.dart';
@@ -14,34 +16,50 @@ import 'package:namazapp/shared/widgets/spinner/spinner.dart';
 import 'package:namazapp/shared/widgets/wrapper.dart';
 
 class NamazPage extends StatelessWidget {
+  final params;
+  NamazPage(this.params);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Таң намазы'),
+        title:
+            Text(this.params['namazTitle'] + ' ' + this.params['rakaatDesc']),
       ),
-      body: BlocBuilder(
-        bloc: BlocProvider.of<NamazBloc>(context),
-        builder: (ctx, NamazState state) {
-          // Loading
-          if (state is NamazLoading) {
-            return AppSpinner();
-          }
+      body: MultiBlocProvider(
+          providers: [
+            BlocProvider(
+                create: (ctx) => NamazBloc(repos: new NamazOOPDataRepository())
+                  ..add(LoadNamazEvent(
+                    gender: this.params['gender'],
+                    namazTitle: this.params['namazTitle'],
+                    namazType: this.params['namazType'],
+                  ))),
+          ],
+          child: Builder(builder: (context) {
+            return BlocBuilder(
+              bloc: BlocProvider.of<NamazBloc>(context),
+              builder: (ctx, NamazState state) {
+                // Loading
+                if (state is NamazLoading) {
+                  return AppSpinner();
+                }
 
-          // Loaded
-          if (state is NamazLoaded) {
-            return buildContent(state.data);
-          }
+                // Loaded
+                if (state is NamazLoaded) {
+                  return buildContent(state.data);
+                }
 
-          // Error
-          if (state is NamazFailure) {
-            return AppError(error: state.error);
-          }
+                // Error
+                if (state is NamazFailure) {
+                  return AppError(error: state.error);
+                }
 
-          // Default
-          return AppEmpty();
-        },
-      ),
+                // Default
+                return AppEmpty();
+              },
+            );
+          })),
     );
   }
 

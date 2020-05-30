@@ -1,9 +1,11 @@
 class NamazShortModel {
   String title;
-  String route;
+  String rakaatDesc;
+  String type;
 
   NamazShortModel({
     this.title,
-    this.route,
+    this.rakaatDesc,
+    this.type,
   });
 }

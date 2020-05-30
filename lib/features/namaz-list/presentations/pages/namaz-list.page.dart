@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:namazapp/core/constants/routes.dart';
+import 'package:namazapp/core/services/navigation.service.dart';
 import 'package:namazapp/features/namaz-list/data/datasources/namaz-list-local-datasource.dart';
 import 'package:namazapp/features/namaz-list/data/models/namaz-group.model.dart';
 import 'package:namazapp/features/namaz-list/data/models/namaz-short.model.dart';
+import 'package:namazapp/locator.dart';
 
 class NamazListPage extends StatefulWidget {
   final params;
@@ -14,6 +17,9 @@ class NamazListPage extends StatefulWidget {
 class _NamazListPageState extends State<NamazListPage> {
   String gender;
   List<NamazGroupModel> namazGroups = NamazListLocalDatasouce().getData();
+
+  // DI
+  NavigationService _navService = locator<NavigationService>();
 
   @override
   void initState() {
@@ -58,17 +64,29 @@ class _NamazListPageState extends State<NamazListPage> {
 
   Widget buildNamazs(List<NamazShortModel> namazs) {
     return ListView.builder(
-        shrinkWrap: true,
-        itemCount: namazs.length,
-        itemBuilder: (ctx, index) => this.namazItemUI(
-          namazs[index],        
+      shrinkWrap: true,
+      itemCount: namazs.length,
+      itemBuilder: (ctx, index) => this.namazItemUI(
+        namazs[index],
       ),
     );
   }
 
   Widget namazItemUI(NamazShortModel n) {
-    return Container(      
-      child: Text(n.title),
+    return GestureDetector(
+      onTap: () => _navService.navigateTo(Routes.namazPage, arguments: {
+        "gender": this.gender,
+        "namazTitle": n.title,
+        "namazType": n.type,
+        "rakaatDesc": n.rakaatDesc,
+      }),
+      child: Container(
+        padding: EdgeInsets.symmetric(vertical: 10),
+        child: Text(
+          n.rakaatDesc,
+          style: TextStyle(fontSize: 16),
+        ),
+      ),
     );
   }
 }

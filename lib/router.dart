@@ -55,19 +55,20 @@ class Router {
       // Namaz
       case Routes.namazPage:
         return MaterialPageRoute(
-          builder: (_) => MultiBlocProvider(
-            providers: [
-              BlocProvider(
-                  create: (ctx) =>
-                      NamazBloc(repos: new NamazOOPDataRepository())
-                        ..add(LoadNamazEvent(
-                          gender: 'man',
-                          namazTitle: 'fajr',
-                          namazType: 'sunna',
-                        ))),
-            ],
-            child: NamazPage(),
-          ),
+          builder: (_) => NamazPage(arguments),
+          // builder: (_) => MultiBlocProvider(
+          //   providers: [
+          //     BlocProvider(
+          //         create: (ctx) =>
+          //             NamazBloc(repos: new NamazOOPDataRepository())
+          //               ..add(LoadNamazEvent(
+          //                 gender: 'man',
+          //                 namazTitle: 'fajr',
+          //                 namazType: 'sunna',
+          //               ))),
+          //   ],
+          //   child: NamazPage(),
+          // ),
         );
 
       default:

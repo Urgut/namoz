@@ -27,8 +27,8 @@ class _GenderPageState extends State<GenderPage> {
       child: Row(
         mainAxisSize: MainAxisSize.max,
         children: [
-          buildGender('Ер'),
-          buildGender('Әйел'),
+          buildGender('man'),
+          buildGender('woman'),
         ],
       ),
     );

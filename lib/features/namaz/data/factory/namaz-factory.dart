@@ -9,7 +9,7 @@ class NamazFactory {
   /*
     NamazType: 2 sunnet or 2 paryz
   */
-  BaseNamaz getNamaz({
+  Namaz getNamaz({
     String namazName,
     String namazType,
     bool isSecondSunnet = false,

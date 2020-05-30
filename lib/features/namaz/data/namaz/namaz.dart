@@ -1,7 +1,7 @@
 import 'package:namazapp/features/namaz/data/models/namaz-rakaat.model.dart';
 import 'package:namazapp/features/namaz/data/namaz/base-namaz.dart';
 
-class Namaz extends BaseNamaz {
+class Namaz implements BaseNamaz {
   String title;
   String type;
   String gender;
@@ -14,7 +14,7 @@ class Namaz extends BaseNamaz {
     this.rakaats,
   });
 
-  get rakaatsCount => this.rakaats.length;
-  get isForMan => this.gender == 'man';
-  get isSecondSunna => this.type == 'sunna_second';
+  // get rakaatsCount => this.rakaats.length;
+  // get isForMan => this.gender == 'man';
+  // get isSecondSunna => this.type == 'sunna_second';
 }
