@@ -21,7 +21,7 @@ class NamazOOPDataRepository extends NamazRepository {
   }) async {
     try {
       // Delay
-      await FutureHelper.doDelay(seconds: 1);
+      await FutureHelper.doDelay(seconds: 0);
 
       // Factory: Create objects based on params
       dynamic instance = NamazFactory().getNamaz(
