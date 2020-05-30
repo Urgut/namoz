@@ -1,6 +1,7 @@
+import 'package:namazapp/features/namaz/data/models/namaz-rakaat.model.dart';
 import 'package:namazapp/features/namaz/data/namaz/base-namaz.dart';
-import 'package:namazapp/features/namaz/data/namaz/fajr/farj-paryz.dart';
-import 'package:namazapp/features/namaz/data/namaz/fajr/farj-sunna.dart';
+import 'package:namazapp/features/namaz/data/namaz/namaz.dart';
+import 'package:namazapp/features/namaz/data/rakaats/fajr/fajr-rakaats.dart';
 
 class NamazFactory {
   /*
@@ -18,14 +19,14 @@ class NamazFactory {
 
     // FAJR
     if (namazName == 'fajr') {
-      switch (namazType) {
-        case 'sunna':
-          return FajrSunnaNamaz(gender: gender);
-          break;
-        case 'paryz':
-          return FajrParyzNamaz(gender: gender);
-          break;
-      }
+      List<NamazRakaatModel> rakaats = FajrRakaats(gender: gender).rakaats;
+
+      return Namaz(
+        title: 'fajr',
+        type: 'sunna',
+        gender: gender,
+        rakaats: rakaats,
+      );
     }
 
     return null;

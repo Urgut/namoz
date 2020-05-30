@@ -1,7 +1,7 @@
 import 'package:namazapp/features/namaz/data/interfaces/part-iterface.dart';
 
 class NietPart implements IPart {
-  String title = 'Ниет ету';
+  String title = 'niet_etu';
   String description = '';
   String image = '';
   List<String> audio = [];
