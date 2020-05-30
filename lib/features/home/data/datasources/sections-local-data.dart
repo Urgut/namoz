@@ -7,7 +7,7 @@ class SectionLocalData {
         title: "Намаз",
         description: "",
         image: "",
-        route: "namaz",
+        route: "gender",
       ),
       SectionModel(
         title: "Дәрет алу",

@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: PagesHeader.home,
       debugShowCheckedModeBanner: false,
-      initialRoute: Routes.genderPage,
+      initialRoute: Routes.homePage,
       onGenerateRoute: Router.generateRoute,
       navigatorKey: di.locator<NavigationService>().navigatorKey,
     );
