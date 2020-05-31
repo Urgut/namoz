@@ -4,6 +4,7 @@ import 'package:namazapp/core/services/navigation.service.dart';
 import 'package:namazapp/features/namaz-list/data/datasources/namaz-list-local-datasource.dart';
 import 'package:namazapp/features/namaz-list/data/models/namaz-group.model.dart';
 import 'package:namazapp/features/namaz-list/data/models/namaz-short.model.dart';
+import 'package:namazapp/localization.dart';
 import 'package:namazapp/locator.dart';
 
 class NamazListPage extends StatefulWidget {
@@ -54,9 +55,16 @@ class _NamazListPageState extends State<NamazListPage> {
     return Container(
       child: Column(
         mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(g.title),
+          Text(AppLocalizations.of(context).translate(g.title),
+              style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.red[900])),
+          SizedBox(height: 5),
           buildNamazs(g.namazs),
+          SizedBox(height: 25),
         ],
       ),
     );
@@ -64,6 +72,7 @@ class _NamazListPageState extends State<NamazListPage> {
 
   Widget buildNamazs(List<NamazShortModel> namazs) {
     return ListView.builder(
+      physics: NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       itemCount: namazs.length,
       itemBuilder: (ctx, index) => this.namazItemUI(
@@ -73,8 +82,9 @@ class _NamazListPageState extends State<NamazListPage> {
   }
 
   Widget namazItemUI(NamazShortModel n) {
-    return GestureDetector(
-      onTap: () => _navService.navigateTo(Routes.namazPage, arguments: {
+    return RaisedButton(      
+      color: Colors.orange[50],
+      onPressed: () => _navService.navigateTo(Routes.namazPage, arguments: {
         "gender": this.gender,
         "namazTitle": n.title,
         "namazType": n.type,
@@ -83,7 +93,7 @@ class _NamazListPageState extends State<NamazListPage> {
       child: Container(
         padding: EdgeInsets.symmetric(vertical: 10),
         child: Text(
-          n.rakaatDesc,
+          AppLocalizations.of(context).translate(n.rakaatDesc),
           style: TextStyle(fontSize: 16),
         ),
       ),

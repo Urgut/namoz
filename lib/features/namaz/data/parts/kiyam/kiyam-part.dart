@@ -2,7 +2,7 @@ import 'package:namazapp/features/namaz/data/interfaces/part-iterface.dart';
 
 class KiyamPart implements IPart {
   String title = 'Қиям';
-  String description = 'Ер адам қиямда тұрғанда оң қолымен сол қолын байлап кіндіктен сәл төмен қояды(әйелдер оң қолын сол қолға байлап көкірек тұсына қояды)';
+  String description = '';
   String image = '';
   List<String> audio = [
     'subhanaka.mp3'

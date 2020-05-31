@@ -9,31 +9,40 @@ import 'package:namazapp/features/namaz/data/interfaces/part-iterface.dart';
 import 'package:namazapp/features/namaz/data/models/namaz-rakaat.model.dart';
 import 'package:namazapp/features/namaz/data/namaz/base-namaz.dart';
 import 'package:namazapp/features/namaz/presentations/widgets/app-tab-navigation.dart';
+import 'package:namazapp/localization.dart';
 import 'package:namazapp/shared/widgets/audioplayer/app-player.dart';
 import 'package:namazapp/shared/widgets/empty.dart';
-import 'package:namazapp/shared/widgets/error.dart';
+import 'package:namazapp/shared/widgets/error/error.dart';
 import 'package:namazapp/shared/widgets/spinner/spinner.dart';
 import 'package:namazapp/shared/widgets/wrapper.dart';
 
-class NamazPage extends StatelessWidget {
+class NamazPage extends StatefulWidget {
   final params;
   NamazPage(this.params);
 
   @override
+  _NamazPageSate createState() => _NamazPageSate();
+}
+
+class _NamazPageSate extends State<NamazPage> {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title:
-            Text(this.params['namazTitle'] + ' ' + this.params['rakaatDesc']),
+        title: Text(AppLocalizations.of(context)
+                .translate(this.widget.params['namazTitle']) +
+            ': ' +
+            AppLocalizations.of(context)
+                .translate(this.widget.params['rakaatDesc'])),
       ),
       body: MultiBlocProvider(
           providers: [
             BlocProvider(
                 create: (ctx) => NamazBloc(repos: new NamazOOPDataRepository())
                   ..add(LoadNamazEvent(
-                    gender: this.params['gender'],
-                    namazTitle: this.params['namazTitle'],
-                    namazType: this.params['namazType'],
+                    gender: this.widget.params['gender'],
+                    namazTitle: this.widget.params['namazTitle'],
+                    namazType: this.widget.params['namazType'],
                   ))),
           ],
           child: Builder(builder: (context) {
@@ -111,7 +120,7 @@ class NamazPage extends StatelessWidget {
   Widget buildEachTabHeader(NamazRakaatModel r) {
     return Tab(
       child: Text(
-        r.title,
+        AppLocalizations.of(context).translate(r.title),
         style: TextStyle(fontSize: 12),
       ),
     );

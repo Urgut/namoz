@@ -5,10 +5,16 @@ class NamazListLocalDatasouce {
   List<NamazGroupModel> getData() {
     NamazGroupModel tanGroup = prepareTanNamaz();
     NamazGroupModel dhuhrGroup = prepareDhuhrNamaz();
+    NamazGroupModel asrGroup = prepareAsrNamaz();
+    NamazGroupModel magribGroup = prepareMagribNamaz();
+    NamazGroupModel ishaGroup = prepareIshaNamaz();
 
     return [
       tanGroup,
       dhuhrGroup,
+      asrGroup,
+      magribGroup,
+      ishaGroup,
     ];
   }
 
@@ -66,6 +72,80 @@ class NamazListLocalDatasouce {
 
     NamazGroupModel group = NamazGroupModel(
       title: 'dhuhr',
+      description: '',
+      namazs: namazs,
+    );
+
+    return group;
+  }
+
+  NamazGroupModel prepareAsrNamaz() {
+    List<NamazShortModel> namazs = [];
+
+    NamazShortModel paryz = NamazShortModel(
+      title: 'asr',
+      rakaatDesc: '4_rakaats_paryz',
+      type: 'paryz',
+    );
+
+    namazs.add(paryz);
+
+    NamazGroupModel group = NamazGroupModel(
+      title: 'asr',
+      description: '',
+      namazs: namazs,
+    );
+
+    return group;
+  }
+
+  NamazGroupModel prepareMagribNamaz() {
+    List<NamazShortModel> namazs = [];
+
+    NamazShortModel paryz = NamazShortModel(
+      title: 'magrib',
+      rakaatDesc: '3_rakaats_paryz',
+      type: 'paryz',
+    );
+
+    NamazShortModel sunna = NamazShortModel(
+      title: 'magrib',
+      rakaatDesc: '2_rakaats_sunna',
+      type: 'sunna',
+    );
+
+    namazs.add(paryz);
+    namazs.add(sunna);
+
+    NamazGroupModel group = NamazGroupModel(
+      title: 'magrib',
+      description: '',
+      namazs: namazs,
+    );
+
+    return group;
+  }
+
+  NamazGroupModel prepareIshaNamaz() {
+    List<NamazShortModel> namazs = [];
+
+    NamazShortModel paryz = NamazShortModel(
+      title: 'isha',
+      rakaatDesc: '4_rakaats_paryz',
+      type: 'paryz',
+    );
+
+    NamazShortModel sunna = NamazShortModel(
+      title: 'magrib',
+      rakaatDesc: '2_rakaats_sunna',
+      type: 'sunna',
+    );
+
+    namazs.add(paryz);
+    namazs.add(sunna);
+
+    NamazGroupModel group = NamazGroupModel(
+      title: 'isha',
       description: '',
       namazs: namazs,
     );

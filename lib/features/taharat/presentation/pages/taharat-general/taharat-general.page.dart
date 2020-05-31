@@ -5,7 +5,7 @@ import 'package:namazapp/features/taharat/bloc/taharat-bloc.dart';
 import 'package:namazapp/features/taharat/bloc/taharat-state.dart';
 import 'package:namazapp/features/taharat/data/models/taharat-model.dart';
 import 'package:namazapp/shared/widgets/empty.dart';
-import 'package:namazapp/shared/widgets/error.dart';
+import 'package:namazapp/shared/widgets/error/error.dart';
 import 'package:namazapp/shared/widgets/spinner/spinner.dart';
 
 class TaharatGeneralPage extends StatelessWidget {

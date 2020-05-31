@@ -24,7 +24,7 @@ class _AppPlayerState extends State<AppPlayer> {
       play: _play,
       child: RaisedButton(
           child: Text(
-            _play ? "pause" : "play",
+            _play ? "Пауза" : "Дыбыстау",
           ),
           onPressed: () {
             setState(() {

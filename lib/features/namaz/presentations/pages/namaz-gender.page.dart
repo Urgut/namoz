@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:namazapp/core/constants/routes.dart';
-import 'package:namazapp/core/services/navigation.service.dart';
-import 'package:namazapp/locator.dart';
+import 'package:namazapp/core/model/route.model.dart';
+import 'package:namazapp/localization.dart';
+import 'package:namazapp/shared/widgets/cover/cover.dart';
 
 class GenderPage extends StatefulWidget {
   @override
@@ -9,9 +10,6 @@ class GenderPage extends StatefulWidget {
 }
 
 class _GenderPageState extends State<GenderPage> {
-  // DI
-  NavigationService _navService = locator<NavigationService>();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,8 +25,8 @@ class _GenderPageState extends State<GenderPage> {
       child: Row(
         mainAxisSize: MainAxisSize.max,
         children: [
-          buildGender('man'),
-          buildGender('woman'),
+          this.buildGender('man'),
+          this.buildGender('woman'),
         ],
       ),
     );
@@ -37,19 +35,11 @@ class _GenderPageState extends State<GenderPage> {
   buildGender(String gender) {
     return Expanded(
       flex: 5,
-      child: GestureDetector(
-        onTap: () => this
-            ._navService
-            .navigateTo(Routes.namazListPage, arguments: {"gender": gender}),
-        child: Container(
-          padding: EdgeInsets.all(10),
-          margin: EdgeInsets.all(10),
-          decoration: BoxDecoration(border: Border.all(width: 0.3)),
-          child: Text(
-            gender,
-            style: TextStyle(fontSize: 18),
-          ),
-        ),
+      child: CoverUI(
+        title: AppLocalizations.of(context).translate(gender),
+        image: 'assets/images/namaz/$gender/namaz.jpg',
+        route: RouteModel(
+            route: Routes.namazListPage, arguments: {"gender": gender}),
       ),
     );
   }

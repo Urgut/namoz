@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:namazapp/core/constants/routes.dart';
+import 'package:namazapp/features/about-namaz/presentations/pages/about-namaz.page.dart';
+import 'package:namazapp/features/faq/presentations/pages/faq.page.dart';
 import 'package:namazapp/features/home/bloc/sections-bloc.dart';
 import 'package:namazapp/features/home/bloc/sections-events.dart';
 import 'package:namazapp/features/home/presentation/pages/home/home.page.dart';
@@ -49,27 +51,21 @@ class Router {
         return MaterialPageRoute(
           builder: (_) => GenderPage(),
         );
-      // Namaz
+      // Namaz List
       case Routes.namazListPage:
         return MaterialPageRoute(builder: (_) => NamazListPage(arguments));
       // Namaz
       case Routes.namazPage:
         return MaterialPageRoute(
           builder: (_) => NamazPage(arguments),
-          // builder: (_) => MultiBlocProvider(
-          //   providers: [
-          //     BlocProvider(
-          //         create: (ctx) =>
-          //             NamazBloc(repos: new NamazOOPDataRepository())
-          //               ..add(LoadNamazEvent(
-          //                 gender: 'man',
-          //                 namazTitle: 'fajr',
-          //                 namazType: 'sunna',
-          //               ))),
-          //   ],
-          //   child: NamazPage(),
-          // ),
         );
+
+      // About namaz
+      case Routes.namazAboutPage:
+        return MaterialPageRoute(builder: (_) => AboutNamazPage());
+      // Faq
+      case Routes.faqPage:
+        return MaterialPageRoute(builder: (_) => FaqPage());
 
       default:
         return MaterialPageRoute(

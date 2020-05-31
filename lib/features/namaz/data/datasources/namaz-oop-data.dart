@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:namazapp/core/helpers/future-helper.dart';
+import 'package:namazapp/core/services/future.service.dart';
 import 'package:namazapp/features/namaz/data/factory/namaz-factory.dart';
 import 'package:namazapp/features/namaz/data/namaz/base-namaz.dart';
 import 'package:namazapp/features/namaz/data/namaz/namaz.dart';
@@ -22,7 +22,7 @@ class NamazOOPDataRepository extends NamazRepository {
   }) async {
     try {
       // Delay
-      await FutureHelper.doDelay(seconds: 0);
+      await FutureService.doDelay(seconds: 0);
 
       // Factory: Create objects based on params
       Namaz instance = NamazFactory().getNamaz(

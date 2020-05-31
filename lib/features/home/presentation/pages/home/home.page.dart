@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:namazapp/core/model/route.model.dart';
 import 'package:namazapp/core/services/navigation.service.dart';
 import 'package:namazapp/features/home/bloc/sections-bloc.dart';
 import 'package:namazapp/features/home/bloc/sections-state.dart';
 import 'package:namazapp/features/home/data/models/section.model.dart';
 import 'package:namazapp/locator.dart';
+import 'package:namazapp/shared/widgets/cover/cover.dart';
 import 'package:namazapp/shared/widgets/empty.dart';
-import 'package:namazapp/shared/widgets/error.dart';
+import 'package:namazapp/shared/widgets/error/error.dart';
 import 'package:namazapp/shared/widgets/spinner/spinner.dart';
 
 class HomePage extends StatelessWidget {
-  // DI
-  final NavigationService _navService = locator<NavigationService>();
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,16 +59,10 @@ class HomePage extends StatelessWidget {
   }
 
   sectionBuilder(SectionModel section) {
-    return GestureDetector(
-      onTap: () => onSelectSection(section.route),
-      child: Container(
-        decoration: BoxDecoration(border: Border.all(width: 0.3)),
-        child: Text(section.title),
-      ),
+    return CoverUI(
+      title: section.title,
+      image: section.image,
+      route: RouteModel(route: section.route, arguments: {}),
     );
-  }
-
-  onSelectSection(String path) {
-    this._navService.navigateTo(path);
   }
 }

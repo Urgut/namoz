@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:namazapp/core/helpers/future-helper.dart';
-import 'package:namazapp/core/helpers/json-helper.dart';
+import 'package:namazapp/core/services/future.service.dart';
+import 'package:namazapp/core/services/json.service.dart';
 import 'package:namazapp/features/taharat/data/models/taharat-model.dart';
 import 'package:namazapp/features/taharat/data/repositories/taharat-repository.dart';
 
@@ -15,16 +15,16 @@ class TaharatLocalDataRepository implements TaharatRepository {
       List<TaharatModel> items = [];
 
       // Delay
-      await FutureHelper.doDelay(seconds: 1);
+      await FutureService.doDelay(seconds: 1);
 
       // Read file
       String fileName = 'taharat_$languageTag.json';
       String jsonFile = '$path/$fileName';
 
-      String response = await JsonHelper.readJsonFileAndReturnString(jsonFile);
+      String response = await JsonService.readJsonFileAndReturnString(jsonFile);
 
       // Convert string to json
-      Map<String, dynamic> jsonData = JsonHelper.convertStringToJson(response);
+      Map<String, dynamic> jsonData = JsonService.convertStringToJson(response);
 
       // Convert json to dart code
       for (dynamic i in jsonData['result']) {

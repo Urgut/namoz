@@ -1,31 +1,32 @@
+import 'package:namazapp/core/constants/routes.dart';
 import 'package:namazapp/features/home/data/models/section.model.dart';
 
 class SectionLocalData {
-  Future<List<SectionModel>> getData() async{
+  Future<List<SectionModel>> getData() async {
     final List<SectionModel> data = [
       SectionModel(
         title: "Намаз",
         description: "",
-        image: "",
-        route: "gender",
+        image: 'assets/images/ava-namaz-2.png',
+        route: Routes.genderPage,
       ),
       SectionModel(
         title: "Дәрет алу",
         description: "",
-        image: "",
-        route: "taharat",
+        image: 'assets/images/taharat.png',
+        route: Routes.taharatPage,
       ),
       SectionModel(
         title: "Намаз туралы",
         description: "",
-        image: "",
-        route: "about_namaz",
+        image: 'assets/images/about.png',
+        route: Routes.namazAboutPage,
       ),
       SectionModel(
         title: "Сұрақ-жауап",
         description: "",
-        image: "",
-        route: "faq",
+        image: 'assets/images/faq.png',
+        route: Routes.faqPage,
       ),
     ];
     return data;
