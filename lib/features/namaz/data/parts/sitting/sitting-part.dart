@@ -5,7 +5,7 @@ import 'package:namazapp/features/namaz/data/interfaces/part-iterface.dart';
  */
 class SittingPart implements IPart {
   String title = 'Отыру';
-  String description = 'Содан соң (имам болса дауыстап) «Аллаһу Акбар» деп басын көтеріп, тізесін бүгіп отырады (ер бала аяғын жайып үстіне отырады да, оң аяғын тік ұстайды)';
+  String description = '';
   String image = '';
   List<String> audio = [];
   String transcript = 'Аллаху Акбар!';
