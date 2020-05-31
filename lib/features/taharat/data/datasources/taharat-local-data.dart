@@ -15,7 +15,7 @@ class TaharatLocalDataRepository implements TaharatRepository {
       List<TaharatModel> items = [];
 
       // Delay
-      await FutureService.doDelay(seconds: 1);
+      await Future.delayed(Duration(microseconds: 500));
 
       // Read file
       String fileName = 'taharat_$languageTag.json';

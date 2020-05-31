@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:namazapp/core/model/route.model.dart';
-import 'package:namazapp/core/services/navigation.service.dart';
 import 'package:namazapp/features/home/bloc/sections-bloc.dart';
 import 'package:namazapp/features/home/bloc/sections-state.dart';
 import 'package:namazapp/features/home/data/models/section.model.dart';
-import 'package:namazapp/locator.dart';
 import 'package:namazapp/shared/widgets/cover/cover.dart';
 import 'package:namazapp/shared/widgets/empty.dart';
 import 'package:namazapp/shared/widgets/error/error.dart';

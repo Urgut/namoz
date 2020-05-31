@@ -8,6 +8,7 @@ class NamazListLocalDatasouce {
     NamazGroupModel asrGroup = prepareAsrNamaz();
     NamazGroupModel magribGroup = prepareMagribNamaz();
     NamazGroupModel ishaGroup = prepareIshaNamaz();
+    NamazGroupModel vitrGroup = prepareVitrNamaz();
 
     return [
       tanGroup,
@@ -15,6 +16,7 @@ class NamazListLocalDatasouce {
       asrGroup,
       magribGroup,
       ishaGroup,
+      vitrGroup,
     ];
   }
 
@@ -136,7 +138,7 @@ class NamazListLocalDatasouce {
     );
 
     NamazShortModel sunna = NamazShortModel(
-      title: 'magrib',
+      title: 'isha',
       rakaatDesc: '2_rakaats_sunna',
       type: 'sunna',
     );
@@ -146,6 +148,27 @@ class NamazListLocalDatasouce {
 
     NamazGroupModel group = NamazGroupModel(
       title: 'isha',
+      description: '',
+      namazs: namazs,
+    );
+
+    return group;
+  }
+
+  NamazGroupModel prepareVitrNamaz() {
+    const String namaz = 'vitr';
+    List<NamazShortModel> namazs = [];
+
+    NamazShortModel paryz = NamazShortModel(
+      title: namaz,
+      rakaatDesc: '3_rakaats_vitr',
+      type: 'sunna',
+    );
+
+    namazs.add(paryz);
+
+    NamazGroupModel group = NamazGroupModel(
+      title: namaz,
       description: '',
       namazs: namazs,
     );

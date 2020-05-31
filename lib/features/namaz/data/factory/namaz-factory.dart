@@ -2,6 +2,7 @@ import 'package:namazapp/features/namaz/data/models/namaz-rakaat.model.dart';
 import 'package:namazapp/features/namaz/data/namaz/base-namaz.dart';
 import 'package:namazapp/features/namaz/data/namaz/namaz.dart';
 import 'package:namazapp/features/namaz/data/rakaats/fajr/four-rakaats.dart';
+import 'package:namazapp/features/namaz/data/rakaats/fajr/three-rakaats-vitr.dart';
 import 'package:namazapp/features/namaz/data/rakaats/fajr/three-rakaats.dart';
 import 'package:namazapp/features/namaz/data/rakaats/fajr/two-rakaats.dart';
 
@@ -66,6 +67,11 @@ class NamazFactory {
           rakaats = TwoRakaats(gender: gender).rakaats;
           break;
       }
+    }
+
+    // Vitr
+    if (namazName == 'vitr') {
+      rakaats = ThreeRakaatsVitr(gender: gender).rakaats;
     }
 
     return Namaz(
