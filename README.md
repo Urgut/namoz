@@ -1,5 +1,7 @@
 # Namaz Application written in Flutter
 
+![alt text](https://lh3.googleusercontent.com/_hfBnbTxjLf524WoESs25ZMFcQyGji5s74TpJucOtxPfp6vJorpAq6klIpb7eYq3tyE=w1536-h763-rw)
+
 Application is about prayer. General information about how to pray(solat).
 
 ## Getting Started
