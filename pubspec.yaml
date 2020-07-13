@@ -1,6 +1,6 @@
 name: namazapp
 description: Namaz application for muslims.
-version: 1.0.0+1
+version: 2.0.0+1
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
@@ -29,6 +29,7 @@ flutter:
 
   assets:
    - assets/images/
+   - assets/images/icons/
    - assets/images/taharat/
    - assets/images/namaz/man/   
    - assets/images/namaz/woman/
