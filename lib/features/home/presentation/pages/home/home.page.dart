@@ -82,6 +82,10 @@ class HomePage extends StatelessWidget {
     );
   }
 
+  buildContent(namazs) {
+    return Container();
+  }
+
   // buildContent(List<SectionModel> sections) {
   //   return Container(
   //     child: GridView.builder(
