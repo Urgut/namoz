@@ -34,7 +34,7 @@ class MainMenu extends StatelessWidget {
       // decoration: BoxDecoration(border: Border.all(width: 2, color: Colors.red)),
       height: 60,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,        
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           buildMenuItem(data[0]),
           buildMenuItem(data[1]),
@@ -51,6 +51,7 @@ class MainMenu extends StatelessWidget {
         child: Column(
           children: [
             buildIcon(m.icon),
+            SizedBox(height: 3),
             buildTitle(m.title),
           ],
         ),
@@ -59,8 +60,12 @@ class MainMenu extends StatelessWidget {
   }
 
   Widget buildIcon(String i) => Container(
-        child: Image.asset('assets/images/icons/$i'),
+        child: Icon(Icons.list, color: Colors.white.withOpacity(0.9)),
       );
 
-  Widget buildTitle(String t) => Container(child: Text(t));
+  Widget buildTitle(String t) => Container(
+          child: Text(
+        t,
+        style: TextStyle(color: Colors.white),
+      ));
 }

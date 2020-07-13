@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:namazapp/core/model/route.model.dart';
 import 'package:namazapp/features/home/bloc/sections-bloc.dart';
 import 'package:namazapp/features/home/bloc/sections-state.dart';
-import 'package:namazapp/features/home/data/models/section.model.dart';
 import 'package:namazapp/features/home/presentation/widgets/main-menu/main-menu.dart';
-import 'package:namazapp/shared/widgets/cover/cover.dart';
+import 'package:namazapp/features/home/presentation/widgets/namaz-list/namaz-list.dart';
 import 'package:namazapp/shared/widgets/empty.dart';
 import 'package:namazapp/shared/widgets/error/error.dart';
 import 'package:namazapp/shared/widgets/spinner/spinner.dart';
@@ -27,7 +25,15 @@ class HomePage extends StatelessWidget {
         ),
         centerTitle: true,
         elevation: 0,
-        backgroundColor: Color(0XFFFAFAFA),
+        backgroundColor: Colors.white,
+        actions: [
+          IconButton(
+              icon: Icon(Icons.email, color: Color(0XFA0064AA0)),
+              onPressed: () {}),
+        ],
+        leading: IconButton(
+            icon: Icon(Icons.email, color: Color(0XFA0064AA0)),
+            onPressed: () {}),
       ),
       body: BlocBuilder(
         bloc: BlocProvider.of<SectionsBloc>(context),
@@ -56,20 +62,19 @@ class HomePage extends StatelessWidget {
 
   buildStack() {
     return Stack(
-      fit: StackFit.loose,
+      fit: StackFit.expand,
       alignment: Alignment.bottomCenter,
       children: [
-        new Container(color: Color(0XFFFAFAFA)),
         new Image.asset(
-          "assets/images/faq.png",
-          fit: BoxFit.fitWidth,
+          "assets/images/man_bg.png",
+          fit: BoxFit.fill,
         ),
         // Positioned.fill(child: Text('Content')),
         Positioned.fill(
           bottom: 60,
           child: Container(
             // decoration: BoxDecoration(border: Border.all(width: 4, color: Colors.green)),
-            child: Text('Content'),
+            child: buildContent(),
           ),
         ),
         Positioned.fill(
@@ -82,29 +87,10 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  buildContent(namazs) {
-    return Container();
+  buildContent() {
+    return Container(
+      padding: EdgeInsets.all(15),
+      child: NamazList(),
+    );
   }
-
-  // buildContent(List<SectionModel> sections) {
-  //   return Container(
-  //     child: GridView.builder(
-  //         padding: EdgeInsets.all(20),
-  //         itemCount: sections.length,
-  //         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-  //           crossAxisCount: 2,
-  //           mainAxisSpacing: 20,
-  //           crossAxisSpacing: 20,
-  //         ),
-  //         itemBuilder: (ctx, index) => this.sectionBuilder(sections[index])),
-  //   );
-  // }
-
-  // sectionBuilder(SectionModel section) {
-  //   return CoverUI(
-  //     title: section.title,
-  //     image: section.image,
-  //     route: RouteModel(route: section.route, arguments: {}),
-  //   );
-  // }
 }
