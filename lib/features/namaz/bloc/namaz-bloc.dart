@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:namazapp/core/constants/languages.dart';
+import 'package:namazapp/core/services/language.service.dart';
 import 'package:namazapp/features/namaz/bloc/namaz-events.dart';
 import 'package:namazapp/features/namaz/bloc/namaz-state.dart';
 import 'package:namazapp/features/namaz/data/namaz/base-namaz.dart';
@@ -41,7 +41,7 @@ class NamazBloc extends Bloc<NamazEvents, NamazState> {
     @required isSecondSunna,
   }) {
     return this.repos.getData(
-          languageTag: AppLanguages.defaultLanguage,
+          languageTag: AppLanguagesService.defaultLanguage,
           gender: gender,
           namazTitle: namazTitle,
           namazType: namazType,

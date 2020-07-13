@@ -1,4 +1,4 @@
-class AppLanguages {
+class AppLanguagesService {
   static const kk = 'kk';
   static const ru = 'ru';
 
