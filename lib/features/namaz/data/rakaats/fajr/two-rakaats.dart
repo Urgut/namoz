@@ -26,6 +26,7 @@ class TwoRakaats {
   createRakaats() {
     NamazRakaatModel r1 = NamazRakaatModel(
       title: '1_rakaat',
+      isRakaat: true,
       parts: [
         PartNietFactory().create(this.gender),
         PartTakbirFactory().create(this.gender),
@@ -41,6 +42,7 @@ class TwoRakaats {
 
     NamazRakaatModel r2 = NamazRakaatModel(
       title: '2_rakaat',
+      isRakaat: true,
       parts: [
         PartFatihaKausarFactory().create(this.gender),
         PartRukuhGoFactory().create(this.gender),
@@ -53,6 +55,7 @@ class TwoRakaats {
 
     NamazRakaatModel otyrys = NamazRakaatModel(
       title: 'otyrys',
+      isRakaat: false,
       parts: [
         PartAttahiyatSalauatFactory().create(this.gender),
         PartAllhummaSalliFactory().create(this.gender),

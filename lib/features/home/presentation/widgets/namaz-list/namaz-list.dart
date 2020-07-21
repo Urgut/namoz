@@ -119,7 +119,7 @@ class _NamazListState extends State<NamazList> {
   }
 
   onGo(String t) {
-    return _navService.navigateTo(Routes.namazPage, arguments: {
+    return _navService.navigateTo(Routes.namazGeneralPage, arguments: {
       "gender": "man",
       "namazTitle": t,
       "namazType": "sunna",

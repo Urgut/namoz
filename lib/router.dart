@@ -11,6 +11,7 @@ import 'package:namazapp/features/namaz/bloc/namaz-bloc.dart';
 import 'package:namazapp/features/namaz/bloc/namaz-events.dart';
 import 'package:namazapp/features/namaz/data/datasources/namaz-oop-data.dart';
 import 'package:namazapp/features/namaz/presentations/pages/namaz-gender.page.dart';
+import 'package:namazapp/features/namaz/presentations/pages/namaz-general.page.dart';
 import 'package:namazapp/features/namaz/presentations/pages/namaz.page.dart';
 import 'package:namazapp/features/taharat/bloc/taharat-bloc.dart';
 import 'package:namazapp/features/taharat/bloc/taharat-events.dart';
@@ -58,6 +59,12 @@ class Router {
       case Routes.namazPage:
         return MaterialPageRoute(
           builder: (_) => NamazPage(arguments),
+        );
+
+      // Namaz general
+      case Routes.namazGeneralPage:
+        return MaterialPageRoute(
+          builder: (_) => NamazGeneralPage(arguments),
         );
 
       // About namaz
