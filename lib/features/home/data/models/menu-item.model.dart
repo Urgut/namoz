@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
+
 class MenuItemModel {
-  final String icon;
+  final IconData icon;
   final String title;
   final String route;
 

@@ -24,18 +24,23 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-flutter:  
+flutter:
   uses-material-design: true
 
   assets:
-   - assets/images/
-   - assets/images/icons/
-   - assets/images/taharat/
-   - assets/images/namaz/man/   
-   - assets/images/namaz/woman/
-   - assets/data/json/taharat/
-   - assets/data/json/namaz/man/fajr/kk/
-   - assets/data/json/about/
-   - assets/audio/namaz/
-   - langs/ru.json
-   - langs/kk.json
+    - assets/images/
+    - assets/images/icons/
+    - assets/images/taharat/
+    - assets/images/namaz/man/
+    - assets/images/namaz/woman/
+    - assets/data/json/taharat/
+    - assets/data/json/namaz/man/fajr/kk/
+    - assets/data/json/about/
+    - assets/audio/namaz/
+    - langs/ru.json
+    - langs/kk.json
+  
+  fonts:
+    - family: NamazFont
+      fonts:
+        - asset: assets/fonts/namaz/namaz.ttf

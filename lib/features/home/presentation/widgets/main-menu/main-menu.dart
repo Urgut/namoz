@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:namazapp/features/home/data/datasources/menu-local-data.dart';
 import 'package:namazapp/features/home/data/models/menu-item.model.dart';
+import 'package:namazapp/localization.dart';
 import 'package:namazapp/locator.dart';
 import 'package:namazapp/shared/widgets/empty.dart';
 import 'package:namazapp/shared/widgets/error/error.dart';
 import 'package:namazapp/shared/widgets/spinner/spinner.dart';
 
-class MainMenu extends StatelessWidget {
+class MainMenu extends StatefulWidget {
+  @override
+  _MainMenuState createState() => _MainMenuState();
+}
+
+class _MainMenuState extends State<MainMenu> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -59,13 +65,20 @@ class MainMenu extends StatelessWidget {
     );
   }
 
-  Widget buildIcon(String i) => Container(
-        child: Icon(Icons.list, color: Colors.white.withOpacity(0.9)),
+  Widget buildIcon(IconData i) => Container(
+        child: Icon(
+          i,
+          color: Colors.white.withOpacity(0.9),
+        ),
       );
 
   Widget buildTitle(String t) => Container(
-          child: Text(
-        t,
-        style: TextStyle(color: Colors.white),
-      ));
+        child: Text(
+          AppLocalizations.of(context).translate(t),
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 10,
+          ),
+        ),
+      );
 }

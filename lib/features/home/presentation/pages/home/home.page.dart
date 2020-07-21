@@ -4,6 +4,8 @@ import 'package:namazapp/features/home/bloc/sections-bloc.dart';
 import 'package:namazapp/features/home/bloc/sections-state.dart';
 import 'package:namazapp/features/home/presentation/widgets/main-menu/main-menu.dart';
 import 'package:namazapp/features/home/presentation/widgets/namaz-list/namaz-list.dart';
+import 'package:namazapp/localization.dart';
+import 'package:namazapp/shared/fonts/namaz_fonts.dart';
 import 'package:namazapp/shared/widgets/empty.dart';
 import 'package:namazapp/shared/widgets/error/error.dart';
 import 'package:namazapp/shared/widgets/spinner/spinner.dart';
@@ -20,7 +22,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Намаз',
+          AppLocalizations.of(context).translate('namaz').toUpperCase(),
           style: TextStyle(color: Color(0XFA0064AA0).withOpacity(0.9)),
         ),
         centerTitle: true,
@@ -28,11 +30,19 @@ class HomePage extends StatelessWidget {
         backgroundColor: Colors.white,
         actions: [
           IconButton(
-              icon: Icon(Icons.email, color: Color(0XFA0064AA0)),
+              icon: Icon(
+                NamazIcons.hijab,
+                color: Colors.black.withOpacity(0.5),
+                size: 25,
+              ),
               onPressed: () {}),
         ],
         leading: IconButton(
-            icon: Icon(Icons.email, color: Color(0XFA0064AA0)),
+            icon: Icon(
+              NamazIcons.man,
+              color: Color(0XFA0064AA0),
+              size: 25,
+            ),
             onPressed: () {}),
       ),
       body: BlocBuilder(

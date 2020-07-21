@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:namazapp/features/home/data/datasources/namaz-general-local-data.dart';
 import 'package:namazapp/features/home/data/models/namaz-general-model.dart';
+import 'package:namazapp/localization.dart';
 import 'package:namazapp/locator.dart';
 import 'package:namazapp/shared/widgets/empty.dart';
 import 'package:namazapp/shared/widgets/error/error.dart';
@@ -36,6 +37,7 @@ class _NamazListState extends State<NamazList> {
 
   Widget buildContent(List<NamazGeneralModel> data) {
     return ListView.builder(
+      shrinkWrap: true,
       itemCount: data.length,
       itemBuilder: (ctx, index) {
         return buildItem(data[index]);
@@ -53,11 +55,14 @@ class _NamazListState extends State<NamazList> {
       padding: EdgeInsets.all(15),
       child: Row(
         children: [
-          buildIcon(),
-          SizedBox(width: 10),
+          buildIcon(n.icon),
+          SizedBox(width: 15),
           Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               buildTitle(n.title),
+              SizedBox(height: 10),
+              buildEachNamazList(n.namazs),
             ],
           ),
         ],
@@ -65,17 +70,41 @@ class _NamazListState extends State<NamazList> {
     );
   }
 
-  Widget buildIcon() {
+  Widget buildIcon(IconData i) {
     return Container(
-      child: Image.asset('assets/images/icons/water-drop.png'),
+      child: Icon(
+        i,
+        color: Colors.white,
+        size: 45,
+      ),
     );
   }
 
   Widget buildTitle(String t) {
     return Container(
-        child: Text(
-      t,
-      style: TextStyle(color: Colors.white),
-    ));
+      child: Text(
+        AppLocalizations.of(context).translate(t),
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 18,
+        ),
+      ),
+    );
+  }
+
+  Widget buildEachNamazList(List<String> namazs) {
+    List<Widget> result = [];
+
+    for (int i = 0; i < namazs.length; i++) {
+      result.add(Text(
+        AppLocalizations.of(context).translate(namazs[i]),
+        style: TextStyle(color: Colors.white),
+      ));
+    }
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: result,
+    );
   }
 }
