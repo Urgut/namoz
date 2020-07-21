@@ -5,6 +5,7 @@ class Namaz implements BaseNamaz {
   String title;
   String type;
   String gender;
+  String icon;
   List<NamazRakaatModel> rakaats;
 
   Namaz({
@@ -12,6 +13,7 @@ class Namaz implements BaseNamaz {
     this.type,
     this.gender,
     this.rakaats,
+    this.icon,
   });
 
   // get rakaatsCount => this.rakaats.length;

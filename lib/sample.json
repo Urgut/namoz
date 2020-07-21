@@ -1,0 +1,59 @@
+{
+  "namazTitle": "fajr",  
+  "icon": "fajr",
+  "defaultTypeTitle": "2_rakaat_sunna",
+  "types": [
+    {
+      "title": "2_rakaat_sunna",
+      "rakatCount": 2,
+      "rakaats": [
+        {
+          "title": "1-ші рәкат",
+          "parts": [
+            {
+              "title": "Ниет ету",
+              "original": "",
+              "translation": "",
+              "transcript": "Ниет ету тілмен мұстахаб",
+              "next": "takbir",
+              "previus": null
+            },
+            {
+              "title": "takbir"
+            }
+          ]
+        },
+        {
+          "title": "2-ші рәкат",
+          "parts": [
+            {
+              "title": "Бисмиллах",
+              "original": "",
+              "translation": "",
+              "transcript": "Бисмиллахир Рахманир Рахим!"
+            }
+          ]
+        },
+        {
+          "title": "Отырыс",
+          "parts": [
+            {
+              "title": "Ат-тахият",
+              "original": "",
+              "translation": "",
+              "transcript": "Бисмиллахир Рахманир Рахим!",
+              "audio": ""
+            }
+          ]
+        }
+      ],
+      "scrollData": [
+        {
+          "id": "fajr_2_rakaat_sunna_niet_etu",
+          "title": "niet_etu",
+          "audio": ""
+        }        
+      ]
+    }
+  ]
+}

@@ -1,5 +1,4 @@
 import 'package:namazapp/features/namaz/data/models/namaz-rakaat.model.dart';
-import 'package:namazapp/features/namaz/data/namaz/base-namaz.dart';
 import 'package:namazapp/features/namaz/data/namaz/namaz.dart';
 import 'package:namazapp/features/namaz/data/rakaats/fajr/four-rakaats.dart';
 import 'package:namazapp/features/namaz/data/rakaats/fajr/three-rakaats-vitr.dart';
@@ -8,6 +7,10 @@ import 'package:namazapp/features/namaz/data/rakaats/fajr/two-rakaats.dart';
 
 class NamazFactory {
   /*
+    @param namazName - fajr
+    @oaram namazType - 2_rakaat_sunna
+    @param isSecondSunnet
+    @param gender - man or woman
     NamazType: 2 sunnet or 2 paryz
   */
   Namaz getNamaz({
@@ -17,7 +20,7 @@ class NamazFactory {
     String gender = 'man',
   }) {
     if (namazName == null) {
-      throw Exception('No namaz');
+      throw Exception('namaz_not_found');
     }
 
     List<NamazRakaatModel> rakaats = [];
