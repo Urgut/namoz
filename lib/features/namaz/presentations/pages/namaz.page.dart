@@ -42,7 +42,6 @@ class _NamazPageSate extends State<NamazPage> {
                   ..add(LoadNamazEvent(
                     gender: this.widget.params['gender'],
                     namazTitle: this.widget.params['namazTitle'],
-                    namazType: this.widget.params['namazType'],
                   ))),
           ],
           child: Builder(builder: (context) {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:namazapp/core/services/future.service.dart';
-import 'package:namazapp/features/namaz/data/namaz/base-namaz.dart';
+import 'package:namazapp/features/namaz/data/models/namaz-wrapper.model.dart';
 import 'package:namazapp/features/namaz/data/repositories/namaz.repository.dart';
 
 /*
@@ -13,12 +13,9 @@ class NamazLocalDataRepository extends NamazRepository {
     Gender: man or woman
     NamazType: парыз или сунна
   */
-  Future<BaseNamaz> getData({
-    @required String gender,
+  Future<NamazWrapper> getData({
     @required String namazTitle,
-    @required String languageTag,
-    @required String namazType,
-    @required bool isSecondSunna,
+    @required String gender,
   }) async {
     try {
       // Delay

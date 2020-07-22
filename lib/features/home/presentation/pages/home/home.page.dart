@@ -10,7 +10,12 @@ import 'package:namazapp/shared/widgets/empty.dart';
 import 'package:namazapp/shared/widgets/error/error.dart';
 import 'package:namazapp/shared/widgets/spinner/spinner.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   double width;
   double height;
 
@@ -20,31 +25,7 @@ class HomePage extends StatelessWidget {
     this.height = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          AppLocalizations.of(context).translate('namaz').toUpperCase(),
-          style: TextStyle(color: Color(0XFA0064AA0).withOpacity(0.9)),
-        ),
-        centerTitle: true,
-        elevation: 0,
-        backgroundColor: Colors.white,
-        actions: [
-          IconButton(
-              icon: Icon(
-                NamazIcons.hijab,
-                color: Colors.black.withOpacity(0.5),
-                size: 25,
-              ),
-              onPressed: () {}),
-        ],
-        leading: IconButton(
-            icon: Icon(
-              NamazIcons.man,
-              color: Color(0XFA0064AA0),
-              size: 25,
-            ),
-            onPressed: () {}),
-      ),
+      appBar: buildAppbar(),
       body: BlocBuilder(
         bloc: BlocProvider.of<SectionsBloc>(context),
         builder: (ctx, SectionsState state) {
@@ -55,7 +36,7 @@ class HomePage extends StatelessWidget {
 
           // Loaded
           if (state is SectionsLoaded) {
-            return buildStack();
+            return buildStackContent();
           }
 
           // Error
@@ -70,37 +51,71 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  buildStack() {
+  Widget buildAppbar() {
+    return AppBar(
+      title: Text(
+        AppLocalizations.of(context).translate('namaz').toUpperCase(),
+        style: TextStyle(color: Color(0XFA0064AA0).withOpacity(0.9)),
+      ),
+      centerTitle: true,
+      elevation: 0,
+      backgroundColor: Colors.white,
+      actions: [
+        IconButton(
+            icon: Icon(
+              NamazIcons.hijab,
+              color: Colors.black.withOpacity(0.5),
+              size: 25,
+            ),
+            onPressed: () {}),
+      ],
+      leading: IconButton(
+          icon: Icon(
+            NamazIcons.man,
+            color: Color(0XFA0064AA0),
+            size: 25,
+          ),
+          onPressed: () {}),
+    );
+  }
+
+  buildStackContent() {
     return Stack(
       fit: StackFit.expand,
       alignment: Alignment.bottomCenter,
       children: [
-        new Image.asset(
-          "assets/images/man_bg.png",
-          fit: BoxFit.fill,
-        ),
-        // Positioned.fill(child: Text('Content')),
-        Positioned.fill(
-          bottom: 60,
-          child: Container(
-            // decoration: BoxDecoration(border: Border.all(width: 4, color: Colors.green)),
-            child: buildContent(),
-          ),
-        ),
-        Positioned.fill(
-          child: Align(
-            alignment: Alignment.bottomCenter,
-            child: MainMenu(),
-          ),
-        ),
+        buildBackgroundImage(),
+        buildShortNamazList(),
+        buildMenuContent(),
       ],
     );
   }
 
-  buildContent() {
-    return Container(
-      padding: EdgeInsets.all(15),
-      child: NamazList(),
+  Widget buildBackgroundImage() {
+    return new Image.asset(
+      "assets/images/man_bg.png",
+      fit: BoxFit.fill,
+    );
+  }
+
+  Widget buildShortNamazList() {
+    return Positioned.fill(
+      bottom: 60,
+      child: Container(
+        child: Container(
+          padding: EdgeInsets.all(15),
+          child: NamazList(),
+        ),
+      ),
+    );
+  }
+
+  Widget buildMenuContent() {
+    return Positioned.fill(
+      child: Align(
+        alignment: Alignment.bottomCenter,
+        child: MainMenu(),
+      ),
     );
   }
 }

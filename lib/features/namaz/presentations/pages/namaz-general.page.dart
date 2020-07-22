@@ -5,7 +5,9 @@ import 'package:namazapp/features/namaz/bloc/namaz-events.dart';
 import 'package:namazapp/features/namaz/bloc/namaz-state.dart';
 import 'package:namazapp/features/namaz/data/datasources/namaz-oop-data.dart';
 import 'package:namazapp/features/namaz/data/models/namaz-rakaat.model.dart';
+import 'package:namazapp/features/namaz/data/models/namaz-wrapper.model.dart';
 import 'package:namazapp/features/namaz/data/namaz/base-namaz.dart';
+import 'package:namazapp/features/namaz/data/namaz/namaz.dart';
 import 'package:namazapp/localization.dart';
 import 'package:namazapp/shared/widgets/empty.dart';
 import 'package:namazapp/shared/widgets/error/error.dart';
@@ -30,9 +32,8 @@ class _NamazGeneralPageState extends State<NamazGeneralPage> {
             BlocProvider(
                 create: (ctx) => NamazBloc(repos: new NamazOOPDataRepository())
                   ..add(LoadNamazEvent(
-                    gender: this.widget.params['gender'],
                     namazTitle: this.widget.params['namazTitle'],
-                    namazType: this.widget.params['namazType'],
+                    gender: this.widget.params['gender'],
                   ))),
           ],
           child: Builder(builder: (context) {
@@ -62,24 +63,33 @@ class _NamazGeneralPageState extends State<NamazGeneralPage> {
     );
   }
 
-  Widget buildContent(BaseNamaz n) {
-    return AppWrapperWidget.wrapPageWithPadding(
-      page: doTab(n),
+  Widget appBar() {
+    return AppBar(
+      title: Text(
+        AppLocalizations.of(context)
+            .translate(this.widget.params['namazTitle']),
+      ),
     );
   }
 
-  Widget doTab(BaseNamaz n) {
+  Widget buildContent(NamazWrapper nw) {
+    return AppWrapperWidget.wrapPageWithPadding(
+      page: doTab(nw),
+    );
+  }
+
+  Widget doTab(NamazWrapper nw) {
     return DefaultTabController(
-      length: n.rakaats.length,
+      length: nw.namazList.length,
       child: Column(
         children: [
           TabBar(
             labelColor: Colors.blue,
-            tabs: this.buildTabHeaders(n.rakaats),
+            tabs: this.buildTabHeaders(nw.namazList),
           ),
           Expanded(
             child: TabBarView(
-              children: this.buildTabContent(n),
+              children: this.buildTabContents(nw.namazList),
             ),
           )
         ],
@@ -90,28 +100,27 @@ class _NamazGeneralPageState extends State<NamazGeneralPage> {
   /*
     Build tab's header
   */
-  List<Widget> buildTabHeaders(List<NamazRakaatModel> rakaats) {
-    rakaats = rakaats.where((e) => e.isRakaat == true);
+  List<Widget> buildTabHeaders(List<Namaz> namazList) {
     List<Widget> tabs = [];
 
     // Guard
-    if (rakaats == null) {
+    if (namazList == null) {
       throw Exception('No rakaatsF');
     }
 
     // Build rakaats
-    for (dynamic r in rakaats) {
-      Widget rakatUI = this.buildEachTabHeader(r);
-      tabs.add(rakatUI);
+    for (Namaz n in namazList) {
+      Widget label = this.buildEachTabHeader(n.title);
+      tabs.add(label);
     }
 
     return tabs;
   }
 
-  Widget buildEachTabHeader(NamazRakaatModel r) {
+  Widget buildEachTabHeader(String t) {
     return Tab(
       child: Text(
-        AppLocalizations.of(context).translate(r.title),
+        AppLocalizations.of(context).translate(t),
         style: TextStyle(fontSize: 12),
       ),
     );
@@ -120,27 +129,36 @@ class _NamazGeneralPageState extends State<NamazGeneralPage> {
   /*
     Build tab's content
   */
-  List<Widget> buildTabContent(BaseNamaz n) {
+  List<Widget> buildTabContents(List<Namaz> namazList) {
     List<Widget> contents = [];
 
-    if (n.rakaats == null) {
+    if (namazList == null) {
       throw AppEmpty();
     }
 
-    for (dynamic i in n.rakaats) {
-      // Widget r = this.buildEachRakaat(i);
-      // contents.add(r);
+    for (dynamic n in namazList) {
+      Widget c = this.buildTabContent(n);
+      contents.add(c);
     }
 
     return contents;
   }
 
-  Widget appBar() {
-    return AppBar(
-      title: Text(
-        AppLocalizations.of(context)
-            .translate(this.widget.params['namazTitle']),
+  Widget buildTabContent(Namaz n) {
+    return Container(
+      child: Column(
+        children: [
+          buildImage(),
+          SizedBox(height: 10),
+          Text('Оқылу реті'),
+          Text(n.title),
+          Text(n.rakaats.length.toString()),
+        ],
       ),
     );
+  }
+
+  Widget buildImage() {
+    return Container(child: Image.asset('assets/images/namaz/kiyam.png'));
   }
 }

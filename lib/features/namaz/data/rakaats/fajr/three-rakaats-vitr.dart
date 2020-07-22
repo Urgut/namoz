@@ -1,6 +1,5 @@
 import 'package:namazapp/features/namaz/data/factory/attahiyat-factory.dart';
 import 'package:namazapp/features/namaz/data/factory/attahiyat-salauat-factory.dart';
-import 'package:namazapp/features/namaz/data/factory/fatiha-factory.dart';
 import 'package:namazapp/features/namaz/data/factory/fatiha-kausar-factory.dart';
 import 'package:namazapp/features/namaz/data/factory/kiyam-factory.dart';
 import 'package:namazapp/features/namaz/data/factory/kiyam-fatiha-asr-factory.dart';

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:namazapp/core/services/future.service.dart';
 import 'package:namazapp/core/services/json.service.dart';
 import 'package:namazapp/features/taharat/data/models/taharat-model.dart';
 import 'package:namazapp/features/taharat/data/repositories/taharat-repository.dart';

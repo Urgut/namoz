@@ -1,11 +1,9 @@
 {
   "namazTitle": "fajr",  
-  "icon": "fajr",
-  "defaultTypeTitle": "2_rakaat_sunna",
-  "types": [
+  "icon": "fajr",  
+  "namazList": [
     {
-      "title": "2_rakaat_sunna",
-      "rakatCount": 2,
+      "title": "2_rakaat_sunna",      
       "rakaats": [
         {
           "title": "1-ші рәкат",

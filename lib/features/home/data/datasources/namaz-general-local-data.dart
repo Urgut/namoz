@@ -1,3 +1,5 @@
+import 'package:namazapp/core/data/datasources/namaz-list.data.dart';
+import 'package:namazapp/core/data/datasources/namaz-type-list.data.dart';
 import 'package:namazapp/features/home/data/models/namaz-general-model.dart';
 import 'package:namazapp/shared/fonts/namaz_fonts.dart';
 
@@ -7,64 +9,64 @@ class NamazGeneralLocalData {
 
     result.add(
       NamazGeneralModel(
-        title: 'fajr',
+        title: NamazListData.fajr,
         icon: NamazIcons.fajr,
         namazs: [
-          '2_rakaats_sunna',
-          '2_rakaats_paryz',
+          NamazTypeListData.twoRakaatSunna,
+          NamazTypeListData.twoRakaatParyz,
         ],
       ),
     );
 
     result.add(
       NamazGeneralModel(
-        title: 'dhuhr',
+        title: NamazListData.dhuhr,
         icon: NamazIcons.dhuhr,
         namazs: [
-          '4_rakaats_sunna',
-          '4_rakaats_paryz',
+          NamazTypeListData.fourRakaatSunna,
+          NamazTypeListData.fourRakaatParyz,
         ],
       ),
     );
 
     result.add(
       NamazGeneralModel(
-        title: 'asr',
+        title: NamazListData.asr,
         icon: NamazIcons.asr,
         namazs: [
-          '4_rakaats_paryz',
+          NamazTypeListData.fourRakaatParyz,
         ],
       ),
     );
 
     result.add(
       NamazGeneralModel(
-        title: 'magrib',
+        title: NamazListData.magrib,
         icon: NamazIcons.magrib,
         namazs: [
-          '3_rakaats_paryz',
-          '2_rakaats_sunna',
+          NamazTypeListData.threeRakaatParyz,
+          NamazTypeListData.twoRakaatSunna,
         ],
       ),
     );
 
     result.add(
       NamazGeneralModel(
-        title: 'isha',
+        title: NamazListData.isha,
         icon: NamazIcons.isha,
         namazs: [
-          '4_rakaats_sunna',
-          '2_rakaats_paryz',
+          NamazTypeListData.fourRakaatParyz,
+          NamazTypeListData.twoRakaatSunna,
         ],
       ),
     );
 
     result.add(
       NamazGeneralModel(
-        title: 'vitr',
+        title: NamazListData.vitr,
         icon: NamazIcons.isha,
         namazs: [
-          '3_rakaats_vitr',
+          NamazTypeListData.threeRakaatVitr,
         ],
       ),
     );

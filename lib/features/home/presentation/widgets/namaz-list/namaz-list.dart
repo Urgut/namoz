@@ -15,7 +15,7 @@ class NamazList extends StatefulWidget {
 }
 
 class _NamazListState extends State<NamazList> {
-  // DI
+  // Singletons
   NavigationService _navService = locator<NavigationService>();
 
   @override
@@ -45,20 +45,17 @@ class _NamazListState extends State<NamazList> {
       shrinkWrap: true,
       itemCount: data.length,
       itemBuilder: (ctx, index) {
-        return buildItem(data[index]);
+        return buildNamazItem(data[index]);
       },
     );
   }
 
-  Widget buildItem(NamazGeneralModel n) {
+  Widget buildNamazItem(NamazGeneralModel n) {
     return FlatButton(
       padding: EdgeInsets.all(0),
-      onPressed: () => onGo(n.title),
+      onPressed: () => onGo(n),
       child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(15)),
-          color: Color(0XFA0064AA0).withOpacity(0.8),
-        ),
+        decoration: namazItemDecoration(),
         margin: EdgeInsets.only(bottom: 15),
         padding: EdgeInsets.all(15),
         child: Row(
@@ -76,6 +73,13 @@ class _NamazListState extends State<NamazList> {
           ],
         ),
       ),
+    );
+  }
+
+  Decoration namazItemDecoration() {
+    return BoxDecoration(
+      borderRadius: BorderRadius.all(Radius.circular(15)),
+      color: Color(0XFA0064AA0).withOpacity(0.8),
     );
   }
 
@@ -118,12 +122,11 @@ class _NamazListState extends State<NamazList> {
     );
   }
 
-  onGo(String t) {
+  onGo(NamazGeneralModel n) {
     return _navService.navigateTo(Routes.namazGeneralPage, arguments: {
       "gender": "man",
-      "namazTitle": t,
-      "namazType": "sunna",
-      "rakaatDesc": "2_rakaats_sunna",
+      "namazTitle": n.title,
+      "namazType": n.namazs[0],
     });
   }
 }
