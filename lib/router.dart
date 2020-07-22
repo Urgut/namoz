@@ -7,9 +7,7 @@ import 'package:namazapp/features/home/bloc/sections-bloc.dart';
 import 'package:namazapp/features/home/bloc/sections-events.dart';
 import 'package:namazapp/features/home/presentation/pages/home/home.page.dart';
 import 'package:namazapp/features/namaz-list/presentations/pages/namaz-list.page.dart';
-import 'package:namazapp/features/namaz/presentations/pages/namaz-gender.page.dart';
 import 'package:namazapp/features/namaz/presentations/pages/namaz-general.page.dart';
-import 'package:namazapp/features/namaz/presentations/pages/namaz.page.dart';
 import 'package:namazapp/features/taharat/bloc/taharat-bloc.dart';
 import 'package:namazapp/features/taharat/bloc/taharat-events.dart';
 import 'package:namazapp/features/taharat/data/datasources/taharat-local-data.dart';
@@ -44,19 +42,9 @@ class Router {
             child: TaharatGeneralPage(),
           ),
         );
-      // Gender
-      case Routes.genderPage:
-        return MaterialPageRoute(
-          builder: (_) => GenderPage(),
-        );
       // Namaz List
       case Routes.namazListPage:
         return MaterialPageRoute(builder: (_) => NamazListPage(arguments));
-      // Namaz
-      case Routes.namazPage:
-        return MaterialPageRoute(
-          builder: (_) => NamazPage(arguments),
-        );
 
       // Namaz general
       case Routes.namazGeneralPage:

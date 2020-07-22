@@ -1,7 +1,7 @@
 import 'package:namazapp/features/namaz/data/interfaces/part-iterface.dart';
 
 class FatihaAsrPart implements IPart {
-  String title = 'Қиям';
+  String title = 'Фатиха және қосымша сүре';
   String description = '';
   String image = '';
   List<String> audio = [

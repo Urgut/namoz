@@ -3,13 +3,13 @@ import 'package:namazapp/features/namaz/data/parts/kiyam/kiyam-part.dart';
 import 'package:namazapp/features/namaz/data/parts/kiyam/kiyam-woman-part.dart';
 
 class PartKiyamFactory {
-  KiyamPart create(String gender) {
+  KiyamSubhanakaPart create(String gender) {
     if (gender == 'man') {
-      return KiyamManPart();
+      return KiyamSubhanakaManPart();
     }
 
     if (gender == 'woman') {
-      return KiyamWomanPart();
+      return KiyamSubhanakaWomanPart();
     }
 
     return null;

@@ -6,10 +6,18 @@ class AppWrapperWidget {
   */
   static Widget wrapPageWithPadding({
     @required Widget page,
-    double paddingSize = 20,
+    double top = 20,
+    double right = 20,
+    double bottom = 20,
+    double left = 20,
   }) {
     return Container(
-      padding: EdgeInsets.all(paddingSize),
+      padding: EdgeInsets.only(
+        top: top,
+        right: right,
+        bottom: bottom,
+        left: left,
+      ),
       child: page,
     );
   }

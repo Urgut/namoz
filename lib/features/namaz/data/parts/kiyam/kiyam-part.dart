@@ -1,7 +1,7 @@
 import 'package:namazapp/features/namaz/data/interfaces/part-iterface.dart';
 
-class KiyamPart implements IPart {
-  String title = 'Қиям';
+class KiyamSubhanakaPart implements IPart {
+  String title = 'Субханәкә';
   String description = '';
   String image = '';
   List<String> audio = [

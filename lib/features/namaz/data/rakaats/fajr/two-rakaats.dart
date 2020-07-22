@@ -1,3 +1,4 @@
+import 'package:namazapp/features/namaz/data/factory/aguzu-bismilla-factory.dart';
 import 'package:namazapp/features/namaz/data/factory/allahumma_barik.factory.dart';
 import 'package:namazapp/features/namaz/data/factory/allahumma_salli.factory.dart';
 import 'package:namazapp/features/namaz/data/factory/attahiyat-salauat-factory.dart';
@@ -31,6 +32,7 @@ class TwoRakaats {
         PartNietFactory().create(this.gender),
         PartTakbirFactory().create(this.gender),
         PartKiyamFactory().create(this.gender),
+        PartAguzuBismillaFactory().create(this.gender),
         PartKiyamFatihaAsrFactory().create(this.gender),
         PartRukuhGoFactory().create(this.gender),
         PartRukuhBackFactory().create(this.gender),

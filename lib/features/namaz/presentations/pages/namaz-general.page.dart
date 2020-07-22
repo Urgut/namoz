@@ -4,10 +4,11 @@ import 'package:namazapp/features/namaz/bloc/namaz-bloc.dart';
 import 'package:namazapp/features/namaz/bloc/namaz-events.dart';
 import 'package:namazapp/features/namaz/bloc/namaz-state.dart';
 import 'package:namazapp/features/namaz/data/datasources/namaz-oop-data.dart';
+import 'package:namazapp/features/namaz/data/interfaces/part-iterface.dart';
 import 'package:namazapp/features/namaz/data/models/namaz-rakaat.model.dart';
 import 'package:namazapp/features/namaz/data/models/namaz-wrapper.model.dart';
-import 'package:namazapp/features/namaz/data/namaz/base-namaz.dart';
 import 'package:namazapp/features/namaz/data/namaz/namaz.dart';
+import 'package:namazapp/features/namaz/presentations/widgets/namaz-part/namaz-part.dart';
 import 'package:namazapp/localization.dart';
 import 'package:namazapp/shared/widgets/empty.dart';
 import 'package:namazapp/shared/widgets/error/error.dart';
@@ -65,16 +66,28 @@ class _NamazGeneralPageState extends State<NamazGeneralPage> {
 
   Widget appBar() {
     return AppBar(
+      backgroundColor: Colors.white,
+      iconTheme: IconThemeData(
+        color: Colors.black,
+      ),
+      leading: IconButton(
+        icon: Icon(Icons.close, color: Colors.black),
+        onPressed: () => Navigator.of(context).pop(),
+      ),
+      elevation: 0,
       title: Text(
-        AppLocalizations.of(context)
-            .translate(this.widget.params['namazTitle']),
+        AppLocalizations.of(context).translate(
+          this.widget.params['namazTitle'],
+        ),
+        style: TextStyle(color: Colors.black),
       ),
     );
   }
 
   Widget buildContent(NamazWrapper nw) {
     return AppWrapperWidget.wrapPageWithPadding(
-      page: doTab(nw),
+      page: doTab(nw),     
+      bottom: 0
     );
   }
 
@@ -146,19 +159,108 @@ class _NamazGeneralPageState extends State<NamazGeneralPage> {
 
   Widget buildTabContent(Namaz n) {
     return Container(
+      width: double.infinity,
       child: Column(
         children: [
-          buildImage(),
-          SizedBox(height: 10),
-          Text('Оқылу реті'),
-          Text(n.title),
-          Text(n.rakaats.length.toString()),
+          Expanded(
+            child: scrollContent(n),
+          ),
+          SizedBox(            
+            width: double.infinity,            
+            child: RaisedButton(                            
+              onPressed: () {},
+              child: Text('КӨРУ', style: TextStyle(color: Colors.white),),
+              color: Color(0XFF0065A0).withOpacity(0.9),
+            ),
+          ),
         ],
       ),
     );
   }
 
+  Widget scrollContent(Namaz n) {
+    return SingleChildScrollView(
+      child: Container(
+        child: Column(children: [
+          SizedBox(height: 10),
+          buildImage(),
+          SizedBox(height: 10),
+          Container(
+            child: Text(
+              AppLocalizations.of(context).translate('okulu_reti'),
+              textAlign: TextAlign.start,
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            width: double.infinity,
+          ),
+          SizedBox(height: 10),
+          buildRakats(n.rakaats),
+        ]),
+      ),
+    );
+  }
+
   Widget buildImage() {
-    return Container(child: Image.asset('assets/images/namaz/kiyam.png'));
+    return Container(
+      child: Image.asset(
+        'assets/images/namaz/man/kiyam.png',
+        height: 200,
+      ),
+    );
+  }
+
+  Widget buildRakats(List<NamazRakaatModel> rakaats) {
+    List<Widget> rakaatsUI = [];
+
+    if (rakaats != null) {
+      for (int i = 0; i < rakaats.length; i++) {
+        Widget rakaatEachUI = buildRakaatItem(rakaats[i]);
+        rakaatsUI.add(rakaatEachUI);
+      }
+    }
+
+    return Container(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: rakaatsUI,
+      ),
+    );
+  }
+
+  Widget buildRakaatItem(NamazRakaatModel r) {
+    return Container(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            AppLocalizations.of(context).translate(r.title),
+            style: TextStyle(fontSize: 16),
+          ),
+          SizedBox(height: 5),
+          buildParts(r.parts),
+        ],
+      ),
+    );
+  }
+
+  Widget buildParts(List<IPart> parts) {
+    List<Widget> result = [];
+
+    for (int i = 0; i < parts.length; i++) {
+      result.add(NamazShortPart(parts[i].title));
+      result.add(Text(
+        "|",
+        style: TextStyle(fontSize: 14, color: Colors.black.withOpacity(0.3)),
+      ));
+    }
+
+    return Container(
+      child: Wrap(
+        children: result,
+      ),
+    );
   }
 }
