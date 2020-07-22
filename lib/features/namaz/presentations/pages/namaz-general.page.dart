@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:namazapp/core/constants/routes.dart';
+import 'package:namazapp/core/services/navigation.service.dart';
 import 'package:namazapp/features/namaz/bloc/namaz-bloc.dart';
 import 'package:namazapp/features/namaz/bloc/namaz-events.dart';
 import 'package:namazapp/features/namaz/bloc/namaz-state.dart';
@@ -10,6 +12,7 @@ import 'package:namazapp/features/namaz/data/models/namaz-wrapper.model.dart';
 import 'package:namazapp/features/namaz/data/namaz/namaz.dart';
 import 'package:namazapp/features/namaz/presentations/widgets/namaz-part/namaz-part.dart';
 import 'package:namazapp/localization.dart';
+import 'package:namazapp/locator.dart';
 import 'package:namazapp/shared/widgets/empty.dart';
 import 'package:namazapp/shared/widgets/error/error.dart';
 import 'package:namazapp/shared/widgets/spinner/spinner.dart';
@@ -24,6 +27,8 @@ class NamazGeneralPage extends StatefulWidget {
 }
 
 class _NamazGeneralPageState extends State<NamazGeneralPage> {
+  NavigationService _navService = locator<NavigationService>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,10 +91,7 @@ class _NamazGeneralPageState extends State<NamazGeneralPage> {
 
   Widget buildContent(NamazWrapper nw) {
     return AppWrapperWidget.wrapPageWithPadding(
-      page: doTab(nw),     
-      bottom: 0,
-      top: 0
-    );
+        page: doTab(nw), bottom: 0, top: 0);
   }
 
   Widget doTab(NamazWrapper nw) {
@@ -166,17 +168,26 @@ class _NamazGeneralPageState extends State<NamazGeneralPage> {
           Expanded(
             child: scrollContent(n),
           ),
-          SizedBox(            
-            width: double.infinity,            
-            child: RaisedButton(                            
-              onPressed: () {},
-              child: Text('КӨРУ', style: TextStyle(color: Colors.white),),
+          SizedBox(
+            width: double.infinity,
+            child: RaisedButton(
+              onPressed: () => onGo(n),
+              child: Text(
+                'КӨРУ',
+                style: TextStyle(color: Colors.white),
+              ),
               color: Color(0XFF0065A0).withOpacity(0.9),
             ),
           ),
         ],
       ),
     );
+  }
+
+  onGo(Namaz n) {
+    this._navService.navigateTo(Routes.namazPartDetailPage, arguments: {
+      "namazTitle": n.title,
+    });
   }
 
   Widget scrollContent(Namaz n) {

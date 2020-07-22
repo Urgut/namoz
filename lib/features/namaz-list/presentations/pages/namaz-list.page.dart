@@ -82,9 +82,9 @@ class _NamazListPageState extends State<NamazListPage> {
   }
 
   Widget namazItemUI(NamazShortModel n) {
-    return RaisedButton(      
+    return RaisedButton(
       color: Colors.orange[50],
-      onPressed: () => _navService.navigateTo(Routes.namazPage, arguments: {
+      onPressed: () => _navService.navigateTo(Routes.homePage, arguments: {
         "gender": this.gender,
         "namazTitle": n.title,
         "namazType": n.type,

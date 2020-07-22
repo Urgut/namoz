@@ -20,7 +20,7 @@ class SectionLocalData {
         title: "Намаз туралы",
         description: "",
         image: 'assets/images/about.png',
-        route: Routes.namazAboutPage,
+        route: Routes.homePage,
       ),
       SectionModel(
         title: "Сұрақ-жауап",

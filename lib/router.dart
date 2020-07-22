@@ -8,6 +8,7 @@ import 'package:namazapp/features/home/bloc/sections-events.dart';
 import 'package:namazapp/features/home/presentation/pages/home/home.page.dart';
 import 'package:namazapp/features/namaz-list/presentations/pages/namaz-list.page.dart';
 import 'package:namazapp/features/namaz/presentations/pages/namaz-general.page.dart';
+import 'package:namazapp/features/namaz/presentations/pages/namaz-part-detail.page.dart';
 import 'package:namazapp/features/taharat/bloc/taharat-bloc.dart';
 import 'package:namazapp/features/taharat/bloc/taharat-events.dart';
 import 'package:namazapp/features/taharat/data/datasources/taharat-local-data.dart';
@@ -43,18 +44,22 @@ class Router {
           ),
         );
       // Namaz List
-      case Routes.namazListPage:
-        return MaterialPageRoute(builder: (_) => NamazListPage(arguments));
+      // case Routes.namazListPage:
+      //   return MaterialPageRoute(builder: (_) => NamazListPage(arguments));
 
       // Namaz general
       case Routes.namazGeneralPage:
         return MaterialPageRoute(
           builder: (_) => NamazGeneralPage(arguments),
         );
+      // Namaz part detail
+      case Routes.namazPartDetailPage:
+        return MaterialPageRoute(
+            builder: (_) => NamazPartDetailPage(arguments));
 
       // About namaz
-      case Routes.namazAboutPage:
-        return MaterialPageRoute(builder: (_) => AboutNamazPage());
+      // case Routes.namazAboutPage:
+      //   return MaterialPageRoute(builder: (_) => AboutNamazPage());
       // Faq
       case Routes.faqPage:
         return MaterialPageRoute(builder: (_) => FaqPage());
