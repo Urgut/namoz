@@ -100,7 +100,7 @@ class _HomePageState extends State<HomePage> {
 
   Widget buildShortNamazList() {
     return Positioned.fill(
-      bottom: 60,
+      bottom: 45,
       child: Container(
         child: Container(
           padding: EdgeInsets.all(15),

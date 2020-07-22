@@ -87,7 +87,8 @@ class _NamazGeneralPageState extends State<NamazGeneralPage> {
   Widget buildContent(NamazWrapper nw) {
     return AppWrapperWidget.wrapPageWithPadding(
       page: doTab(nw),     
-      bottom: 0
+      bottom: 0,
+      top: 0
     );
   }
 

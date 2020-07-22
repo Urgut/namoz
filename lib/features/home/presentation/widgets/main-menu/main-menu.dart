@@ -36,9 +36,8 @@ class _MainMenuState extends State<MainMenu> {
   }
 
   Widget buildContent(List<MenuItemModel> data) {
-    return Container(
-      // decoration: BoxDecoration(border: Border.all(width: 2, color: Colors.red)),
-      height: 60,
+    return Container(      
+      height: 50,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
