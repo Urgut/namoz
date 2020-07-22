@@ -1,4 +1,4 @@
-abstract class IPart{
+abstract class IPart {
   String title;
   String description;
   String image;
@@ -6,4 +6,5 @@ abstract class IPart{
   String transcript;
   String translation;
   String arabic;
+  String rakaatName = "";
 }

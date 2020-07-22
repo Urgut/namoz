@@ -15,7 +15,7 @@ class NamazOOPDataRepository extends NamazRepository {
     NamazType: парыз или сунна
   */
   Future<NamazWrapper> getData({
-    @required String namazTitle,
+    @required String period,
     @required String gender,
   }) async {
     try {
@@ -23,8 +23,8 @@ class NamazOOPDataRepository extends NamazRepository {
       await FutureService.doDelay(seconds: 0);
 
       // Factory: Create objects based on params
-      NamazWrapper instance = NamazFactory().getNamaz(        
-        namazBaseName: namazTitle,
+      NamazWrapper instance = NamazFactory().getNamaz(
+        period: period,
         gender: gender,
       );
       return instance;

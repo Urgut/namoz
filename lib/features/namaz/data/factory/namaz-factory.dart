@@ -4,6 +4,7 @@ import 'package:namazapp/core/data/datasources/namaz-list.data.dart';
 import 'package:namazapp/features/namaz/data/models/namaz-rakaat.model.dart';
 import 'package:namazapp/features/namaz/data/models/namaz-wrapper.model.dart';
 import 'package:namazapp/features/namaz/data/namaz/namaz.dart';
+import 'package:namazapp/features/namaz/data/rakaats/fajr/base-rakaats.dart';
 import 'package:namazapp/features/namaz/data/rakaats/fajr/two-rakaats.dart';
 
 class NamazFactory {
@@ -13,31 +14,36 @@ class NamazFactory {
     @param gender - man or woman    
   */
   NamazWrapper getNamaz({
-    String namazBaseName,
+    String period,
     String gender = GenderData.man,
   }) {
-    if (namazBaseName == null) {
+    if (period == null) {
       throw Exception('namaz_not_found');
     }
 
     List<Namaz> namazList = [];
 
     // Fajr
-    if (namazBaseName == NamazListData.fajr) {
-      List<NamazRakaatModel> twoRakaatsSunna =
-          TwoRakaats(gender: gender).rakaats;
+    if (period == NamazListData.fajr) {
+      // Sunnet namazy
+      BaseRakaats twoRakaatsSunna = TwoRakaats(gender: gender);
 
       Namaz fajrTwoRakaatSunnaNamaz = Namaz(
-        rakaats: twoRakaatsSunna,
+        period: period,
         title: NamazTypeListData.twoRakaatSunna,
+        rakaats: twoRakaatsSunna.rakaats,
+        parts: twoRakaatsSunna.getParts(),
       );
 
+      // Paryz namazy
       List<NamazRakaatModel> twoRakaatsParyz =
           TwoRakaats(gender: gender).rakaats;
 
       Namaz fajrTwoRakaatParyzNamaz = Namaz(
-        rakaats: twoRakaatsParyz,
+        period: period,
         title: NamazTypeListData.twoRakaatParyz,
+        rakaats: twoRakaatsParyz,
+        parts: [],
       );
 
       namazList.add(fajrTwoRakaatSunnaNamaz);
@@ -45,7 +51,7 @@ class NamazFactory {
     }
 
     return NamazWrapper(
-      title: namazBaseName,
+      title: period,
       icon: "",
       namazList: namazList,
     );

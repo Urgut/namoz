@@ -8,4 +8,5 @@ class NietPart implements IPart {
   String transcript = '';
   String translation = "";
   String arabic = "";  
+  String rakaatName = "";  
 }

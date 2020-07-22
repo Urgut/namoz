@@ -12,4 +12,5 @@ class SajdeSecondPart implements IPart {
       "<p>&laquo;Аса ұлық Раббым күллі кемістік атаулыдан пәк&raquo;</p><p>&laquo;Аса ұлық Раббым күллі кемістік атаулыдан пәк&raquo;</p><p>&laquo;Аса ұлық Раббым күллі кемістік атаулыдан пәк&raquo;</p>";
   String arabic =
       "<p>سبحان ربي العلى</p><p>سبحان ربي العلى</p><p>سبحان ربي العلى</p>";
+  String rakaatName = "";
 }

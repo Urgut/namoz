@@ -12,4 +12,5 @@ class RabbanaAtinaPart implements IPart {
   String translation =
       "<p>,Алла! Бізге дүниеде де жақсылық бер, ақыретте де жақсылық бер. Және тозақ отынан сақтай көр</p>";
   String arabic = "";
+  String rakaatName = "";
 }

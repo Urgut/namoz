@@ -11,4 +11,5 @@ class SittingPart implements IPart {
   String transcript = 'Аллаху Акбар!';
   String translation = "Алла аса ұлы!";
   String arabic = "الله أكبر";
+  String rakaatName = "";
 }

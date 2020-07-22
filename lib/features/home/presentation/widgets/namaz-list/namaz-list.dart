@@ -124,9 +124,8 @@ class _NamazListState extends State<NamazList> {
 
   onGo(NamazGeneralModel n) {
     return _navService.navigateTo(Routes.namazGeneralPage, arguments: {
+      "period": n.title,
       "gender": "man",
-      "namazTitle": n.title,
-      "namazType": n.namazs[0],
     });
   }
 }

@@ -14,7 +14,7 @@ class NamazLocalDataRepository extends NamazRepository {
     NamazType: парыз или сунна
   */
   Future<NamazWrapper> getData({
-    @required String namazTitle,
+    @required String period,
     @required String gender,
   }) async {
     try {

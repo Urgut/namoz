@@ -28,6 +28,7 @@ class NamazGeneralPage extends StatefulWidget {
 
 class _NamazGeneralPageState extends State<NamazGeneralPage> {
   NavigationService _navService = locator<NavigationService>();
+  int selectedTab = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +39,7 @@ class _NamazGeneralPageState extends State<NamazGeneralPage> {
             BlocProvider(
                 create: (ctx) => NamazBloc(repos: new NamazOOPDataRepository())
                   ..add(LoadNamazEvent(
-                    namazTitle: this.widget.params['namazTitle'],
+                    period: this.widget.params['period'],
                     gender: this.widget.params['gender'],
                   ))),
           ],
@@ -82,7 +83,7 @@ class _NamazGeneralPageState extends State<NamazGeneralPage> {
       elevation: 0,
       title: Text(
         AppLocalizations.of(context).translate(
-          this.widget.params['namazTitle'],
+          this.widget.params['period'],
         ),
         style: TextStyle(color: Colors.black),
       ),
@@ -100,6 +101,9 @@ class _NamazGeneralPageState extends State<NamazGeneralPage> {
       child: Column(
         children: [
           TabBar(
+            onTap: (index) {
+              this.selectedTab = index;
+            },
             labelColor: Colors.blue,
             tabs: this.buildTabHeaders(nw.namazList),
           ),
@@ -186,7 +190,10 @@ class _NamazGeneralPageState extends State<NamazGeneralPage> {
 
   onGo(Namaz n) {
     this._navService.navigateTo(Routes.namazPartDetailPage, arguments: {
+      "period": n.period,
       "namazTitle": n.title,
+      "rakaats": n.rakaats,
+      "parts": n.parts,
     });
   }
 

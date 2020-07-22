@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:namazapp/core/constants/routes.dart';
-import 'package:namazapp/features/about-namaz/presentations/pages/about-namaz.page.dart';
 import 'package:namazapp/features/faq/presentations/pages/faq.page.dart';
 import 'package:namazapp/features/home/bloc/sections-bloc.dart';
 import 'package:namazapp/features/home/bloc/sections-events.dart';
 import 'package:namazapp/features/home/presentation/pages/home/home.page.dart';
-import 'package:namazapp/features/namaz-list/presentations/pages/namaz-list.page.dart';
 import 'package:namazapp/features/namaz/presentations/pages/namaz-general.page.dart';
 import 'package:namazapp/features/namaz/presentations/pages/namaz-part-detail.page.dart';
 import 'package:namazapp/features/taharat/bloc/taharat-bloc.dart';
@@ -42,11 +40,7 @@ class Router {
             ],
             child: TaharatGeneralPage(),
           ),
-        );
-      // Namaz List
-      // case Routes.namazListPage:
-      //   return MaterialPageRoute(builder: (_) => NamazListPage(arguments));
-
+        );      
       // Namaz general
       case Routes.namazGeneralPage:
         return MaterialPageRoute(
@@ -56,10 +50,6 @@ class Router {
       case Routes.namazPartDetailPage:
         return MaterialPageRoute(
             builder: (_) => NamazPartDetailPage(arguments));
-
-      // About namaz
-      // case Routes.namazAboutPage:
-      //   return MaterialPageRoute(builder: (_) => AboutNamazPage());
       // Faq
       case Routes.faqPage:
         return MaterialPageRoute(builder: (_) => FaqPage());

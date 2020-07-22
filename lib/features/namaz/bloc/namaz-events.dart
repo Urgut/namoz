@@ -1,11 +1,11 @@
 abstract class NamazEvents {}
 
 class LoadNamazEvent extends NamazEvents {
+  final String period;
   final String gender;
-  final String namazTitle;
 
   LoadNamazEvent({
+    this.period,
     this.gender,
-    this.namazTitle,
   });
 }

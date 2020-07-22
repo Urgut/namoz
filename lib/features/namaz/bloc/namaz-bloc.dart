@@ -22,7 +22,7 @@ class NamazBloc extends Bloc<NamazEvents, NamazState> {
 
       // Get Data. No matter where get data) From network, local data or storage, depends on busunuess
       NamazWrapper data = await this.getData(
-        namazTitle: event.namazTitle,
+        period: event.period,
         gender: event.gender,
       );
 
@@ -32,11 +32,11 @@ class NamazBloc extends Bloc<NamazEvents, NamazState> {
   }
 
   Future<NamazWrapper> getData({
+    @required period,
     @required gender,
-    @required namazTitle,
   }) {
     return this.repos.getData(
-          namazTitle: namazTitle,
+          period: period,
           gender: gender,
         );
   }
