@@ -20,10 +20,51 @@ class _NamazPartDetailPageState extends State<NamazPartDetailPage> {
   int partsLength;
   List<IPart> parts = [];
 
+  // Tab
+  int selectedMenuIndex = 0;
+
+  List<String> menuHeaderData = [];
+  List<String> menuContentData = [];
+
   @override
-  Widget build(BuildContext context) {
+  void initState() {
+    super.initState();
+
     this.parts = this.widget.params['parts'];
     this.partsLength = this.parts.length;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // Reset
+    menuHeaderData = [];
+    menuContentData = [];
+
+    IPart part = this.parts[this.partIndex];
+
+    // Transcript
+    if (part.transcript != null && part.transcript != "") {
+      menuHeaderData.add("TR");
+      menuContentData.add(part.transcript);
+    }
+
+    // Transltion
+    if (part.translation != null && part.translation != "") {
+      menuHeaderData.add("KZ");
+      menuContentData.add(part.translation);
+    }
+
+    // Arabic
+    if (part.arabic != null && part.arabic != "") {
+      menuHeaderData.add("AR");
+      menuContentData.add(part.arabic);
+    }
+
+    // Description
+    if (part.description != null && part.description != "") {
+      menuHeaderData.add("i");
+      menuContentData.add(part.description);
+    }
 
     return Scaffold(
       appBar: appBar(),
@@ -93,12 +134,11 @@ class _NamazPartDetailPageState extends State<NamazPartDetailPage> {
             PartImage(image: part.image),
             SizedBox(height: 20),
             Container(
-              decoration: BoxDecoration(border: Border.all(width: 1)),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   rakaatLabelUI(part.rakaatName),
-                  Text('Menu'),
+                  partMenu(),
                 ],
               ),
             ),
@@ -110,6 +150,45 @@ class _NamazPartDetailPageState extends State<NamazPartDetailPage> {
         ),
       ),
     );
+  }
+
+  Widget partMenu() {
+    return Container(
+      child: Row(
+        children: this.menuHeaderData.asMap().entries.map((entry) {
+          return GestureDetector(
+            onTap: () => onPartMenuChanged(entry.key),
+            child: Container(
+              child: Text(
+                entry.value,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    color: entry.key == selectedMenuIndex
+                        ? Colors.white
+                        : Color(0XFF3E4352)),
+              ),
+              width: 30,
+              padding: EdgeInsets.all(5),
+              margin: EdgeInsets.symmetric(horizontal: 2),
+              decoration: BoxDecoration(
+                border:
+                    Border.all(width: 1, color: Colors.black.withOpacity(0.3)),
+                borderRadius: BorderRadius.all(Radius.circular(20)),
+                color: entry.key == selectedMenuIndex
+                    ? Color(0XFF3E4352)
+                    : Color(0XFFE5E5E5),
+              ),
+            ),
+          );
+        }).toList(),
+      ),
+    );
+  }
+
+  onPartMenuChanged(index) {
+    setState(() {
+      this.selectedMenuIndex = index;
+    });
   }
 
   Widget audioContent(IPart part) {
@@ -125,12 +204,13 @@ class _NamazPartDetailPageState extends State<NamazPartDetailPage> {
   }
 
   Widget rakaatLabelUI(String l) {
-    return Text(l);
+    return Text(AppLocalizations.of(context).translate(l));
   }
 
   goPrev() {
     if (this.partIndex > 0) {
       setState(() {
+        this.selectedMenuIndex = 0;
         this.partIndex--;
       });
     }
@@ -140,25 +220,29 @@ class _NamazPartDetailPageState extends State<NamazPartDetailPage> {
     if (this.partIndex < (this.partsLength - 1)) {
       setState(() {
         this.partIndex++;
+        this.selectedMenuIndex = 0;
       });
     }
   }
 
   Widget textUI(String t) {
-    return Container(
-      child: Row(
-        children: [
-          prevButtonUI(),
-          Expanded(
-            child: Html(
-              data: t,
-              padding: EdgeInsets.all(5),
-              customTextAlign: (elem) => TextAlign.center,
+    return this.menuContentData.length > 0 &&
+            this.menuContentData[this.selectedMenuIndex] != null
+        ? Container(
+            child: Row(
+              children: [
+                prevButtonUI(),
+                Expanded(
+                  child: Html(
+                    data: this.menuContentData[this.selectedMenuIndex],
+                    padding: EdgeInsets.all(5),
+                    customTextAlign: (elem) => TextAlign.center,
+                  ),
+                ),
+                nextButtonUI(),
+              ],
             ),
-          ),
-          nextButtonUI(),
-        ],
-      ),
-    );
+          )
+        : Container();
   }
 }
