@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:namazapp/core/services/future.service.dart';
 import 'package:namazapp/features/namaz/data/factory/namaz-factory.dart';
 import 'package:namazapp/features/namaz/data/models/namaz-wrapper.model.dart';
-import 'package:namazapp/features/namaz/data/namaz/base-namaz.dart';
-import 'package:namazapp/features/namaz/data/namaz/namaz.dart';
 import 'package:namazapp/features/namaz/data/repositories/namaz.repository.dart';
 
 /*

@@ -115,9 +115,9 @@ class _NamazPartDetailPageState extends State<NamazPartDetailPage> {
   Widget audioContent(IPart part) {
     return part.audio != null && part.audio.length > 0
         ? Container(
-            width: double.infinity,                        
+            width: double.infinity,
             child: AppPlayer(
-              audioFilePath: part.audio[0],
+              audioFilePath: part.audio,
               basePath: 'assets/audio/namaz',
             ),
           )

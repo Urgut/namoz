@@ -262,10 +262,12 @@ class _NamazGeneralPageState extends State<NamazGeneralPage> {
 
     for (int i = 0; i < parts.length; i++) {
       result.add(NamazShortPart(parts[i].title));
-      result.add(Text(
-        "|",
-        style: TextStyle(fontSize: 14, color: Colors.black.withOpacity(0.3)),
-      ));
+      if (i != (parts.length - 1)) {
+        result.add(Text(
+          "|",
+          style: TextStyle(fontSize: 14, color: Colors.black.withOpacity(0.3)),
+        ));
+      }
     }
 
     return Container(
