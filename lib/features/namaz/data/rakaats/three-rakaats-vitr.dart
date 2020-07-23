@@ -1,8 +1,9 @@
+import 'package:namazapp/features/namaz/data/factory/aguzu-bismilla-factory.dart';
 import 'package:namazapp/features/namaz/data/factory/attahiyat-factory.dart';
-import 'package:namazapp/features/namaz/data/factory/attahiyat-salauat-factory.dart';
-import 'package:namazapp/features/namaz/data/factory/fatiha-kausar-factory.dart';
-import 'package:namazapp/features/namaz/data/factory/kiyam-factory.dart';
-import 'package:namazapp/features/namaz/data/factory/kiyam-fatiha-asr-factory.dart';
+import 'package:namazapp/features/namaz/data/factory/fatiha-factory.dart';
+import 'package:namazapp/features/namaz/data/factory/kausar-factory.dart';
+import 'package:namazapp/features/namaz/data/factory/subhanaka-factory.dart';
+import 'package:namazapp/features/namaz/data/factory/asr-factory.dart';
 import 'package:namazapp/features/namaz/data/factory/kunut-factory.dart';
 import 'package:namazapp/features/namaz/data/factory/niet-factory.dart';
 import 'package:namazapp/features/namaz/data/factory/rukuh-back-factory.dart';
@@ -26,15 +27,17 @@ class ThreeRakaatsVitr {
     NamazRakaatModel r1 = NamazRakaatModel(
       title: '1_rakaat',
       parts: [
-        PartNietFactory().create(this.gender),
-        PartTakbirFactory().create(this.gender),
-        PartKiyamFactory().create(this.gender),
-        PartKiyamFatihaAsrFactory().create(this.gender),
-        PartRukuhGoFactory().create(this.gender),
-        PartRukuhBackFactory().create(this.gender),
-        PartSajdeFirstFactory().create(this.gender),
-        PartSittinFactory().create(this.gender),
-        PartSajdeSecondFactory().create(this.gender),
+        PartNietFactory().create(gender),
+        PartTakbirFactory().create(gender),
+        FactoryPartSubhanaka().create(gender),
+        PartAguzuBismillaFactory().create(gender),
+        FatihaPartFactory().create(gender),
+        FactoryPartAsrFactory().create(gender),
+        PartRukuhGoFactory().create(gender),
+        PartRukuhBackFactory().create(gender),
+        PartSajdeFirstFactory().create(gender),
+        PartSittinFactory().create(gender),
+        PartSajdeSecondFactory().create(gender),
       ],
     );
 
@@ -47,7 +50,6 @@ class ThreeRakaatsVitr {
         PartSajdeFirstFactory().create(this.gender),
         PartSittinFactory().create(this.gender),
         PartSajdeSecondFactory().create(this.gender),
-        PartAttahiyatSalauatFactory().create(this.gender),
         PartAttahiyatFactory().create(this.gender),
       ],
     );
@@ -55,14 +57,14 @@ class ThreeRakaatsVitr {
     NamazRakaatModel r3 = NamazRakaatModel(
       title: '3_rakaat',
       parts: [
-        PartFatihaKausarFactory().create(this.gender),
+        FatihaPartFactory().create(gender),
+        FactoryPartAsrFactory().create(gender),
         PartKunutFactory().create(this.gender),
         PartRukuhGoFactory().create(this.gender),
         PartRukuhBackFactory().create(this.gender),
         PartSajdeFirstFactory().create(this.gender),
         PartSittinFactory().create(this.gender),
         PartSajdeSecondFactory().create(this.gender),
-        PartAttahiyatSalauatFactory().create(this.gender),
         PartSalemFactory().create(this.gender),
       ],
     );

@@ -5,7 +5,7 @@ class TakbirPart implements IPart {
   String description =
       'Намаз басталғанда ер адам алақанын қыблаға қаратып, бас бармағын құлаққа әкеліп «Аллаһу Акбар» дейді';
   String image = '';
-  List<String> audio = [];
+  String audio;
   String transcript = 'Аллаху Акбар!';
   String translation = "Алла аса ұлы!";
   String arabic = "الله أكبر";

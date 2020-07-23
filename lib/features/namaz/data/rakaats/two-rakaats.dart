@@ -1,10 +1,10 @@
 import 'package:namazapp/features/namaz/data/factory/aguzu-bismilla-factory.dart';
 import 'package:namazapp/features/namaz/data/factory/allahumma_barik.factory.dart';
 import 'package:namazapp/features/namaz/data/factory/allahumma_salli.factory.dart';
-import 'package:namazapp/features/namaz/data/factory/attahiyat-salauat-factory.dart';
-import 'package:namazapp/features/namaz/data/factory/fatiha-kausar-factory.dart';
-import 'package:namazapp/features/namaz/data/factory/kiyam-factory.dart';
-import 'package:namazapp/features/namaz/data/factory/kiyam-fatiha-asr-factory.dart';
+import 'package:namazapp/features/namaz/data/factory/attahiyat-factory.dart';
+import 'package:namazapp/features/namaz/data/factory/fatiha-factory.dart';
+import 'package:namazapp/features/namaz/data/factory/subhanaka-factory.dart';
+import 'package:namazapp/features/namaz/data/factory/asr-factory.dart';
 import 'package:namazapp/features/namaz/data/factory/niet-factory.dart';
 import 'package:namazapp/features/namaz/data/factory/rabbana_atina.factory.dart';
 import 'package:namazapp/features/namaz/data/factory/rukuh-back-factory.dart';
@@ -16,7 +16,7 @@ import 'package:namazapp/features/namaz/data/factory/sitting-factory.dart';
 import 'package:namazapp/features/namaz/data/factory/takbir-factory.dart';
 import 'package:namazapp/features/namaz/data/interfaces/part-iterface.dart';
 import 'package:namazapp/features/namaz/data/models/namaz-rakaat.model.dart';
-import 'package:namazapp/features/namaz/data/rakaats/fajr/base-rakaats.dart';
+import 'package:namazapp/features/namaz/data/rakaats/base-rakaats.dart';
 
 class TwoRakaats extends BaseRakaats {
   final String gender;
@@ -31,16 +31,17 @@ class TwoRakaats extends BaseRakaats {
       title: '1_rakaat',
       isRakaat: true,
       parts: [
-        PartNietFactory().create(this.gender),
-        PartTakbirFactory().create(this.gender),
-        PartKiyamFactory().create(this.gender),
-        PartAguzuBismillaFactory().create(this.gender),
-        PartKiyamFatihaAsrFactory().create(this.gender),
-        PartRukuhGoFactory().create(this.gender),
-        PartRukuhBackFactory().create(this.gender),
-        PartSajdeFirstFactory().create(this.gender),
-        PartSittinFactory().create(this.gender),
-        PartSajdeSecondFactory().create(this.gender),
+        PartNietFactory().create(gender),
+        PartTakbirFactory().create(gender),
+        FactoryPartSubhanaka().create(gender),
+        PartAguzuBismillaFactory().create(gender),
+        FatihaPartFactory().create(gender),
+        FactoryPartAsrFactory().create(gender),
+        PartRukuhGoFactory().create(gender),
+        PartRukuhBackFactory().create(gender),
+        PartSajdeFirstFactory().create(gender),
+        PartSittinFactory().create(gender),
+        PartSajdeSecondFactory().create(gender),
       ],
     );
 
@@ -48,12 +49,13 @@ class TwoRakaats extends BaseRakaats {
       title: '2_rakaat',
       isRakaat: true,
       parts: [
-        PartFatihaKausarFactory().create(this.gender),
-        PartRukuhGoFactory().create(this.gender),
-        PartRukuhBackFactory().create(this.gender),
-        PartSajdeFirstFactory().create(this.gender),
-        PartSittinFactory().create(this.gender),
-        PartSajdeSecondFactory().create(this.gender),
+        FatihaPartFactory().create(gender),
+        FactoryPartAsrFactory().create(gender),
+        PartRukuhGoFactory().create(gender),
+        PartRukuhBackFactory().create(gender),
+        PartSajdeFirstFactory().create(gender),
+        PartSittinFactory().create(gender),
+        PartSajdeSecondFactory().create(gender),
       ],
     );
 
@@ -61,11 +63,11 @@ class TwoRakaats extends BaseRakaats {
       title: 'otyrys',
       isRakaat: false,
       parts: [
-        PartAttahiyatSalauatFactory().create(this.gender),
-        PartAllhummaSalliFactory().create(this.gender),
-        PartAllhummaBarikFactory().create(this.gender),
-        PartRabbanaAtinaFactory().create(this.gender),
-        PartSalemFactory().create(this.gender),
+        PartAttahiyatFactory().create(gender),
+        PartAllhummaSalliFactory().create(gender),
+        PartAllhummaBarikFactory().create(gender),
+        PartRabbanaAtinaFactory().create(gender),
+        PartSalemFactory().create(gender),
       ],
     );
 

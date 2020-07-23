@@ -4,8 +4,8 @@ import 'package:namazapp/core/data/datasources/namaz-list.data.dart';
 import 'package:namazapp/features/namaz/data/models/namaz-rakaat.model.dart';
 import 'package:namazapp/features/namaz/data/models/namaz-wrapper.model.dart';
 import 'package:namazapp/features/namaz/data/namaz/namaz.dart';
-import 'package:namazapp/features/namaz/data/rakaats/fajr/base-rakaats.dart';
-import 'package:namazapp/features/namaz/data/rakaats/fajr/two-rakaats.dart';
+import 'package:namazapp/features/namaz/data/rakaats/base-rakaats.dart';
+import 'package:namazapp/features/namaz/data/rakaats/two-rakaats.dart';
 
 class NamazFactory {
   /*

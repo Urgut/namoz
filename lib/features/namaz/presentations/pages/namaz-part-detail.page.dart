@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:namazapp/features/namaz/data/interfaces/part-iterface.dart';
 import 'package:namazapp/features/namaz/presentations/widgets/part-image/part-image.dart';
+import 'package:namazapp/features/namaz/presentations/widgets/part-title/part-title.dart';
 import 'package:namazapp/localization.dart';
+import 'package:namazapp/shared/widgets/audioplayer/app-player.dart';
 import 'package:namazapp/shared/widgets/wrapper.dart';
 
 class NamazPartDetailPage extends StatefulWidget {
@@ -25,7 +27,11 @@ class _NamazPartDetailPageState extends State<NamazPartDetailPage> {
 
     return Scaffold(
       appBar: appBar(),
-      body: buildContent(),
+      body: AppWrapperWidget.wrapPageWithPadding(
+        top: 0,
+        bottom: 0,
+        page: getPart(this.partIndex),
+      ),
     );
   }
 
@@ -53,14 +59,6 @@ class _NamazPartDetailPageState extends State<NamazPartDetailPage> {
     );
   }
 
-  Widget buildContent() {
-    return SingleChildScrollView(
-      child: AppWrapperWidget.wrapPageWithPadding(
-        page: getPart(this.partIndex),
-      ),
-    );
-  }
-
   Widget prevButtonUI() {
     return GestureDetector(
       child: Icon(Icons.arrow_back_ios, color: Colors.black.withOpacity(0.5)),
@@ -81,32 +79,53 @@ class _NamazPartDetailPageState extends State<NamazPartDetailPage> {
 
     return Column(
       children: [
-        PartImage(image: part.image),
-        SizedBox(height: 20),
-        Container(
-          decoration: BoxDecoration(border: Border.all(width: 1)),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              rakaatLabelUI(part.rakaatName),
-              Text('Menu'),
-            ],
-          ),
-        ),
-        SizedBox(height: 50),
-        this.partTitleUI(part.title),
-        SizedBox(height: 16),
-        textUI(part.transcript),
+        mainContent(part),
+        audioContent(part),
       ],
     );
   }
 
-  Widget rakaatLabelUI(String l) {
-    return Text(l);
+  Widget mainContent(IPart part) {
+    return Expanded(
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            PartImage(image: part.image),
+            SizedBox(height: 20),
+            Container(
+              decoration: BoxDecoration(border: Border.all(width: 1)),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  rakaatLabelUI(part.rakaatName),
+                  Text('Menu'),
+                ],
+              ),
+            ),
+            SizedBox(height: 35),
+            PartTitle(part.title),
+            SizedBox(height: 16),
+            textUI(part.transcript),
+          ],
+        ),
+      ),
+    );
   }
 
-  Widget partTitleUI(String title) {
-    return Text(title, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold));
+  Widget audioContent(IPart part) {
+    return part.audio != null && part.audio.length > 0
+        ? Container(
+            width: double.infinity,                        
+            child: AppPlayer(
+              audioFilePath: part.audio[0],
+              basePath: 'assets/audio/namaz',
+            ),
+          )
+        : Container();
+  }
+
+  Widget rakaatLabelUI(String l) {
+    return Text(l);
   }
 
   goPrev() {
@@ -131,10 +150,12 @@ class _NamazPartDetailPageState extends State<NamazPartDetailPage> {
         children: [
           prevButtonUI(),
           Expanded(
-              child: Html(
-            data: t,
-            padding: EdgeInsets.all(5),
-          )),
+            child: Html(
+              data: t,
+              padding: EdgeInsets.all(5),
+              customTextAlign: (elem) => TextAlign.center,
+            ),
+          ),
           nextButtonUI(),
         ],
       ),

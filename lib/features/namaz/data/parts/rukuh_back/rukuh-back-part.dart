@@ -5,7 +5,7 @@ class RukuhBackPart implements IPart {
   String description =
       '<div><p>Рукуғтан тұрып бара жатып: &laquo;Сәми&rsquo; Аллаһу лимән хамидаһ&raquo; дейді (имам дауыстап айтады)</p><p>Денесін туралаған кезде &laquo;Раббәнә уә ләкәл-хамд&raquo; дейді.</p></div>';
   String image = '';
-  List<String> audio = [];
+  String audio = "";
   String transcript =
       "<p>Сәми&rsquo; Аллаһу лимән хамидаһ</p><p>Раббәнә уә ләкәл-хамд</p>";
   String translation =

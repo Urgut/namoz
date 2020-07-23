@@ -5,7 +5,7 @@ class SajdeSecondPart implements IPart {
   String description =
       "Содан соң қайта сәждеге (имам дауыстап) «Аллаһу Акбар» деп барады да, қайтадан «Субхана Раббиял-а’ла» деп 3 рет айтады";
   String image = '';
-  List<String> audio = [];
+  String audio = "";
   String transcript =
       "<p>Субхана Раббиял-а&rsquo;ла</p><p>Субхана Раббиял-а&rsquo;ла</p><p>Субхана Раббиял-а&rsquo;ла</p>";
   String translation =

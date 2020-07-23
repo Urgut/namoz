@@ -5,9 +5,7 @@ class AttahiyatPart implements IPart {
   String description =
       "<p>Осылай отырып &laquo;әт-тахият&raquo; дұғасын оқиды.</p>";
   String image = '';
-  List<String> audio = [
-    "attahiat.mp3",
-  ];
+  String audio = "attahiat.mp3";
   String transcript =
       "<p>&laquo;Әт-тахияту лиллаһи уас-салауату уат-таййбат, әс-сәламу &rsquo;аләйка әйюһән-нәби, уә рахмәтуллаһи уә бәрәкатуһу, әс-сәламу &rsquo;аләйна уә &rsquo;ала ибәдиллаһис-салихин, әшһаду әл-лә иләһә иллаллаһ уә әшһәду әннә Мухаммәдән &rsquo;абдуһу уә расулуһ&raquo;</p>";
   String translation =

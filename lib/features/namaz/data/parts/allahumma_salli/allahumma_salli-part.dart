@@ -4,9 +4,7 @@ class PartAllahummaSalliPart implements IPart {
   String title = 'Аллахумма салли';
   String description = "<p>Салауат дұғалары.</p>";
   String image = '';
-  List<String> audio = [
-    "sali.mp3",
-  ];
+  String audio = "sali.mp3";
   String transcript =
       "<p>Аллаһумма салли &rsquo;ала Мухаммәд, уә &rsquo;ала әли Мухаммәд. Кәмә саллайта &rsquo;ала Ибраһим,<br />уә &rsquo;ала әли Ибраһим. Иннәкә хамидум-мәжид.";
   String translation =

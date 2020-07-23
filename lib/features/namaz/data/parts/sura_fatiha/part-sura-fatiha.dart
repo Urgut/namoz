@@ -1,12 +1,11 @@
 import 'package:namazapp/features/namaz/data/interfaces/part-iterface.dart';
 
-class FatihaPart implements IPart {
-  String title = 'Қиям';
+class PartSuraFatiha implements IPart {
+  String title = 'Фатиха сүресі';
   String description = '';
   String image = '';
-  List<String> audio = [
-    "fatiha.mp3",
-  ];
+  String audio = "fatiha.mp3";
+
   String transcript =
       '<div>Фатиха сүресі</div><p>(1) Әлхәмду лилләһи раббил-&lsquo;аләмиин<br />(2) Әр-рахманир-рахиим<br />(3) Мәлики йәумид-диин<br />(4) Иййәкә нә&lsquo;буду уәиййәкә нәстә&lsquo;иин<br />(5) Иһдинәс-сирәатал-мустақиим<br />(6) Сиратал-ләз̃иинә ән&lsquo;амтә &lsquo;аләйһим<br />(7) Ғайрил-мәғдууби &lsquo;аләйһим уәләддаллиин</p>';
   String translation =

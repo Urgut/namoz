@@ -1,15 +1,15 @@
-import 'package:namazapp/features/namaz/data/parts/fatiha/fatiha-man-part.dart';
-import 'package:namazapp/features/namaz/data/parts/fatiha/fatiha-part.dart';
-import 'package:namazapp/features/namaz/data/parts/fatiha/fatiha-woman-part.dart';
+import 'package:namazapp/features/namaz/data/parts/sura_fatiha/part-sura-fatiha-man.dart';
+import 'package:namazapp/features/namaz/data/parts/sura_fatiha/part-sura-fatiha-woman.dart';
+import 'package:namazapp/features/namaz/data/parts/sura_fatiha/part-sura-fatiha.dart';
 
-class PartFatihaFactory {
-  FatihaPart create(String gender) {
+class FatihaPartFactory {
+  PartSuraFatiha create(String gender) {
     if (gender == 'man') {
-      return FatihaManPart();
+      return PartSuraFatihaMan();
     }
 
     if (gender == 'woman') {
-      return FatihaWomanPart();
+      return PartSuraFatihaWoman();
     }
 
     return null;

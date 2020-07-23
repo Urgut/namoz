@@ -4,9 +4,9 @@ class NietPart implements IPart {
   String title = 'Ниет ету';
   String description = 'Жүрекпен ниет ету-парыз, тілмен айту-мұстахап.';
   String image = '';
-  List<String> audio = [];
+  String audio = "";
   String transcript = '';
   String translation = "";
-  String arabic = "";  
-  String rakaatName = "";  
+  String arabic = "";
+  String rakaatName = "";
 }

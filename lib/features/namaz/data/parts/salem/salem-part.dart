@@ -5,7 +5,7 @@ class SalemPart implements IPart {
   String description =
       "<p>Оң жағына басын бұрып &laquo;Әс-сәләму &rsquo;аләйкум уа рахматуллаһ&raquo; деп сәлем береді;</p><p>Сосын сол жағына қарап &laquo;Әс-сәләму &rsquo;аләйкум уа рахматуллаһ&raquo; деп</p>";
   String image = '';
-  List<String> audio = [];
+  String audio = "";
   String transcript =
       "<p>Әс-сәләму &rsquo;аләйкум уа рахматуллаһ</p><p>Әс-сәләму &rsquo;аләйкум уа рахматуллаһ</p>";
   String translation =

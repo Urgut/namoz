@@ -4,9 +4,7 @@ class RabbanaAtinaPart implements IPart {
   String title = 'Раббана әтина';
   String description = "<p>Раббана әтина.</p>";
   String image = '';
-  List<String> audio = [
-    "rabanna.mp3",
-  ];
+  String audio = "rabanna.mp3";
   String transcript =
       "<p>Раббәнә әәтинә фид-дүния хасанатән, уа фил-аахирати хасанатән, уа қинәә азәбән-нәр</p>";
   String translation =

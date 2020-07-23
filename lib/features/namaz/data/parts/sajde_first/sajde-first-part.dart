@@ -5,7 +5,7 @@ class SajdeFirstPart implements IPart {
   String description =
       '<p>Сәждеге бара жатып &laquo;Аллаһу Акбар&raquo; дейді (имам дайыстайды)</p><p>Сәждеге барғанда екі тізе, екі алақан, мұрын мен маңдай жерге тиген кезде &laquo;Субхана Раббиял-а&rsquo;ла&raquo; деп 3 рет айтады.</p>';
   String image = '';
-  List<String> audio = [];
+  String audio = "";
   String transcript =
       "<p>Субхана Раббиял-а&rsquo;ла</p><p>Субхана Раббиял-а&rsquo;ла</p><p>Субхана Раббиял-а&rsquo;ла</p>";
   String translation =
