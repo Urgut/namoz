@@ -17,6 +17,7 @@ dependencies:
   assets_audio_player: ^1.6.3+1
   flutter_localizations:
     sdk: flutter
+  percent_indicator: ^2.1.5
 
   cupertino_icons: ^0.1.3
 

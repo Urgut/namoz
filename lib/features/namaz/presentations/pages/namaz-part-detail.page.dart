@@ -5,7 +5,9 @@ import 'package:namazapp/features/namaz/presentations/widgets/part-image/part-im
 import 'package:namazapp/features/namaz/presentations/widgets/part-title/part-title.dart';
 import 'package:namazapp/localization.dart';
 import 'package:namazapp/shared/widgets/audioplayer/app-player.dart';
+import 'package:namazapp/shared/widgets/theme-appbar/theme-appbar.dart';
 import 'package:namazapp/shared/widgets/wrapper.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class NamazPartDetailPage extends StatefulWidget {
   final params;
@@ -26,6 +28,8 @@ class _NamazPartDetailPageState extends State<NamazPartDetailPage> {
   List<String> menuHeaderData = [];
   List<String> menuContentData = [];
 
+  double width;
+
   @override
   void initState() {
     super.initState();
@@ -36,6 +40,33 @@ class _NamazPartDetailPageState extends State<NamazPartDetailPage> {
 
   @override
   Widget build(BuildContext context) {
+    this.width = MediaQuery.of(context).size.width;
+
+    reBuildMenu();
+
+    return Scaffold(
+      appBar: ThemeAppBar(this.header()),
+      body: AppWrapperWidget.wrapPageWithPadding(
+        top: 0,
+        bottom: 0,
+        page: getPart(this.partIndex),
+      ),
+      backgroundColor: Colors.white,
+    );
+  }
+
+  header() => Text(
+        AppLocalizations.of(context).translate(
+              this.widget.params['period'],
+            ) +
+            ": " +
+            AppLocalizations.of(context).translate(
+              this.widget.params['namazTitle'],
+            ),
+        style: TextStyle(color: Colors.black),
+      );
+
+  reBuildMenu() {
     // Reset
     menuHeaderData = [];
     menuContentData = [];
@@ -62,18 +93,9 @@ class _NamazPartDetailPageState extends State<NamazPartDetailPage> {
 
     // Description
     if (part.description != null && part.description != "") {
-      menuHeaderData.add("i");
+      menuHeaderData.add("IN");
       menuContentData.add(part.description);
     }
-
-    return Scaffold(
-      appBar: appBar(),
-      body: AppWrapperWidget.wrapPageWithPadding(
-        top: 0,
-        bottom: 0,
-        page: getPart(this.partIndex),
-      ),
-    );
   }
 
   Widget appBar() {
@@ -131,8 +153,9 @@ class _NamazPartDetailPageState extends State<NamazPartDetailPage> {
       child: SingleChildScrollView(
         child: Column(
           children: [
+            proggressBar(),
             PartImage(image: part.image),
-            SizedBox(height: 20),
+            SizedBox(height: 16),
             Container(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -152,6 +175,28 @@ class _NamazPartDetailPageState extends State<NamazPartDetailPage> {
     );
   }
 
+  Widget proggressBar() {
+    return Container(
+      width: double.infinity,
+      child: LinearPercentIndicator(
+        padding: EdgeInsets.zero,
+        percent: this.getPercentage(),
+        animation: true,
+        progressColor: Color(0XFFF2C94D),
+        backgroundColor: Colors.white,        
+      ),
+    );
+  }
+
+  getPercentage() {    
+    double onePercentageValue = (100 / this.parts.length);
+    double result = partIndex == this.parts.length - 1
+        ? 1
+        : (this.partIndex * onePercentageValue) / 100;
+    print('Percentage: $result');
+    return result;
+  }
+
   Widget partMenu() {
     return Container(
       child: Row(
@@ -163,17 +208,19 @@ class _NamazPartDetailPageState extends State<NamazPartDetailPage> {
                 entry.value,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                    color: entry.key == selectedMenuIndex
-                        ? Colors.white
-                        : Color(0XFF3E4352)),
+                  color: entry.key == selectedMenuIndex
+                      ? Colors.white
+                      : Color(0XFF3E4352),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 11,
+                ),
               ),
-              width: 30,
+              // width: 30,
               padding: EdgeInsets.all(5),
               margin: EdgeInsets.symmetric(horizontal: 2),
-              decoration: BoxDecoration(
-                border:
-                    Border.all(width: 1, color: Colors.black.withOpacity(0.3)),
-                borderRadius: BorderRadius.all(Radius.circular(20)),
+              decoration: BoxDecoration(                
+                // borderRadius: BorderRadius.all(Radius.circular(15)),
+                shape: BoxShape.circle,
                 color: entry.key == selectedMenuIndex
                     ? Color(0XFF3E4352)
                     : Color(0XFFE5E5E5),
@@ -204,7 +251,10 @@ class _NamazPartDetailPageState extends State<NamazPartDetailPage> {
   }
 
   Widget rakaatLabelUI(String l) {
-    return Text(AppLocalizations.of(context).translate(l));
+    return Text(
+      AppLocalizations.of(context).translate(l) + ':',
+      style: TextStyle(fontSize: 16, color: Color(0XFF3F3D56)),
+    );
   }
 
   goPrev() {
@@ -236,7 +286,7 @@ class _NamazPartDetailPageState extends State<NamazPartDetailPage> {
                   child: Html(
                     data: this.menuContentData[this.selectedMenuIndex],
                     padding: EdgeInsets.all(5),
-                    customTextAlign: (elem) => TextAlign.center,
+                    customTextAlign: (elem) => TextAlign.center,                    
                   ),
                 ),
                 nextButtonUI(),

@@ -22,10 +22,12 @@ class _AppPlayerState extends State<AppPlayer> {
     return AudioWidget.assets(
       path: '${this.widget.basePath}/${this.widget.audioFilePath}',
       play: _play,
-      child: RaisedButton(
-          child: Text(
-            _play ? "Пауза" : "Дыбыстау",
+      child: IconButton(
+          icon: Icon(
+            _play ? Icons.pause_circle_outline : Icons.play_circle_outline,
           ),
+          iconSize: 46,
+          color: Color(0XFF0064A0).withOpacity(0.9),
           onPressed: () {
             setState(() {
               _play = !_play;
