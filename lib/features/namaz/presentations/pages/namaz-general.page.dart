@@ -11,6 +11,7 @@ import 'package:namazapp/features/namaz/data/models/namaz-rakaat.model.dart';
 import 'package:namazapp/features/namaz/data/models/namaz-wrapper.model.dart';
 import 'package:namazapp/features/namaz/data/namaz/namaz.dart';
 import 'package:namazapp/features/namaz/presentations/widgets/namaz-part/namaz-part.dart';
+import 'package:namazapp/features/namaz/presentations/widgets/part-image/part-image.dart';
 import 'package:namazapp/localization.dart';
 import 'package:namazapp/locator.dart';
 import 'package:namazapp/shared/widgets/empty.dart';
@@ -202,7 +203,7 @@ class _NamazGeneralPageState extends State<NamazGeneralPage> {
       child: Container(
         child: Column(children: [
           SizedBox(height: 10),
-          buildImage(),
+          PartImage(image: 'assets/images/namaz/man/kiyam.png'),
           SizedBox(height: 10),
           Container(
             child: Text(
@@ -218,15 +219,6 @@ class _NamazGeneralPageState extends State<NamazGeneralPage> {
           SizedBox(height: 10),
           buildRakats(n.rakaats),
         ]),
-      ),
-    );
-  }
-
-  Widget buildImage() {
-    return Container(
-      child: Image.asset(
-        'assets/images/namaz/man/kiyam.png',
-        height: 200,
       ),
     );
   }
