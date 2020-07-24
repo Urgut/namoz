@@ -1,16 +1,10 @@
-import 'package:namazapp/features/namaz/data/factory/attahiyat-factory.dart';
-import 'package:namazapp/features/namaz/data/factory/kausar-factory.dart';
-import 'package:namazapp/features/namaz/data/factory/niet-factory.dart';
-import 'package:namazapp/features/namaz/data/factory/rukuh-back-factory.dart';
-import 'package:namazapp/features/namaz/data/factory/rukuh-go-factory.dart';
-import 'package:namazapp/features/namaz/data/factory/sajde-first-factory.dart';
-import 'package:namazapp/features/namaz/data/factory/sajde-second-factory.dart';
-import 'package:namazapp/features/namaz/data/factory/salem-factory.dart';
-import 'package:namazapp/features/namaz/data/factory/sitting-factory.dart';
-import 'package:namazapp/features/namaz/data/factory/takbir-factory.dart';
+import 'package:namazapp/features/namaz/data/interfaces/part-iterface.dart';
 import 'package:namazapp/features/namaz/data/models/namaz-rakaat.model.dart';
+import 'package:namazapp/features/namaz/data/rakaats/base-rakaats.dart';
+import 'package:namazapp/features/namaz/data/rakaats/helpers/rakaat-helper.dart';
+import 'package:namazapp/features/namaz/data/rakaats/rakaat-data/rakaat-data.dart';
 
-class FourRakaats {
+class FourRakaats extends BaseRakaats {
   final String gender;
   List<NamazRakaatModel> rakaats = [];
 
@@ -19,58 +13,26 @@ class FourRakaats {
   }
 
   createRakaats() {
-    NamazRakaatModel r1 = NamazRakaatModel(
-      title: '1_rakaat',
-      parts: [
-        PartNietFactory().create(this.gender),
-        PartTakbirFactory().create(this.gender),
-        PartRukuhGoFactory().create(this.gender),
-        PartRukuhBackFactory().create(this.gender),
-        PartSajdeFirstFactory().create(this.gender),
-        PartSittinFactory().create(this.gender),
-        PartSajdeSecondFactory().create(this.gender),
-      ],
-    );
+    NamazRakaatModel r1 = RakaatData(gender: this.gender).getFirstRakaat();
+    NamazRakaatModel r2 = RakaatData(gender: this.gender).getSecondRakaat();
+    NamazRakaatModel otyrys = RakaatData(gender: this.gender).getOtyrys();
+    NamazRakaatModel r3 =
+        RakaatData(gender: this.gender).getNthRakaat('3_rakaat');
+    NamazRakaatModel r4 =
+        RakaatData(gender: this.gender).getNthRakaat('4_rakaat');
 
-    NamazRakaatModel r2 = NamazRakaatModel(
-      title: '2_rakaat',
-      parts: [
-        PartFatihaKausarFactory().create(this.gender),
-        PartRukuhGoFactory().create(this.gender),
-        PartRukuhBackFactory().create(this.gender),
-        PartSajdeFirstFactory().create(this.gender),
-        PartSittinFactory().create(this.gender),
-        PartSajdeSecondFactory().create(this.gender),
-        PartAttahiyatFactory().create(this.gender),
-      ],
-    );
-
-    NamazRakaatModel r3 = NamazRakaatModel(
-      title: '3_rakaat',
-      parts: [
-        PartRukuhGoFactory().create(this.gender),
-        PartRukuhBackFactory().create(this.gender),
-        PartSajdeFirstFactory().create(this.gender),
-        PartSittinFactory().create(this.gender),
-        PartSajdeSecondFactory().create(this.gender),
-      ],
-    );
-
-    NamazRakaatModel r4 = NamazRakaatModel(
-      title: '4_rakaat',
-      parts: [
-        PartRukuhGoFactory().create(this.gender),
-        PartRukuhBackFactory().create(this.gender),
-        PartSajdeFirstFactory().create(this.gender),
-        PartSittinFactory().create(this.gender),
-        PartSajdeSecondFactory().create(this.gender),
-        PartSalemFactory().create(this.gender),
-      ],
-    );
+    NamazRakaatModel lastOtyrys =
+        RakaatData(gender: this.gender).getLastOtyrys();
 
     this.rakaats.add(r1);
     this.rakaats.add(r2);
+    this.rakaats.add(otyrys);
     this.rakaats.add(r3);
     this.rakaats.add(r4);
+    this.rakaats.add(lastOtyrys);
+  }
+
+  List<IPart> getParts() {
+    return RakaatHelper(this.rakaats).getParts();
   }
 }

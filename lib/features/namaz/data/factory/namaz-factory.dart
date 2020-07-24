@@ -5,6 +5,9 @@ import 'package:namazapp/features/namaz/data/models/namaz-rakaat.model.dart';
 import 'package:namazapp/features/namaz/data/models/namaz-wrapper.model.dart';
 import 'package:namazapp/features/namaz/data/namaz/namaz.dart';
 import 'package:namazapp/features/namaz/data/rakaats/base-rakaats.dart';
+import 'package:namazapp/features/namaz/data/rakaats/four-rakaats.dart';
+import 'package:namazapp/features/namaz/data/rakaats/three-rakaats-vitr.dart';
+import 'package:namazapp/features/namaz/data/rakaats/three-rakaats.dart';
 import 'package:namazapp/features/namaz/data/rakaats/two-rakaats.dart';
 
 class NamazFactory {
@@ -43,11 +46,125 @@ class NamazFactory {
         period: period,
         title: NamazTypeListData.twoRakaatParyz,
         rakaats: twoRakaatsParyz,
-        parts: [],
+        parts: twoRakaatsSunna.getParts(),
       );
 
       namazList.add(fajrTwoRakaatSunnaNamaz);
       namazList.add(fajrTwoRakaatParyzNamaz);
+    }
+
+    // Dhuhr
+    if (period == NamazListData.dhuhr) {
+      // Sunnet namazy
+      BaseRakaats fourRakaats = FourRakaats(gender: gender);
+
+      Namaz fajrTwoRakaatSunnaNamaz = Namaz(
+        period: period,
+        title: NamazTypeListData.fourRakaatSunna,
+        rakaats: fourRakaats.rakaats,
+        parts: fourRakaats.getParts(),
+      );
+
+      // Paryz namazy
+      BaseRakaats fourRakaatsParyz = FourRakaats(gender: gender);
+
+      Namaz fourRakaatParyzNamaz = Namaz(
+        period: period,
+        title: NamazTypeListData.fourRakaatParyz,
+        rakaats: fourRakaatsParyz.rakaats,
+        parts: fourRakaatsParyz.getParts(),
+      );
+
+      BaseRakaats twoRakaatsSunna = TwoRakaats(gender: gender);
+
+      Namaz dhuhrTwoRakaatSunnaNamaz = Namaz(
+        period: period,
+        title: NamazTypeListData.twoRakaatSunna,
+        rakaats: twoRakaatsSunna.rakaats,
+        parts: twoRakaatsSunna.getParts(),
+      );
+
+      namazList.add(fajrTwoRakaatSunnaNamaz);
+      namazList.add(fourRakaatParyzNamaz);
+      namazList.add(dhuhrTwoRakaatSunnaNamaz);
+    }
+
+    // Asr
+    if (period == NamazListData.asr) {
+      // Paryz namazy
+      BaseRakaats asrFourRakaats = FourRakaats(gender: gender);
+
+      Namaz asrNamaz = Namaz(
+        period: period,
+        title: NamazTypeListData.fourRakaatParyz,
+        rakaats: asrFourRakaats.rakaats,
+        parts: asrFourRakaats.getParts(),
+      );
+
+      namazList.add(asrNamaz);
+    }
+
+    // Magrib
+    if (period == NamazListData.magrib) {
+      // Paryz namazy
+      BaseRakaats magribThreeRakaats = ThreeRakaats(gender: gender);
+
+      Namaz magribParyzNamaz = Namaz(
+        period: period,
+        title: NamazTypeListData.threeRakaatParyz,
+        rakaats: magribThreeRakaats.rakaats,
+        parts: magribThreeRakaats.getParts(),
+      );
+
+      // 2 sunna
+      BaseRakaats magribSunnaRakaats = TwoRakaats(gender: gender);
+
+      Namaz magribSunnaNamaz = Namaz(
+        period: period,
+        title: NamazTypeListData.twoRakaatSunna,
+        rakaats: magribSunnaRakaats.rakaats,
+        parts: magribSunnaRakaats.getParts(),
+      );
+
+      namazList.add(magribParyzNamaz);
+      namazList.add(magribSunnaNamaz);
+    }
+
+    // ISHA
+    if (period == NamazListData.isha) {
+      // Paryz namazy
+      BaseRakaats ishaFourRakaats = FourRakaats(gender: gender);
+      Namaz ishaParyzNamaz = Namaz(
+        period: period,
+        title: NamazTypeListData.fourRakaatParyz,
+        rakaats: ishaFourRakaats.rakaats,
+        parts: ishaFourRakaats.getParts(),
+      );
+
+      BaseRakaats ishaSunnaRakaats = TwoRakaats(gender: gender);
+      Namaz ishaSunnaNamaz = Namaz(
+        period: period,
+        title: NamazTypeListData.twoRakaatSunna,
+        rakaats: ishaSunnaRakaats.rakaats,
+        parts: ishaSunnaRakaats.getParts(),
+      );
+
+      namazList.add(ishaParyzNamaz);
+      namazList.add(ishaSunnaNamaz);
+    }
+
+    // VITR
+    if (period == NamazListData.vitr) {
+      BaseRakaats vitrRakaats = ThreeRakaatsVitr(gender: gender);
+
+      Namaz vitrNamaz = Namaz(
+        period: period,
+        title: NamazTypeListData.threeRakaatVitr,
+        rakaats: vitrRakaats.rakaats,
+        parts: vitrRakaats.getParts(),
+      );
+
+      namazList.add(vitrNamaz);
     }
 
     return NamazWrapper(
@@ -55,58 +172,5 @@ class NamazFactory {
       icon: "",
       namazList: namazList,
     );
-
-    // Dhuhr
-    // if (namazName == NamazListData.dhuhr) {
-    //   switch (namazType) {
-    //     case NamazTypeListData.fourRakaatSunna:
-    //     case NamazTypeListData.fourRakaatParyz:
-    //       rakaats = FourRakaats(gender: gender).rakaats;
-    //       break;
-    //     case NamazTypeListData.twoRakaatSunna:
-    //       rakaats = TwoRakaats(gender: gender).rakaats;
-    //       break;
-    //   }
-    // }
-
-    // // Asr
-    // if (namazName == NamazListData.asr) {
-    //   rakaats = FourRakaats(gender: gender).rakaats;
-    // }
-
-    // // Magrib
-    // if (namazName == NamazListData.magrib) {
-    //   switch (namazType) {
-    //     case NamazTypeListData.threeRakaatParyz:
-    //       rakaats = ThreeRakaats(gender: gender).rakaats;
-    //       break;
-    //     case NamazTypeListData.twoRakaatSunna:
-    //       rakaats = TwoRakaats(gender: gender).rakaats;
-    //       break;
-    //   }
-    // }
-
-    // // Isha
-    // if (namazName == NamazListData.isha) {
-    //   switch (namazType) {
-    //     case NamazTypeListData.fourRakaatParyz:
-    //       rakaats = FourRakaats(gender: gender).rakaats;
-    //       break;
-    //     case NamazTypeListData.twoRakaatSunna:
-    //       rakaats = TwoRakaats(gender: gender).rakaats;
-    //       break;
-    //   }
-    // }
-
-    // // Vitr
-    // if (namazName == NamazListData.isha) {
-    //   rakaats = ThreeRakaatsVitr(gender: gender).rakaats;
-    // }
-
-    // return Namaz(
-    //   title: namazName,
-    //   gender: gender,
-    //   rakaats: rakaats,
-    // );
   }
 }

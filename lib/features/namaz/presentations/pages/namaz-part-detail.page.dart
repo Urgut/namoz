@@ -124,7 +124,7 @@ class _NamazPartDetailPageState extends State<NamazPartDetailPage> {
 
   Widget prevButtonUI() {
     return GestureDetector(
-      child: Icon(Icons.arrow_back_ios, color: Colors.black.withOpacity(0.5)),
+      child: Icon(Icons.arrow_back_ios, color: Color(0XFF3E4352)),
       onTap: this.partIndex == 0 ? null : () => goPrev(),
     );
   }
@@ -132,7 +132,7 @@ class _NamazPartDetailPageState extends State<NamazPartDetailPage> {
   Widget nextButtonUI() {
     return GestureDetector(
         child:
-            Icon(Icons.arrow_forward_ios, color: Colors.black.withOpacity(0.5)),
+            Icon(Icons.arrow_forward_ios, color: Color(0XFF3E4352)),
         onTap:
             this.partIndex == (this.parts.length - 1) ? null : () => goNext());
   }
