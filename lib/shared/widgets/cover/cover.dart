@@ -66,11 +66,11 @@ class _CoverUIState extends State<CoverUI> {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [
-              const Color(0xFF000000).withOpacity(0),
-              const Color(0xFF000000).withOpacity(0),
-              Color(0xFF000000).withOpacity(0.6),
-            ],
+            // colors: [
+            //   const Color(0xFF000000).withOpacity(0),
+            //   const Color(0xFF000000).withOpacity(0),
+            //   Color(0xFF000000).withOpacity(0.6),
+            // ],
           ),
         ),
       );

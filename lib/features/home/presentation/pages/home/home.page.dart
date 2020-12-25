@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:namazapp/core/store/settings/gender-bloc.dart';
+import 'package:namazapp/core/store/settings/gender-events.dart';
+import 'package:namazapp/core/store/settings/gender-state.dart';
 import 'package:namazapp/features/home/bloc/sections-bloc.dart';
 import 'package:namazapp/features/home/bloc/sections-state.dart';
 import 'package:namazapp/features/home/presentation/widgets/main-menu/main-menu.dart';
 import 'package:namazapp/features/home/presentation/widgets/namaz-list/namaz-list.dart';
 import 'package:namazapp/localization.dart';
 import 'package:namazapp/shared/fonts/namaz_fonts.dart';
+import 'package:namazapp/shared/theme.dart';
 import 'package:namazapp/shared/widgets/empty.dart';
 import 'package:namazapp/shared/widgets/error/error.dart';
 import 'package:namazapp/shared/widgets/spinner/spinner.dart';
@@ -19,36 +23,40 @@ class _HomePageState extends State<HomePage> {
   double width;
   double height;
 
+  UpdatedGenderState genderState;
+
   @override
   Widget build(BuildContext context) {
     this.width = MediaQuery.of(context).size.width;
     this.height = MediaQuery.of(context).size.height;
+    this.genderState = BlocProvider.of<GenderBloc>(context).state;
 
-    return Scaffold(
-      appBar: buildAppbar(),
-      body: BlocBuilder(
-        bloc: BlocProvider.of<SectionsBloc>(context),
-        builder: (ctx, SectionsState state) {
-          // Loading
-          if (state is SectionsLoading) {
-            return AppSpinner();
-          }
+    return BlocBuilder<GenderBloc, GenderState>(
+        builder: (context, state) => Scaffold(
+              appBar: buildAppbar(),
+              body: BlocBuilder(
+                bloc: BlocProvider.of<SectionsBloc>(context),
+                builder: (ctx, SectionsState state) {
+                  // Loading
+                  if (state is SectionsLoading) {
+                    return AppSpinner();
+                  }
 
-          // Loaded
-          if (state is SectionsLoaded) {
-            return buildStackContent();
-          }
+                  // Loaded
+                  if (state is SectionsLoaded) {
+                    return buildStackContent();
+                  }
 
-          // Error
-          if (state is SectionsFailure) {
-            return AppError(error: state.error);
-          }
+                  // Error
+                  if (state is SectionsFailure) {
+                    return AppError(error: state.error);
+                  }
 
-          // Default
-          return AppEmpty();
-        },
-      ),
-    );
+                  // Default
+                  return AppEmpty();
+                },
+              ),
+            ));
   }
 
   Widget buildAppbar() {
@@ -64,18 +72,28 @@ class _HomePageState extends State<HomePage> {
         IconButton(
             icon: Icon(
               NamazIcons.hijab,
-              color: Colors.black.withOpacity(0.5),
+              color: context.bloc<GenderBloc>().state.gender == 'woman'
+                  ? AppColors.purple
+                  : Colors.black.withOpacity(0.5),
               size: 25,
             ),
-            onPressed: () {}),
+            onPressed: () {
+              context
+                  .bloc<GenderBloc>()
+                  .add(UpdateGenderEvent(gender: 'woman'));
+            }),
       ],
       leading: IconButton(
           icon: Icon(
             NamazIcons.man,
-            color: Color(0XFA0064AA0),
+            color: context.bloc<GenderBloc>().state.gender == 'man'
+                ? AppColors.blue
+                : Colors.black.withOpacity(0.5),
             size: 25,
           ),
-          onPressed: () {}),
+          onPressed: () {
+            context.bloc<GenderBloc>().add(UpdateGenderEvent(gender: 'man'));
+          }),
     );
   }
 
@@ -92,8 +110,9 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget buildBackgroundImage() {
+    String gender = context.bloc<GenderBloc>().state.gender;
     return new Image.asset(
-      "assets/images/man_bg.png",
+      "assets/images/${gender}_bg.png",
       fit: BoxFit.fill,
     );
   }

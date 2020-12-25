@@ -12,7 +12,7 @@ import 'package:namazapp/features/taharat/bloc/taharat-events.dart';
 import 'package:namazapp/features/taharat/data/datasources/taharat-local-data.dart';
 import 'package:namazapp/features/taharat/presentation/pages/taharat-general/taharat-general.page.dart';
 
-class Router {
+class AppRouter {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     final arguments = settings.arguments;
 
@@ -40,7 +40,7 @@ class Router {
             ],
             child: TaharatGeneralPage(),
           ),
-        );      
+        );
       // Namaz general
       case Routes.namazGeneralPage:
         return MaterialPageRoute(
