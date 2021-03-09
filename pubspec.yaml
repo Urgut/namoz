@@ -45,3 +45,5 @@ flutter:
     - family: NamazFont
       fonts:
         - asset: assets/fonts/namaz/namaz.ttf
+
+        
