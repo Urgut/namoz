@@ -11,4 +11,5 @@ class AguzuPart implements IPart {
   String arabic =
       "أعوذ بالله من الشيطان الرجيم<br />بِسْمِ اللَّـهِ الرَّحْمَـٰنِ الرَّحِيمِ</p>";
   String rakaatName = "";
+  String comment = "";
 }

@@ -14,4 +14,5 @@ class PartSuraAsrPart implements IPart {
   String arabic =
       "<p>وَالْعَصْرِ<br />إِنَّ الْإِنسَانَ لَفِي خُسْرٍ<br />إِلَّا الَّذِينَ آمَنُوا وَعَمِلُوا الصَّالِحَاتِ وَتَوَاصَوْا بِالْحَقِّ وَتَوَاصَوْا بِالصَّبْرِ</p>";
   String rakaatName = "";
+  String comment = "";
 }

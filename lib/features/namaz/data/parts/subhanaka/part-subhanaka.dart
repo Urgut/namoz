@@ -12,4 +12,5 @@ class PartSubhanaka implements IPart {
   String arabic =
       "<p>سبحانك اللهم وبحمدك وتبارك اسمك وتعالى جدك ولا<br />إله غيرك</p>";
   String rakaatName = "";
+  String comment = "";
 }

@@ -5,5 +5,10 @@ class SittingPartMan extends SittingPart {
   String image = "assets/images/namaz/man/sidenie.png";
 
   @override
-  String description = 'Содан соң (имам болса дауыстап) «Аллаһу Акбар» деп басын көтеріп, тізесін бүгіп отырады (ер бала аяғын жайып үстіне отырады да, оң аяғын тік ұстайды)';
+  String description =
+      '<p>Содан соң <strong>&laquo;Аллаһу Әкбар&raquo;</strong> деп басын сәждеден көтеріп тізерлеп отырады. Отырғанда&nbsp;<strong>&laquo;субханаллаh&raquo;&nbsp;</strong>сөзі айтылатындай қысқа уақыт кідіреді. Қолымыздың ұшы тізеге тиіп, санның үстіне қойылады.</p>';
+
+  @override
+  String comment =
+      "Ерлер: Сол аяғын жайып, үстіне отырады. Оң аяғын тік ұстайды.";
 }

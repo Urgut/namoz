@@ -12,4 +12,5 @@ class AllahummaBarikPart implements IPart {
   String arabic =
       "<p>اللهم صل على محمد وعلى آل محمد<br />كما صليت على إبراهيم وعلى آل إبراهيم.<br />وبارك على محمد وعلى آل محمد<br />كما باركت على إبراهيم وعلى آل إبراهيم،<br />في العالمين إنك حميد مجيد</p>";
   String rakaatName = "";
+  String comment = "";
 }

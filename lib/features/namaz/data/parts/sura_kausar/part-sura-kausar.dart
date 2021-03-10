@@ -16,4 +16,5 @@ class PartSuraKausar implements IPart {
   String arabic =
       "إِنَّا أَعْطَيْنَاكَ الْكَوْثَرَ<br />فَصَلِّ لِرَبِّكَ وَانْحَرْ<br />إِنَّ شَانِئَكَ هُوَ الْأَبْتَر";
   String rakaatName = "";
+  String comment = "";
 }

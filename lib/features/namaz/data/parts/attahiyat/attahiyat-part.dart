@@ -13,4 +13,5 @@ class AttahiyatPart implements IPart {
   String arabic =
       "<p>التحيات لله والصلوات و الطيبات،<br />السلام عليك أيها النبي ورحمة الله وبركاته،<br />السلام علينا وعلى عباد الله الصالحين،<br />أشهد أن لا إله إلا الله وأشهد أن محمدا عبده ورسوله</p>";
   String rakaatName = "";
+  String comment = "";
 }

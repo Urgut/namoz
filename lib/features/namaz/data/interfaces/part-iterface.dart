@@ -7,4 +7,5 @@ abstract class IPart {
   String translation;
   String arabic;
   String rakaatName = "";
+  String comment = "";
 }

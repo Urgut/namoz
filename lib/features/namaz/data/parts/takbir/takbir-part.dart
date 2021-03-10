@@ -10,4 +10,5 @@ class TakbirPart implements IPart {
   String translation = "Алла аса ұлы!";
   String arabic = "الله أكبر";
   String rakaatName = "";
+  String comment = "";
 }

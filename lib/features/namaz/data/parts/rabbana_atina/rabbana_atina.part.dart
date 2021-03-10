@@ -11,4 +11,5 @@ class RabbanaAtinaPart implements IPart {
       "<p>,Алла! Бізге дүниеде де жақсылық бер, ақыретте де жақсылық бер. Және тозақ отынан сақтай көр</p>";
   String arabic = "";
   String rakaatName = "";
+  String comment = "";
 }

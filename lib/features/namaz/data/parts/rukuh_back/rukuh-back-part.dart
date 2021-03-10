@@ -12,4 +12,5 @@ class RukuhBackPart implements IPart {
       "<p>&laquo;Алла өзін мадақтаған жанның мадағын естиді&raquo;</p><p>&laquo;Уа, Раббымыз, мақтау-мадақ тек Саған тән&raquo;</p>";
   String arabic = "<p>سمع الله لمن حميده</p><p>ربنا و لك الحمد</p>";
   String rakaatName = "";
+  String comment = "";
 }

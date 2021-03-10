@@ -94,7 +94,7 @@ class _NamazPartDetailPageState extends State<NamazPartDetailPage> {
     // Description
     if (part.description != null && part.description != "") {
       menuHeaderData.add("IN");
-      menuContentData.add(part.description);
+      menuContentData.add(part.description + part.comment);
     }
   }
 
@@ -131,8 +131,7 @@ class _NamazPartDetailPageState extends State<NamazPartDetailPage> {
 
   Widget nextButtonUI() {
     return GestureDetector(
-        child:
-            Icon(Icons.arrow_forward_ios, color: Color(0XFF3E4352)),
+        child: Icon(Icons.arrow_forward_ios, color: Color(0XFF3E4352)),
         onTap:
             this.partIndex == (this.parts.length - 1) ? null : () => goNext());
   }
@@ -183,12 +182,12 @@ class _NamazPartDetailPageState extends State<NamazPartDetailPage> {
         percent: this.getPercentage(),
         animation: true,
         progressColor: Color(0XFFF2C94D),
-        backgroundColor: Colors.white,        
+        backgroundColor: Colors.white,
       ),
     );
   }
 
-  getPercentage() {    
+  getPercentage() {
     double onePercentageValue = (100 / this.parts.length);
     double result = partIndex == this.parts.length - 1
         ? 1
@@ -218,7 +217,7 @@ class _NamazPartDetailPageState extends State<NamazPartDetailPage> {
               // width: 30,
               padding: EdgeInsets.all(5),
               margin: EdgeInsets.symmetric(horizontal: 2),
-              decoration: BoxDecoration(                
+              decoration: BoxDecoration(
                 // borderRadius: BorderRadius.all(Radius.circular(15)),
                 shape: BoxShape.circle,
                 color: entry.key == selectedMenuIndex
@@ -286,7 +285,7 @@ class _NamazPartDetailPageState extends State<NamazPartDetailPage> {
                   child: Html(
                     data: this.menuContentData[this.selectedMenuIndex],
                     padding: EdgeInsets.all(5),
-                    customTextAlign: (elem) => TextAlign.center,                    
+                    customTextAlign: (elem) => TextAlign.center,
                   ),
                 ),
                 nextButtonUI(),
