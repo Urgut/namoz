@@ -73,6 +73,12 @@ class _NamazPartDetailPageState extends State<NamazPartDetailPage> {
 
     IPart part = this.parts[this.partIndex];
 
+    // Description
+    if (part.description != null && part.description != "") {
+      menuHeaderData.add("IN");
+      menuContentData.add(part.description + part.comment);
+    }
+
     // Transcript
     if (part.transcript != null && part.transcript != "") {
       menuHeaderData.add("TR");
@@ -89,12 +95,6 @@ class _NamazPartDetailPageState extends State<NamazPartDetailPage> {
     if (part.arabic != null && part.arabic != "") {
       menuHeaderData.add("AR");
       menuContentData.add(part.arabic);
-    }
-
-    // Description
-    if (part.description != null && part.description != "") {
-      menuHeaderData.add("IN");
-      menuContentData.add(part.description + part.comment);
     }
   }
 

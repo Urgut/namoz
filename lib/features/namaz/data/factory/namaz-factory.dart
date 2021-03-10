@@ -1,7 +1,6 @@
 import 'package:namazapp/core/data/datasources/gender.data.dart';
 import 'package:namazapp/core/data/datasources/namaz-type-list.data.dart';
 import 'package:namazapp/core/data/datasources/namaz-list.data.dart';
-import 'package:namazapp/features/namaz/data/models/namaz-rakaat.model.dart';
 import 'package:namazapp/features/namaz/data/models/namaz-wrapper.model.dart';
 import 'package:namazapp/features/namaz/data/namaz/namaz.dart';
 import 'package:namazapp/features/namaz/data/rakaats/base-rakaats.dart';
@@ -38,16 +37,24 @@ class NamazFactory {
         parts: twoRakaatsSunna.getParts(),
       );
 
+      // Customize niet part
+      fajrTwoRakaatSunnaNamaz.parts[0].description =
+          fajrTwoRakaatSunnaNamaz.parts[0].description.replaceAll(
+              "{{niet}}", "Таң намазының екі рәкат сүннетін оқуға ниет еттім");
+
       // Paryz namazy
-      List<NamazRakaatModel> twoRakaatsParyz =
-          TwoRakaats(gender: gender).rakaats;
+      BaseRakaats twoRakaatsParyz = TwoRakaats(gender: gender);
 
       Namaz fajrTwoRakaatParyzNamaz = Namaz(
         period: period,
         title: NamazTypeListData.twoRakaatParyz,
-        rakaats: twoRakaatsParyz,
-        parts: twoRakaatsSunna.getParts(),
+        rakaats: twoRakaatsParyz.rakaats,
+        parts: twoRakaatsParyz.getParts(),
       );
+      // Customize niet part
+      fajrTwoRakaatParyzNamaz.parts[0].description =
+          fajrTwoRakaatParyzNamaz.parts[0].description.replaceAll(
+              "{{niet}}", "Таң намазының екі рәкат парызын оқуға ниет еттім");
 
       namazList.add(fajrTwoRakaatSunnaNamaz);
       namazList.add(fajrTwoRakaatParyzNamaz);
@@ -64,6 +71,9 @@ class NamazFactory {
         rakaats: fourRakaats.rakaats,
         parts: fourRakaats.getParts(),
       );
+      fajrTwoRakaatSunnaNamaz.parts[0].description =
+          fajrTwoRakaatSunnaNamaz.parts[0].description.replaceAll("{{niet}}",
+              "Бесін намазының төрт рәкат сүннетін оқуға ниет еттім");
 
       // Paryz namazy
       BaseRakaats fourRakaatsParyz = FourRakaats(gender: gender);
@@ -74,6 +84,9 @@ class NamazFactory {
         rakaats: fourRakaatsParyz.rakaats,
         parts: fourRakaatsParyz.getParts(),
       );
+      fourRakaatParyzNamaz.parts[0].description =
+          fourRakaatParyzNamaz.parts[0].description.replaceAll("{{niet}}",
+              "Бесін намазының төрт рәкат парызын оқуға ниет еттім");
 
       BaseRakaats twoRakaatsSunna = TwoRakaats(gender: gender);
 
@@ -83,6 +96,9 @@ class NamazFactory {
         rakaats: twoRakaatsSunna.rakaats,
         parts: twoRakaatsSunna.getParts(),
       );
+      dhuhrTwoRakaatSunnaNamaz.parts[0].description =
+          dhuhrTwoRakaatSunnaNamaz.parts[0].description.replaceAll("{{niet}}",
+              "Бесін намазының екі рәкат сұннетін оқуға ниет еттім");
 
       namazList.add(fajrTwoRakaatSunnaNamaz);
       namazList.add(fourRakaatParyzNamaz);
@@ -100,6 +116,8 @@ class NamazFactory {
         rakaats: asrFourRakaats.rakaats,
         parts: asrFourRakaats.getParts(),
       );
+      asrNamaz.parts[0].description = asrNamaz.parts[0].description.replaceAll(
+          "{{niet}}", "Аср намазының төрт рәкат парызын оқуға ниет еттім");
 
       namazList.add(asrNamaz);
     }
@@ -115,6 +133,9 @@ class NamazFactory {
         rakaats: magribThreeRakaats.rakaats,
         parts: magribThreeRakaats.getParts(),
       );
+      magribParyzNamaz.parts[0].description =
+          magribParyzNamaz.parts[0].description.replaceAll(
+              "{{niet}}", "Ақшам намазының үш рәкат парызын оқуға ниет еттім");
 
       // 2 sunna
       BaseRakaats magribSunnaRakaats = TwoRakaats(gender: gender);
@@ -125,6 +146,9 @@ class NamazFactory {
         rakaats: magribSunnaRakaats.rakaats,
         parts: magribSunnaRakaats.getParts(),
       );
+      magribSunnaNamaz.parts[0].description =
+          magribSunnaNamaz.parts[0].description.replaceAll("{{niet}}",
+              "Ақшам намазының екі рәкат сүннетін оқуға ниет еттім");
 
       namazList.add(magribParyzNamaz);
       namazList.add(magribSunnaNamaz);
@@ -140,6 +164,9 @@ class NamazFactory {
         rakaats: ishaFourRakaats.rakaats,
         parts: ishaFourRakaats.getParts(),
       );
+      ishaParyzNamaz.parts[0].description = ishaParyzNamaz.parts[0].description
+          .replaceAll("{{niet}}",
+              "Құптан намазының төрт рәкат парызын оқуға ниет еттім");
 
       BaseRakaats ishaSunnaRakaats = TwoRakaats(gender: gender);
       Namaz ishaSunnaNamaz = Namaz(
@@ -148,6 +175,9 @@ class NamazFactory {
         rakaats: ishaSunnaRakaats.rakaats,
         parts: ishaSunnaRakaats.getParts(),
       );
+      ishaSunnaNamaz.parts[0].description = ishaSunnaNamaz.parts[0].description
+          .replaceAll("{{niet}}",
+              "Құптан намазының екі рәкат сүннетін оқуға ниет еттім");
 
       namazList.add(ishaParyzNamaz);
       namazList.add(ishaSunnaNamaz);
@@ -163,6 +193,9 @@ class NamazFactory {
         rakaats: vitrRakaats.rakaats,
         parts: vitrRakaats.getParts(),
       );
+      vitrNamaz.parts[0].description = vitrNamaz.parts[0].description
+          .replaceAll(
+              "{{niet}}", "Үтір намазының үш рәкат сүннетін оқуға ниет еттім");
 
       namazList.add(vitrNamaz);
     }

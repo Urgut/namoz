@@ -1,7 +1,7 @@
 import 'package:namazapp/features/namaz/data/interfaces/part-iterface.dart';
 
 class PartSubhanaka implements IPart {
-  String title = 'Субханәкә';
+  String title = 'Қиям: Субханәкә дұғасы';
   String description = '';
   String image = '';
   String audio = 'subhanaka.mp3';

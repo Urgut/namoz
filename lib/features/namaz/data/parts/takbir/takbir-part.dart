@@ -3,7 +3,7 @@ import 'package:namazapp/features/namaz/data/interfaces/part-iterface.dart';
 class TakbirPart implements IPart {
   String title = 'Тәкбір жасау';
   String description =
-      'Намаз басталғанда ер адам алақанын қыблаға қаратып, бас бармағын құлаққа әкеліп «Аллаһу Акбар» дейді';
+      '<p>Намаз басталғанда ер адам алақанын қыблаға қаратып, бас бармағын құлаққа әкеліп <strong>&laquo;Аллаһу әкбар&raquo;</strong> дейді.</p>';
   String image = '';
   String audio;
   String transcript = 'Аллаху Акбар!';

@@ -1,8 +1,8 @@
 import 'package:namazapp/features/namaz/data/interfaces/part-iterface.dart';
 
 class AllahummaBarikPart implements IPart {
-  String title = 'Аллахумма бәрик';
-  String description = "<p>Салауат дұғалары.</p>";
+  String title = 'Аллахумма бәрик дұғасы';
+  String description = "<p>Салауат дұғалары оқылады.</p>";
   String image = '';
   String audio = "barik.mp3";
   String transcript =
