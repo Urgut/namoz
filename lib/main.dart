@@ -49,23 +49,6 @@ class MyApp extends StatelessWidget {
             const Locale('ru', 'RU'),
           ],
           localeResolutionCallback: (locale, supportedLocales) {
-            // LocalStorageService _storageService = locator<LocalStorageService>();
-
-            // If user language exist in storage then load it
-            // if (_storageService.language != null) {
-            //   Locale storedLocale = supportedLocales.firstWhere(
-            //       (element) => element.languageCode == _storageService.language);
-            //   return storedLocale;
-            // }
-
-            // If not exist on storage load language that exist in the list
-            // for (var supportedLocale in supportedLocales) {
-            //   if (supportedLocale.languageCode == locale.languageCode) {
-            //     // _storageService.language = supportedLocale.languageCode;
-            //     return supportedLocale;
-            //   }
-            // }
-
             // Default is kazakh language
             return supportedLocales.first;
           },

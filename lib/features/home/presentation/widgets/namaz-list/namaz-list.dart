@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:namazapp/core/constants/routes.dart';
+import 'package:namazapp/core/services/app-config.service.dart';
 import 'package:namazapp/core/services/navigation.service.dart';
+import 'package:namazapp/core/store/settings/gender-bloc.dart';
 import 'package:namazapp/features/home/data/datasources/namaz-general-local-data.dart';
 import 'package:namazapp/features/home/data/models/namaz-general-model.dart';
 import 'package:namazapp/localization.dart';
@@ -123,9 +126,14 @@ class _NamazListState extends State<NamazList> {
   }
 
   onGo(NamazGeneralModel n) {
+    String gender = BlocProvider.of<GenderBloc>(context).state.gender;
+
+    //String gender = locator<AppConfig>().gender;
+    print("gender $gender");
+
     return _navService.navigateTo(Routes.namazGeneralPage, arguments: {
       "period": n.title,
-      "gender": "man",
+      "gender": gender,
     });
   }
 }

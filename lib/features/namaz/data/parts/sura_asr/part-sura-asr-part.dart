@@ -1,7 +1,7 @@
 import 'package:namazapp/features/namaz/data/interfaces/part-iterface.dart';
 
 class PartSuraAsrPart implements IPart {
-  String title = 'Қосымша сүре';
+  String title = 'Қосымша сүре(Аср сүресі)';
   String description = '';
   String image = '';
   String audio = "asr.mp3";

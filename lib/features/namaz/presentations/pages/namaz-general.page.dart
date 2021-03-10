@@ -203,7 +203,9 @@ class _NamazGeneralPageState extends State<NamazGeneralPage> {
       child: Container(
         child: Column(children: [
           SizedBox(height: 10),
-          PartImage(image: 'assets/images/namaz/man/kiyam.png'),
+          PartImage(
+              image:
+                  'assets/images/namaz/${this.widget.params['gender']}/kiyam.png'),
           SizedBox(height: 10),
           Container(
             child: Text(

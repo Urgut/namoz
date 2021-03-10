@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:namazapp/core/services/navigation.service.dart';
 import 'package:namazapp/features/home/data/datasources/menu-local-data.dart';
 import 'package:namazapp/features/home/data/models/menu-item.model.dart';
 import 'package:namazapp/localization.dart';
@@ -13,6 +14,8 @@ class MainMenu extends StatefulWidget {
 }
 
 class _MainMenuState extends State<MainMenu> {
+  NavigationService _navService = locator<NavigationService>();
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -36,8 +39,8 @@ class _MainMenuState extends State<MainMenu> {
   }
 
   Widget buildContent(List<MenuItemModel> data) {
-    return Container(      
-      height: 50,
+    return Container(
+      height: 60,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -50,8 +53,10 @@ class _MainMenuState extends State<MainMenu> {
   }
 
   Widget buildMenuItem(MenuItemModel m) {
-    return FlatButton(
-      onPressed: () {},
+    return TextButton(
+      onPressed: () {
+        this.onGo(m.route);
+      },
       child: Container(
         child: Column(
           children: [
@@ -80,4 +85,8 @@ class _MainMenuState extends State<MainMenu> {
           ),
         ),
       );
+
+  onGo(String url) {
+    return _navService.navigateTo(url);
+  }
 }

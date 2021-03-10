@@ -3,7 +3,7 @@ import 'package:namazapp/features/namaz/data/interfaces/part-iterface.dart';
 class RukuhGoPart implements IPart {
   String title = 'Рукуғқа бару';
   String description =
-      'Қиямнан рукуғқа бара жатып «Аллаһу Акбар» дейді (имам жамағаттың еститініндей дауыстайды). Рукуғқа тұрғанда: «Субхана Раббиял-‘Азим» деп 3 рет іштей айтады';
+      'Қиямнан рукуғқа бара жатып «Аллаһу Акбар» дейді. Рукуғқа тұрғанда: «Субхана Раббиял-‘Азим» деп 3 рет іштей айтады';
   String image = '';
   String audio = 'rukuh.mp3';
   String transcript =

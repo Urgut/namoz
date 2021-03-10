@@ -25,6 +25,7 @@ class NamazGeneralLocalData {
         namazs: [
           NamazTypeListData.fourRakaatSunna,
           NamazTypeListData.fourRakaatParyz,
+          NamazTypeListData.twoRakaatSunna
         ],
       ),
     );

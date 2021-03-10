@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:namazapp/core/services/app-config.service.dart';
 import 'package:namazapp/core/store/settings/gender-bloc.dart';
 import 'package:namazapp/core/store/settings/gender-events.dart';
 import 'package:namazapp/core/store/settings/gender-state.dart';
@@ -8,6 +9,7 @@ import 'package:namazapp/features/home/bloc/sections-state.dart';
 import 'package:namazapp/features/home/presentation/widgets/main-menu/main-menu.dart';
 import 'package:namazapp/features/home/presentation/widgets/namaz-list/namaz-list.dart';
 import 'package:namazapp/localization.dart';
+import 'package:namazapp/locator.dart';
 import 'package:namazapp/shared/fonts/namaz_fonts.dart';
 import 'package:namazapp/shared/theme.dart';
 import 'package:namazapp/shared/widgets/empty.dart';
@@ -81,6 +83,8 @@ class _HomePageState extends State<HomePage> {
               context
                   .bloc<GenderBloc>()
                   .add(UpdateGenderEvent(gender: 'woman'));
+
+              locator<AppConfig>().gender = "woman";
             }),
       ],
       leading: IconButton(
@@ -93,6 +97,8 @@ class _HomePageState extends State<HomePage> {
           ),
           onPressed: () {
             context.bloc<GenderBloc>().add(UpdateGenderEvent(gender: 'man'));
+
+            //locator<AppConfig>().gender = "man";
           }),
     );
   }
