@@ -62,8 +62,9 @@ class RakaatData {
     return r2;
   }
 
-  NamazRakaatModel getNthRakaat(String rakatLabel, {isVitrNamaz = false}) {
-    NamazRakaatModel r2 = NamazRakaatModel(
+  NamazRakaatModel getThirdRakaat(String rakatLabel,
+      {isVitrNamaz = false, lastRakat = false}) {
+    NamazRakaatModel r3 = NamazRakaatModel(
       title: rakatLabel,
       isRakaat: true,
       parts: [
@@ -72,14 +73,33 @@ class RakaatData {
         PartRukuhBackFactory().create(gender),
         PartSajdeFirstFactory().create(gender),
         PartSittinFactory().create(gender),
-        PartSajdeSecondFactory().create(gender),
+        lastRakat
+            ? PartSajdeSecondLastFactory().create(gender)
+            : PartSajdeSecondFactory().create(gender),
       ],
     );
 
     if (isVitrNamaz) {
-      r2.parts.insert(1, PartKunutFactory().create(gender));
+      r3.parts.insert(1, PartKunutFactory().create(gender));
     }
-    return r2;
+    return r3;
+  }
+
+  NamazRakaatModel getFourthRakaat(String rakatLabel) {
+    NamazRakaatModel r4 = NamazRakaatModel(
+      title: rakatLabel,
+      isRakaat: true,
+      parts: [
+        FatihaPartFactory().create(gender),
+        PartRukuhGoFactory().create(gender),
+        PartRukuhBackFactory().create(gender),
+        PartSajdeFirstFactory().create(gender),
+        PartSittinFactory().create(gender),
+        PartSajdeSecondLastFactory().create(gender),
+      ],
+    );
+
+    return r4;
   }
 
   NamazRakaatModel getOtyrys() {

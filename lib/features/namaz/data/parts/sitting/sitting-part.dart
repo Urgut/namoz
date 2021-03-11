@@ -8,7 +8,7 @@ class SittingPart implements IPart {
   String description = '';
   String image = '';
   String audio;
-  String transcript = 'Аллаху Акбар!';
+  String transcript = 'Аллаhу әкбар!';
   String translation = "Алла аса ұлы!";
   String arabic = "الله أكبر";
   String rakaatName = "";

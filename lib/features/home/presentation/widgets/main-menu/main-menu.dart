@@ -7,6 +7,7 @@ import 'package:namazapp/locator.dart';
 import 'package:namazapp/shared/widgets/empty.dart';
 import 'package:namazapp/shared/widgets/error/error.dart';
 import 'package:namazapp/shared/widgets/spinner/spinner.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MainMenu extends StatefulWidget {
   @override
@@ -46,7 +47,7 @@ class _MainMenuState extends State<MainMenu> {
         children: [
           buildMenuItem(data[0]),
           buildMenuItem(data[1]),
-          buildMenuItem(data[2]),
+          buildMenuIRate(data[2])
         ],
       ),
     );
@@ -56,6 +57,23 @@ class _MainMenuState extends State<MainMenu> {
     return TextButton(
       onPressed: () {
         this.onGo(m.route);
+      },
+      child: Container(
+        child: Column(
+          children: [
+            buildIcon(m.icon),
+            SizedBox(height: 3),
+            buildTitle(m.title),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget buildMenuIRate(MenuItemModel m) {
+    return TextButton(
+      onPressed: () {
+        return openRate();
       },
       child: Container(
         child: Column(
@@ -88,5 +106,15 @@ class _MainMenuState extends State<MainMenu> {
 
   onGo(String url) {
     return _navService.navigateTo(url);
+  }
+
+  openRate() async {
+    const url =
+        'https://play.google.com/store/apps/details?id=com.serik.namazapp';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not lauch $url';
+    }
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:namazapp/core/services/html.service.dart';
 import 'package:namazapp/features/about-namaz/datasources/about-namaz-local-data.dart';
 import 'package:namazapp/features/about-namaz/models/preview-article.model.dart';
@@ -34,12 +35,11 @@ class _AboutNamazPageState extends State<AboutNamazPage> {
     );
   }
 
-  Widget contentUI(List<PreviewArticleModel> articles) {
-    return Container(
-      child: ListView.builder(
+  Widget contentUI(String article) {
+    return SingleChildScrollView(
+      child: Container(
+        child: Html(data: article),
         padding: EdgeInsets.all(20),
-        itemCount: articles.length,
-        itemBuilder: (_, index) => this.buildArticle(articles[index]),
       ),
     );
   }

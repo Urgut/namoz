@@ -10,7 +10,7 @@ class _FaqPageState extends State<FaqPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Сұрақ-жауап'),
+        title: Text('Жоба туралы'),
       ),
       body: Container(
         child: Center(

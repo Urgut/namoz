@@ -5,4 +5,5 @@ class Routes {
   static const String taharatPage = 'taharat';
   static const String genderPage = 'gender';
   static const String faqPage = 'faq';
+  static const String aboutPage = 'about';
 }

@@ -6,7 +6,7 @@ class SittingPartWoman extends SittingPart {
 
   @override
   String description =
-      '<p>Содан соң <strong>&laquo;Аллаһу Акбар&raquo;</strong> деп басын сәждеден көтеріп тізерлеп отырады. Отырғанда&nbsp;<strong>&laquo;субханаллаh&raquo;&nbsp;</strong>сөзі айтылатындай қысқа уақыт кідіреді. Қолымыздың ұшы тізеге тиіп, санның үстіне қойылады.</p>';
+      '<p>Содан соң <strong>&laquo;Аллаһу әкбар&raquo;</strong> деп басын сәждеден көтеріп тізерлеп отырады. Отырғанда&nbsp;<strong>&laquo;субханаллаh&raquo;&nbsp;</strong>сөзі айтылатындай қысқа уақыт кідіреді. Қолымыздың ұшы тізеге тиіп, санның үстіне қойылады.</p>';
 
   @override
   String comment =

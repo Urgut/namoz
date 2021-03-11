@@ -16,8 +16,8 @@ class ThreeRakaats extends BaseRakaats {
     NamazRakaatModel r1 = RakaatData(gender: this.gender).getFirstRakaat();
     NamazRakaatModel r2 = RakaatData(gender: this.gender).getSecondRakaat();
     NamazRakaatModel otyrys = RakaatData(gender: this.gender).getOtyrys();
-    NamazRakaatModel r3 =
-        RakaatData(gender: this.gender).getNthRakaat('3_rakaat');
+    NamazRakaatModel r3 = RakaatData(gender: this.gender)
+        .getThirdRakaat('3_rakaat', lastRakat: true);
 
     NamazRakaatModel lastOtyrys =
         RakaatData(gender: this.gender).getLastOtyrys();

@@ -13,15 +13,15 @@ class MenuLocalData {
     ));
 
     result.add(MenuItemModel(
-      icon: NamazIcons.settings,
-      title: 'language',
-      route: Routes.namazGeneralPage,
+      icon: NamazIcons.faqs,
+      title: 'about_namaz',
+      route: Routes.aboutPage,
     ));
 
     result.add(MenuItemModel(
-      icon: NamazIcons.faqs,
-      title: 'faqs',
-      route: Routes.faqPage,
+      icon: NamazIcons.settings,
+      title: 'about_project',
+      route: "rate",
     ));
 
     return result;

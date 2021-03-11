@@ -17,7 +17,7 @@ class ThreeRakaatsVitr extends BaseRakaats {
     NamazRakaatModel r2 = RakaatData(gender: this.gender).getSecondRakaat();
     NamazRakaatModel otyrys = RakaatData(gender: this.gender).getOtyrys();
     NamazRakaatModel r3 = RakaatData(gender: this.gender)
-        .getNthRakaat('3_rakaat', isVitrNamaz: true);
+        .getThirdRakaat('3_rakaat', isVitrNamaz: true, lastRakat: true);
 
     NamazRakaatModel lastOtyrys =
         RakaatData(gender: this.gender).getLastOtyrys();

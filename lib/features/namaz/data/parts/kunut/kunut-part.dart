@@ -3,7 +3,7 @@ import 'package:namazapp/features/namaz/data/interfaces/part-iterface.dart';
 class KunutPart implements IPart {
   String title = 'Құнұт дұғасы';
   String description =
-      'Екі қолын екі құлағына көтеріп «Аллаһу Акбар» деп «құнұт» дұғасын оқиды. Құнұт дұғасы тек үтір намазында оқылады.';
+      'Екі қолын екі құлағына көтеріп «Аллаһу әкбар» деп «құнұт» дұғасын оқиды. Құнұт дұғасы тек үтір намазында оқылады.';
   String image = '';
   String audio = "kunt.mp3";
   String transcript =

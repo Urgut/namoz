@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:namazapp/core/constants/routes.dart';
+import 'package:namazapp/features/about-namaz/presentations/pages/about-namaz.page.dart';
 import 'package:namazapp/features/faq/presentations/pages/faq.page.dart';
 import 'package:namazapp/features/home/bloc/sections-bloc.dart';
 import 'package:namazapp/features/home/bloc/sections-events.dart';
@@ -53,7 +54,10 @@ class AppRouter {
       // Faq
       case Routes.faqPage:
         return MaterialPageRoute(builder: (_) => FaqPage());
-
+      case Routes.aboutPage:
+        return MaterialPageRoute(
+          builder: (_) => AboutNamazPage(),
+        );
       default:
         return MaterialPageRoute(
             builder: (_) => Scaffold(

@@ -5,5 +5,5 @@ class SajdeFirstWomanPart extends SajdeFirstPart {
   String image = "assets/images/namaz/woman/sajde.png";
   @override
   String comment =
-      "Әйелдер: Сәждеде білектерін жерге қойып, шынтақтарын қаьыпғасыеа жақын ұстайды. Аяқ ұшымен жер тірейді.";
+      "Әйелдер: Сәждеде білектерін жерге қойып, шынтақтарын қабыпғасына жақын ұстайды. Аяқ ұшымен жер тірейді.";
 }
