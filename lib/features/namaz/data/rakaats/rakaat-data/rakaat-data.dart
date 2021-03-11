@@ -44,7 +44,7 @@ class RakaatData {
     return r1;
   }
 
-  NamazRakaatModel getSecondRakaat({bool last = false}) {
+  NamazRakaatModel getSecondRakaat() {
     NamazRakaatModel r2 = NamazRakaatModel(
       title: '2_rakaat',
       isRakaat: true,
@@ -76,8 +76,9 @@ class RakaatData {
       ],
     );
 
-    r2.parts.insert(1, PartKunutFactory().create(gender));
-
+    if (isVitrNamaz) {
+      r2.parts.insert(1, PartKunutFactory().create(gender));
+    }
     return r2;
   }
 
