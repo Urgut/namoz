@@ -1,5 +1,5 @@
-import 'package:namazapp/features/namaz/data/parts/subhanaka/part-subhanaka-man.dart';
 import 'package:namazapp/features/namaz/data/parts/subhanaka/part-subhanaka-woman.dart';
+import 'package:namazapp/features/namaz/data/parts/subhanaka/part-subhanaka-man.dart';
 import 'package:namazapp/features/namaz/data/parts/subhanaka/part-subhanaka.dart';
 
 class FactoryPartSubhanaka {

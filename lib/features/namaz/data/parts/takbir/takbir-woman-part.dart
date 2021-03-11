@@ -5,8 +5,7 @@ class TakbirWomanPart extends TakbirPart {
   String image = 'assets/images/namaz/woman/takbir.png';
 
   @override
-  String description =
-      'Әйел адам болса қолдарын көкірек тұсына дейін ғана көтеріп, "Аллаху Әкбар" дейді.';
+  String description = '';
   String comment =
-      "Әйелдер: Екі алақанын құбылаға қаратып, саусақ ұштарын иықтарына туралап <strong>&laquo;Аллаһу әкбар&raquo;</strong> деп тәкбір айтады.";
+      "Әйелдер екі алақанын құбылаға қаратып, саусақ ұштарын иықтарына туралап <strong>&laquo;Аллаһу әкбар&raquo;</strong> деп тәкбір айтады.";
 }

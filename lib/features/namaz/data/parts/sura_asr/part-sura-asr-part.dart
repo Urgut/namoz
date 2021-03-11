@@ -3,7 +3,7 @@ import 'package:namazapp/features/namaz/data/interfaces/part-iterface.dart';
 class PartSuraAsrPart implements IPart {
   String title = 'Қосымша сүре(Аср сүресі)';
   String description =
-      'Құраннан бір сүре немесе ең азы үш аят. Мысалға Аср сүресі алынды.';
+      'Құраннан бір сүре немесе ең азы үш аят оқылады. Мысалға Аср сүресі алынды.';
   String image = '';
   String audio = "asr.mp3";
   String transcript = 'Уәл-&lsquo;аср <br/>' +

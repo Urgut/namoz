@@ -74,7 +74,7 @@ class _NamazPartDetailPageState extends State<NamazPartDetailPage> {
     IPart part = this.parts[this.partIndex];
 
     // Description
-    if (part.description != null && part.description != "") {
+    if (part.description != "" || part.comment != "") {
       menuHeaderData.add("IN");
       menuContentData.add(part.description + part.comment);
     }

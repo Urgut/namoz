@@ -1,7 +1,7 @@
 import 'package:namazapp/features/namaz/data/parts/subhanaka/part-subhanaka.dart';
 
-class PartSubhanakaMan extends PartSubhanaka {
-  String image = 'assets/images/namaz/man/kiyam.png';
+class PartSubhanakaWoman extends PartSubhanaka {
+  String image = 'assets/images/namaz/woman/kiyam.png';
   String description =
-      'Ер адам қиямда тұрғанда оң қолымен сол қолын байлап кіндіктен сәл төмен қояды(әйелдер оң қолын сол қолға байлап көкірек тұсына қояды)';
+      '<p>Әйелдер оң қолын сол қолға байлап көкірек тұсына қояды. Содан кейің <strong>"Субханәкә дұғасын"</strong> оқылады.</p>';
 }

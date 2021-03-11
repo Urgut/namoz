@@ -11,6 +11,7 @@ import 'package:namazapp/features/namaz/data/factory/rukuh-back-factory.dart';
 import 'package:namazapp/features/namaz/data/factory/rukuh-go-factory.dart';
 import 'package:namazapp/features/namaz/data/factory/sajde-first-factory.dart';
 import 'package:namazapp/features/namaz/data/factory/sajde-second-factory.dart';
+import 'package:namazapp/features/namaz/data/factory/sajde-second-last-factory.dart';
 import 'package:namazapp/features/namaz/data/factory/salem-factory.dart';
 import 'package:namazapp/features/namaz/data/factory/sitting-factory.dart';
 import 'package:namazapp/features/namaz/data/factory/subhanaka-factory.dart';
@@ -43,7 +44,7 @@ class RakaatData {
     return r1;
   }
 
-  NamazRakaatModel getSecondRakaat() {
+  NamazRakaatModel getSecondRakaat({bool last = false}) {
     NamazRakaatModel r2 = NamazRakaatModel(
       title: '2_rakaat',
       isRakaat: true,
@@ -54,7 +55,7 @@ class RakaatData {
         PartRukuhBackFactory().create(gender),
         PartSajdeFirstFactory().create(gender),
         PartSittinFactory().create(gender),
-        PartSajdeSecondFactory().create(gender),
+        PartSajdeSecondLastFactory().create(gender),
       ],
     );
 
